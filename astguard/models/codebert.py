@@ -46,6 +46,8 @@ if nn is not None:
             self.gradient_checkpointing = False
             relations = active_relations(variant)
             mode = attention_mode(variant)
+            if mode == 'edge' and gate_sharing != 'none':
+                raise ValueError('edge variants currently require gate_sharing=none')
             beta_init = (.05 if mode == "fixed" else .10) if beta_init is None else beta_init
             layers = []
             for index, layer in enumerate(backbone.encoder.layer):
@@ -53,10 +55,16 @@ if nn is not None:
                 if index in structural_layers and mode != 'sequence':
                     with torch.random.fork_rng(devices=[]):
                         torch.manual_seed(100000 + index)
-                        structural = StructuralSelfAttention(
+                        attention_class = StructuralSelfAttention
+                        if mode == 'edge':
+                            from .edge_attention import EdgeStructuralSelfAttention
+                            attention_class = EdgeStructuralSelfAttention
+                        structural = attention_class(
                             layer.attention.self, config.hidden_size, config.num_attention_heads,
                             len(relations), mode, beta_init, adapter=variant == 'fixed_adapter',
                         )
+                        if variant == 'query_capacity_matched':
+                            structural.gate.query_only = True
                 layers.append(_ControlledLayer(layer, structural))
             self.layers = nn.ModuleList(layers)
             from .gates import RelationGate
@@ -113,12 +121,25 @@ if nn is not None:
 
         def set_gate_intervention(self, mode, *, sample_ids, seed=1001, training_means=None):
             """Install one registered A2 intervention for the next forward(s)."""
+            if self.variant in {'edge_gated_astguard', 'query_capacity_matched'}:
+                raise ValueError('use set_edge_intervention for edge gate diagnostics')
             for index,layer in enumerate(self.layers):
                 attention=layer.structural_attention
                 if attention is None or attention.mode!='adaptive':continue
                 mean=None if training_means is None else training_means.get(str(index),training_means.get(index))
                 attention.intervention={'mode':mode,'sample_ids':sample_ids,'layer':index,
                                         'seed':seed,'training_mean':mean}
+
+        def set_edge_intervention(self, mode, *, sample_ids, seed=1001):
+            from .edge_gates import EDGE_INTERVENTIONS
+            if mode not in EDGE_INTERVENTIONS:
+                raise ValueError(f'unknown edge intervention {mode}')
+            if self.variant not in {'edge_gated_astguard', 'query_capacity_matched'}:
+                raise ValueError('edge intervention requires an edge gate implementation')
+            for index, layer in enumerate(self.layers):
+                attention = layer.structural_attention
+                if attention is not None:
+                    attention.intervention = dict(mode=mode, sample_ids=sample_ids, seed=seed, layer=index)
 
         def clear_gate_intervention(self):
             for layer in self.layers:
