@@ -1,0 +1,1 @@
+{"extends":"astguard.yaml","model":{"variant":"query_capacity_matched","gate_mode":"query_capacity_matched"}}

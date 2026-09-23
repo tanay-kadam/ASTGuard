@@ -1,5 +1,11 @@
 # ASTGuard
 
+The additive edge-gating extension and its research direction are documented in
+[the novelty audit](docs/EDGE_GATING_NOVELTY_AUDIT_AND_DIRECTION.md) and
+[development revision R2](protocol/revisions/R2_edge_gating_development.md).
+`query_gated_astguard` preserves the original `astguard` model; `edge_gated_astguard`
+is an additional variant. The full experiment campaign remains pending.
+
 ASTGuard tests whether token-conditioned AST and approximate data-dependency attention biases improve function-level C/C++ vulnerability detection over a matched CodeBERT backbone. `IMPLEMENTATION_SPEC.md` is the protocol; software execution is not evidence that the hypothesis succeeds.
 
 ## Verified local status (2026-09-23)

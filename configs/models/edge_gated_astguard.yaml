@@ -1,0 +1,1 @@
+{"extends":"astguard.yaml","model":{"variant":"edge_gated_astguard","gate_mode":"edge"}}
