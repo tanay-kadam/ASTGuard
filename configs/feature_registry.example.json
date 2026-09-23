@@ -1,0 +1,27 @@
+{
+  "checkpoint": "data/raw/checkpoints/codebert/3b0952feddeffad0063f274080e3c23d75e7eb39",
+  "checkpoint_revision": "3b0952feddeffad0063f274080e3c23d75e7eb39",
+  "checkpoint_revisions": {
+    "microsoft/codebert-base": "3b0952feddeffad0063f274080e3c23d75e7eb39",
+    "microsoft/graphcodebert-base": "2b0488a7bb0eefc7041f1bb2cad1ab26b0da269d"
+  },
+  "protocol_hash": "REPLACE_WITH_SHA256_OF_PROTOCOL_V1",
+  "resources": {
+    "host_profile": "REPLACE_WITH_MEASURED_GPU_PROFILE",
+    "max_vram_gb": 42
+  },
+  "cohorts": {
+    "P_clean": {
+      "manifest": "artifacts/audits/P_clean.json",
+      "records": ["data/interim/primevul/records.jsonl"]
+    },
+    "P_project": {
+      "manifest": "artifacts/audits/P_project.json",
+      "records": ["data/interim/primevul/records.jsonl"]
+    },
+    "D_transfer": {
+      "manifest": "artifacts/audits/D_transfer.json",
+      "records": ["data/interim/primevul/records.jsonl", "data/interim/diversevul/records.jsonl"]
+    }
+  }
+}

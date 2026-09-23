@@ -1,0 +1,4 @@
+[
+  {"sample_id":"a","label":0,"probability":0.2,"model_id":"left","seed":42,"view":"P_clean","role":"test","split_hash":"split","config_hash":"left","checkpoint_hash":"left42","feature_hash":"feature","metric_version":"1.0"},
+  {"sample_id":"b","label":1,"probability":0.8,"model_id":"left","seed":42,"view":"P_clean","role":"test","split_hash":"split","config_hash":"left","checkpoint_hash":"left42","feature_hash":"feature","metric_version":"1.0"}
+]

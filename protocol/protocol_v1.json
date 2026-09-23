@@ -1,0 +1,35 @@
+{
+  "protocol_version": "1.0",
+  "created_date": "2026-09-21",
+  "status": "unfrozen",
+  "primary_metric": "average_precision",
+  "core_seeds": [
+    42,
+    123,
+    456,
+    789,
+    1024
+  ],
+  "other_seeds": [
+    42,
+    123,
+    456
+  ],
+  "corruption_seeds": [
+    1001,
+    1002,
+    1003,
+    1004,
+    1005
+  ],
+  "analysis_seed": 20260921,
+  "test_access_rule": "test_unlock.json must match protocol, manifest, sources, splits, and preprocessing hashes",
+  "claim_ids": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6"
+  ]
+}

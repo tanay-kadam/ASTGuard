@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","experiment_id":"A1","model":{"variant":"function_gate","gate_mode":"function"}}

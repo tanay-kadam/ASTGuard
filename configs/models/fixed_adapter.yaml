@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","experiment_id":"A1","model":{"variant":"fixed_adapter","beta_init":0.05}}

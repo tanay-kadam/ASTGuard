@@ -1,0 +1,23 @@
+{
+  "atol": 1e-06,
+  "device": "cpu",
+  "hidden_layer_max_absolute_errors": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "precision": "fp32",
+  "revision": "3b0952feddeffad0063f274080e3c23d75e7eb39",
+  "rtol": 1e-05,
+  "status": "passed"
+}

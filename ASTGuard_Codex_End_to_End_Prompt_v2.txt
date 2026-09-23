@@ -1,0 +1,1292 @@
+
+
+==========================================================
+FORMAL EQUATIONS — IMPLEMENT EXACTLY
+==========================================================
+
+The implementation and paper must use the same mathematical definition.
+
+1. SEQUENCE-ONLY BASELINE
+
+For layer l, head h, query token i, and key token j:
+
+S_seq,ij^(l,h) =
+    Q_i^(l,h) (K_j^(l,h))^T / sqrt(d_h)
+
+A_ij^(l,h) =
+    softmax_j(S_ij^(l,h))
+
+O_i^(l,h) =
+    sum_j A_ij^(l,h) V_j^(l,h)
+
+2. STRUCTURAL RELATION MATRICES
+
+For relation r in {AST, DFG}:
+
+M_ij^r = 1
+    if tokens i and j are connected by structural relation r
+
+M_ij^r = 0
+    otherwise
+
+Special tokens and padding must not receive structural edges.
+The matrices must follow the exact tokenizer truncation/alignment.
+
+3. FIXED-STRUCTURE BASELINE
+
+S_fixed,ij^(l,h) =
+    Q_i K_j^T / sqrt(d_h)
+    + sum_{r in {AST,DFG}}
+        beta_r^(l,h) M_ij^r
+
+AST-fixed:
+    enable AST only.
+
+DFG-fixed:
+    enable DFG only.
+
+AST+DFG-fixed:
+    enable both relations.
+
+There is NO contextual gate in these fixed baselines.
+
+4. ASTGUARD ADAPTIVE GATE
+
+g_i,r^(l,h) =
+    sigmoid(
+        W_r^(l,h) h_i^(l-1)
+        + b_r^(l,h)
+    )
+
+Therefore:
+
+0 <= g_i,r^(l,h) <= 1
+
+5. ASTGUARD ATTENTION SCORE
+
+S_ASTGuard,ij^(l,h) =
+    Q_i K_j^T / sqrt(d_h)
+    + sum_{r in {AST,DFG}}
+        g_i,r^(l,h)
+        beta_r^(l,h)
+        M_ij^r
+
+Then use the normal transformer equations:
+
+A_ij^(l,h) =
+    softmax_j(S_ASTGuard,ij^(l,h))
+
+O_i^(l,h) =
+    sum_j A_ij^(l,h) V_j^(l,h)
+
+CRITICAL:
+The AST/DFG term is a SOFT ADDITIVE BIAS.
+It must never become a hard attention mask.
+Normal semantic attention remains unrestricted.
+
+6. TRAINING OBJECTIVE
+
+Use weighted binary cross-entropy by default:
+
+L_BCE =
+    -(1/N) sum_n [
+        w_1 y_n log(p_n)
+        + w_0 (1-y_n) log(1-p_n)
+    ]
+
+Estimate w_0 and w_1 from TRAINING DATA ONLY.
+Do not use validation or test labels to estimate class weights.
+
+7. REQUIRED CONTROLLED BASELINES
+
+All controlled variants must start from the same
+microsoft/codebert-base checkpoint:
+
+- sequence_only
+- ast_fixed
+- dfg_fixed
+- ast_dfg_fixed
+- astguard
+- astguard_structural_dropout
+
+The central scientific comparison is:
+
+Sequence-only
+    ->
+Fixed AST+DFG
+    ->
+Adaptive ASTGuard
+
+This isolates whether improvement comes from:
+(a) adding explicit structure at all, and
+(b) making structural influence adaptive.
+
+8. EXTERNAL BASELINES
+
+Implement/evaluate where reproducibly compatible:
+
+MANDATORY:
+- CodeBERT sequence classifier
+- GraphCodeBERT
+- LineVul
+
+PREFERRED:
+- Devign
+- ReGVD
+
+OPTIONAL:
+- UniXcoder classifier
+- simple class-prior / bag-of-tokens sanity baseline
+
+Never copy published numbers into the main comparison as though they were
+produced under our split. If an external baseline cannot be reproduced on the
+same data/split/protocol, report it separately and clearly label the mismatch.
+
+9. NUMERICAL EQUIVALENCE TEST
+
+When all structural contributions are zero:
+
+beta_AST = 0
+beta_DFG = 0
+
+ASTGuard must numerically reproduce the same sequence-only CodeBERT forward
+pass within floating-point tolerance.
+
+Write a pytest test that:
+- loads identical weights,
+- disables dropout / uses eval mode,
+- feeds identical tokenized input,
+- zeros all structural contributions,
+- compares logits and relevant hidden states,
+- fails if the tolerance is exceeded.
+
+This is a release-blocking test.
+
+
+ASTGUARD END-TO-END CODEX IMPLEMENTATION PROMPT
+================================================
+
+ROLE
+----
+You are the lead ML research engineer and reproducibility owner for a research project intended to produce a defensible academic paper, not a demo repository.
+
+Your job is to implement, test, run, and audit the project end-to-end. You must not stop after scaffolding files. You must verify that the complete pipeline works from public dataset acquisition through preprocessing, model training, evaluation, baseline comparison, analysis, and reproducible result generation.
+
+PROJECT
+-------
+ASTGuard: Adaptive Relation-Gated Structural Attention for C/C++ Vulnerability Detection
+
+CORE RESEARCH QUESTION
+----------------------
+Can a pretrained code transformer improve realistic C/C++ vulnerability detection by learning WHEN and WHERE AST and data-flow relations should influence self-attention, instead of applying a fixed structural mask or a single global structural weight?
+
+The novelty to test is NOT "using AST + DFG." Existing work already uses code structure and data flow.
+
+The specific proposed contribution is:
+
+1. Preserve ordinary pretrained transformer token-to-token attention.
+2. Inject AST and DFG relations as SOFT ADDITIVE attention biases, not hard masks.
+3. Learn relation-specific structural magnitudes.
+4. Learn contextual gates that vary by token, attention head, and transformer layer.
+5. Compare this adaptive mechanism against the identical sequence-only backbone and fixed-structure variants.
+6. Analyze learned gates to determine when syntax vs. data flow is actually used.
+
+Do not write first-of-kind claims in documentation unless a literature review verifies them.
+
+==========================================================
+A. MATHEMATICAL SPECIFICATION
+==========================================================
+
+For transformer layer l, attention head h, query token i, key token j:
+
+score_ij^(l,h) =
+    Q_i K_j^T / sqrt(d_h)
+    + sum_r [
+        g_i,r^(l,h)
+        * beta_r^(l,h)
+        * M_ij^r
+      ]
+
+where initially:
+
+r in {AST, DFG}
+
+M_AST:
+    token-token structural relation matrix derived from AST relationships.
+
+M_DFG:
+    token-token relation matrix derived from data-flow relationships.
+
+beta_r^(l,h):
+    learned structural bias magnitude for relation r, layer l, and head h.
+
+g_i,r^(l,h):
+    token-conditioned adaptive structural gate:
+
+    g_i,r^(l,h) = sigmoid(
+        W_r^(l,h) h_i^(l-1) + b_r^(l,h)
+    )
+
+Therefore:
+
+0 <= g_i,r^(l,h) <= 1
+
+CRITICAL INVARIANT:
+Normal semantic self-attention MUST remain unrestricted.
+
+AST and DFG provide additive priors. They do NOT become a hard mask that prevents ordinary token interactions.
+
+CRITICAL EQUIVALENCE TEST:
+If every structural contribution is explicitly zeroed, the model must numerically match the sequence-only CodeBERT model initialized from the same weights, within normal floating-point tolerance.
+
+If this test fails, the controlled comparison is invalid and must be fixed before experiments continue.
+
+==========================================================
+B. BASELINE PLAN -- MUST BE IMPLEMENTED EXPLICITLY
+==========================================================
+
+The baseline strategy is a core part of the research design. Do not reduce it to a single CodeBERT comparison.
+
+There are three baseline tiers.
+
+----------------------------------------------------------
+B1. MANDATORY CONTROLLED BASELINES -- SAME CODEBERT BACKBONE
+----------------------------------------------------------
+
+All of these MUST start from the same microsoft/codebert-base checkpoint and use the same data split, tokenizer, classification head design, training loop, metric code, threshold-selection policy, and comparable hyperparameter budget.
+
+B0. sequence_only
+    - Standard CodeBERT function-level binary classifier.
+    - No AST information.
+    - No DFG information.
+    - No structural bias.
+    - This is the primary causal control.
+
+B1. ast_fixed
+    - Same CodeBERT backbone.
+    - AST relation bias only.
+    - Learned fixed/head-level structural magnitude allowed.
+    - NO contextual token-conditioned structural gate.
+
+B2. dfg_fixed
+    - Same CodeBERT backbone.
+    - DFG relation bias only.
+    - NO contextual token-conditioned structural gate.
+
+B3. ast_dfg_fixed
+    - Same CodeBERT backbone.
+    - AST + DFG additive structural biases.
+    - Relation/head/layer magnitudes may be learned.
+    - NO token-conditioned adaptive structural gate.
+    - This is the most important direct baseline for testing whether adaptivity itself matters.
+
+M1. astguard
+    - Same CodeBERT backbone.
+    - AST + DFG.
+    - Token-conditioned, head-specific, layer-specific adaptive structural gates.
+    - Proposed model.
+
+M2. astguard_structural_dropout
+    - Same as ASTGuard.
+    - During training only, randomly drop a configurable fraction of structural edges.
+    - Structural dropout must be disabled during standard evaluation.
+    - This is a robustness extension, not the main novelty claim.
+
+The paper's main causal comparison must include:
+
+sequence_only
+vs.
+ast_dfg_fixed
+vs.
+astguard
+
+AST-only and DFG-only variants are required to decompose the contribution of each relation type.
+
+----------------------------------------------------------
+B2. MANDATORY STRONG EXTERNAL BASELINES
+----------------------------------------------------------
+
+These MUST be integrated or reproduced using public implementations when feasible.
+
+1. GraphCodeBERT
+   - Required.
+   - Structure-aware transformer using data-flow-aware pretraining / graph-guided attention.
+   - Use official/public pretrained checkpoint and implementation logic.
+   - Fine-tune/evaluate on the same PrimeVul split if technically compatible.
+   - Do NOT compare ASTGuard PrimeVul results to GraphCodeBERT numbers copied from a different dataset or split.
+
+2. LineVul
+   - Required.
+   - CodeBERT-based vulnerability prediction model with line-level localization capability.
+   - Use the public replication package or faithfully reproduce the function-level classification setup.
+   - Retrain/evaluate under the same PrimeVul train/validation/test split where possible.
+   - We need the function-level classification result even if line-level localization is not the primary ASTGuard task.
+
+----------------------------------------------------------
+B3. PREFERRED GRAPH-CENTRIC BASELINES
+----------------------------------------------------------
+
+3. ReGVD
+   - Preferred.
+   - Public graph neural network vulnerability detector using token graphs and pretrained code-model token embeddings.
+   - Integrate if its graph/data preprocessing can be reproduced fairly within the project schedule.
+
+4. Devign
+   - Preferred / legacy.
+   - Historically important GNN-based function-level vulnerability detector using rich program semantics.
+   - Integrate if the public implementation and graph extraction pipeline can be reproduced without changing the evaluation setting unfairly.
+
+If ReGVD or Devign cannot be reproduced reliably, do NOT invent results and do NOT copy incompatible published numbers into the main comparison table. Record the limitation clearly.
+
+----------------------------------------------------------
+B4. OPTIONAL CONTEXT BASELINE
+----------------------------------------------------------
+
+5. UniXcoder sequence classifier
+   - Optional only after the core experiment suite works.
+   - Useful to show performance against another strong pretrained code encoder.
+   - Because it changes the backbone, it must not be used to claim that ASTGuard's structural mechanism caused an improvement.
+
+----------------------------------------------------------
+B5. SANITY BASELINES
+----------------------------------------------------------
+
+Implement at least one trivial sanity baseline:
+
+- class-prior / majority predictor
+
+Optionally:
+
+- bag-of-tokens logistic regression
+
+These are for metric/pipeline sanity only and should not be framed as competitive models.
+
+==========================================================
+C. BASELINE FAIRNESS RULES
+==========================================================
+
+1. Never compare scores produced from different dataset splits as if they are directly equivalent.
+2. Never copy a published F1 number from BigVul or Devign and place it next to an ASTGuard PrimeVul number without clearly separating the setting.
+3. For controlled variants, use the same:
+   - pretrained checkpoint
+   - tokenizer
+   - maximum sequence length
+   - classification head family
+   - optimizer family
+   - threshold-selection procedure
+   - evaluation code
+   - split
+   - metric implementation
+4. Thresholds are selected on validation data only.
+5. Test labels must never influence architecture selection, threshold selection, loss weighting, or early stopping.
+6. Keep an experiment manifest that records whether each baseline was:
+   - reproduced locally on PrimeVul
+   - evaluated from an official checkpoint on a compatible split
+   - unavailable / not reproducible
+7. Result tables must identify the exact setting for every model.
+
+==========================================================
+D. DATASETS
+==========================================================
+
+PRIMARY DATASET:
+PrimeVul
+
+Use the official public PrimeVul release and preserve the official chronological/de-duplicated split by default.
+
+Important PrimeVul capabilities to preserve when available:
+- train/validation/test split
+- function hash / sample identifiers
+- target label
+- vulnerable/patched pair identifiers
+- project metadata
+- CWE metadata
+- commit metadata
+- file metadata
+
+SECONDARY EXTERNAL DATASET:
+DiverseVul
+
+Use the official/public DiverseVul release.
+Use it primarily for cross-dataset generalization and supplementary experiments.
+Do not assume its labels/split semantics are identical to PrimeVul.
+
+SUPPLEMENTARY / LEGACY DATASET:
+Devign / CodeXGLUE defect detection, where format and label semantics allow fair use.
+
+Create a clean dataset abstraction so training/evaluation code does not contain dataset-specific hacks.
+
+Expected commands should resemble:
+
+python -m astguard.data.download --dataset primevul
+python -m astguard.data.download --dataset diversevul
+python -m astguard.data.download --dataset devign
+
+Store data under:
+
+data/raw/
+data/interim/
+data/processed/
+
+Never commit raw datasets to git.
+
+==========================================================
+E. API KEYS / ACCESS POLICY
+==========================================================
+
+The CORE project must require ZERO proprietary paid API keys.
+
+DO NOT add dependencies on:
+- OpenAI API
+- Anthropic API
+- Gemini API
+- proprietary hosted inference
+- paid synthetic-data generation
+
+Allowed public/local resources:
+- public GitHub repositories
+- public Google Drive dataset links
+- public Hugging Face checkpoints
+- PyTorch
+- Hugging Face Transformers
+- Tree-sitter
+- standard Python scientific libraries
+
+A Hugging Face token may be optionally supported for rate limits or authenticated downloads, but public reproducibility must not conceptually depend on it.
+
+A GitHub API token is NOT required for cloning public repositories.
+
+If an upstream public download changes or becomes gated:
+- stop with a clear error
+- identify the official resource expected
+- explain what manual download is needed
+- do NOT silently swap in another dataset
+
+==========================================================
+F. DATA LEAKAGE AND SPLIT INTEGRITY
+==========================================================
+
+Leakage prevention is a first-class requirement.
+
+For each sample, preserve/derive where available:
+- sample ID
+- normalized function hash
+- raw function hash
+- project
+- file
+- commit
+- timestamp/date
+- label
+- CWE
+- source dataset
+- split
+- vulnerable/patched pair ID
+
+Add duplicate audits for:
+- duplicates within train
+- duplicates within validation
+- duplicates within test
+- train <-> validation overlap
+- train <-> test overlap
+- validation <-> test overlap
+
+Preserve official PrimeVul splits by default.
+
+Never silently remove samples.
+Write a manifest of:
+- excluded samples
+- exclusion reason
+- parser failures
+- alignment failures
+- DFG failures
+- duplicates detected
+
+==========================================================
+G. STRUCTURAL EXTRACTION
+==========================================================
+
+Use Tree-sitter for C/C++ AST parsing.
+
+Implement deterministic local AST extraction.
+
+Initial AST relation:
+- direct parent-child relation between aligned token spans
+
+The code should be structured so typed AST relations or k-hop relations can be added later without rewriting the training pipeline.
+
+For DFG extraction:
+- use a deterministic static-analysis implementation
+- it is acceptable to adapt public GraphCodeBERT/CodeXGLUE DFG extraction logic if the license permits
+- isolate adapted code
+- keep attribution
+- document changes
+- write tests
+
+Do NOT use an LLM to generate AST or DFG relations.
+
+For each function produce:
+- source code
+- tokenizer tokens
+- token IDs
+- token offsets
+- AST nodes
+- AST edges
+- DFG nodes / variables
+- DFG edges
+- token <-> AST mapping
+- token <-> DFG mapping
+
+Tree-sitter often uses byte offsets while tokenizers use subword offsets.
+Build an explicit alignment layer.
+Do not assume one source identifier equals one tokenizer token.
+
+Special tokens and padding must not receive structural edges.
+Truncation must be applied consistently to:
+- token sequence
+- AST edges
+- DFG edges
+- alignment metadata
+
+Store preprocessing failures in:
+artifacts/preprocessing_failures.jsonl
+
+Each failure should include:
+- sample ID
+- dataset
+- failure stage
+- exception/reason
+- source length if relevant
+
+==========================================================
+H. STRUCTURAL STORAGE AND BATCHING
+==========================================================
+
+Do not store dense L x L matrices for every sample on disk.
+
+Store sparse relations:
+- AST edge list
+- DFG edge list
+- relation type
+- aligned token indices
+
+Construct batched relation masks/bias tensors at runtime.
+
+Target tensor shapes can resemble:
+
+attention_scores: [B, H, L, L]
+relation_masks:   [B, R, L, L]
+adaptive_gates:   [B, H, L, R]
+
+Avoid unnecessary tensor copies.
+
+Cache preprocessing deterministically.
+Create a preprocessing version/hash derived from:
+- parser version
+- tokenizer version
+- max sequence length
+- DFG logic version
+- normalization settings
+
+Stale caches must be invalidated automatically.
+
+==========================================================
+I. MODEL IMPLEMENTATION
+==========================================================
+
+Base controlled backbone:
+microsoft/codebert-base
+
+Use PyTorch + Hugging Face Transformers.
+
+Do not monkey-patch Hugging Face internals unpredictably at runtime.
+Create a clean structural attention implementation.
+
+Suggested layout:
+
+astguard/models/
+    codebert_baseline.py
+    structural_attention.py
+    structural_bias.py
+    gating.py
+    astguard_model.py
+    graphcodebert_baseline.py
+    linevul_adapter.py
+    regvd_adapter.py
+    devign_adapter.py
+
+The model must support:
+- sequence-only mode
+- AST-only fixed mode
+- DFG-only fixed mode
+- AST+DFG fixed mode
+- adaptive ASTGuard mode
+- structural dropout mode
+
+Important implementation choices must be configurable:
+- which transformer layers receive structural bias
+- whether beta is per relation / layer / head
+- whether gates are per relation / layer / head / token
+- gate hidden dimension if used
+- structural dropout probability
+
+Start with the simplest architecture that exactly implements the mathematical specification.
+Do not add extra neural modules that confound the main ablation unless they are separately controlled.
+
+==========================================================
+J. EXTERNAL BASELINE INTEGRATION
+==========================================================
+
+For GraphCodeBERT, LineVul, ReGVD, and Devign:
+
+1. Prefer official repositories/checkpoints.
+2. Record:
+   - repository URL
+   - commit hash/tag
+   - license
+   - environment requirements
+   - preprocessing assumptions
+3. If code is adapted into this repository, preserve attribution.
+4. Create adapters so predictions are exported to a common schema:
+
+sample_id
+true_label
+probability
+predicted_label
+model
+seed
+split
+project
+CWE
+pair_id (if available)
+
+5. Use a common metric implementation on exported predictions whenever possible.
+6. Do not silently change official model architecture.
+7. If a baseline's original preprocessing cannot support PrimeVul fairly, document that and separate the result from the main same-setting table.
+
+==========================================================
+K. TRAINING
+==========================================================
+
+Configuration-driven training only.
+
+Create configs such as:
+
+configs/
+    base.yaml
+    primevul_codebert.yaml
+    primevul_ast_fixed.yaml
+    primevul_dfg_fixed.yaml
+    primevul_ast_dfg_fixed.yaml
+    primevul_astguard.yaml
+    primevul_astguard_dropout.yaml
+    graphcodebert_primevul.yaml
+    linevul_primevul.yaml
+
+Parameters must include:
+- seed
+- dataset
+- model variant
+- max sequence length
+- batch size
+- gradient accumulation
+- learning rate
+- weight decay
+- warmup
+- epochs
+- early stopping
+- loss type
+- class weights if used
+- structural layers
+- relation set
+- structural dropout
+- precision mode
+- checkpoint selection metric
+
+Use AdamW unless a reproduced external baseline requires something else.
+
+Support:
+- mixed precision
+- gradient accumulation
+- gradient checkpointing
+- single GPU
+- multi-GPU via Accelerate where practical
+- CPU for unit tests and tiny smoke tests
+
+Never overwrite an existing run.
+
+Every run directory must contain:
+- resolved config
+- seed
+- git commit hash
+- environment info
+- Python version
+- PyTorch version
+- Transformers version
+- CUDA version
+- GPU name
+- dataset/preprocessing hash
+- training log
+- validation history
+- best checkpoint info
+- final metrics
+- predictions
+
+==========================================================
+L. CLASS IMBALANCE
+==========================================================
+
+PrimeVul is highly imbalanced.
+
+Do not optimize for accuracy alone.
+
+Support at minimum:
+- weighted binary cross entropy
+
+Optionally support:
+- focal loss
+- balanced sampling for training only
+
+The NATURAL validation/test distribution must remain intact unless a specific experiment says otherwise.
+
+Threshold selection must use validation data only.
+The test set must never be used to choose the classification threshold.
+
+==========================================================
+M. METRICS
+==========================================================
+
+Calculate at minimum:
+- accuracy
+- precision
+- recall
+- F1
+- MCC
+- ROC-AUC
+- PR-AUC / average precision
+- false-positive rate
+- false-negative rate
+- confusion matrix
+
+PrimeVul-specific evaluation:
+- implement/call official VD-Score when compatible
+- evaluate vulnerable/patched pairs when pair IDs are available
+
+Also report operating-point metrics:
+- FPR at selected/matched recall
+- recall at selected FPR constraints, where sample size supports it
+
+Do not hide threshold choice.
+Store threshold in result metadata.
+
+==========================================================
+N. MULTI-SEED STATISTICAL RELIABILITY
+==========================================================
+
+Main paper results require at least 3 seeds for:
+- CodeBERT sequence-only
+- AST+DFG fixed
+- ASTGuard
+
+Prefer 3 seeds for AST-only and DFG-only if compute permits.
+
+External baseline seed count should be as comparable as practical and documented.
+
+Aggregate:
+- mean
+- standard deviation
+- individual seed values
+
+For final test predictions, implement bootstrap confidence intervals for primary metrics if practical.
+
+Never present a one-seed improvement as definitive.
+
+==========================================================
+O. REQUIRED EXPERIMENTS
+==========================================================
+
+E1. Main PrimeVul comparison
+Models:
+- CodeBERT sequence-only
+- AST fixed
+- DFG fixed
+- AST+DFG fixed
+- ASTGuard
+- ASTGuard + structural dropout
+- GraphCodeBERT
+- LineVul
+- ReGVD if reproducible
+- Devign if reproducible
+
+E2. Structural ablation
+Compare:
+- no structure
+- AST only
+- DFG only
+- AST+DFG fixed
+- AST+DFG adaptive
+
+E3. Layer-placement ablation
+Test structure in:
+- early layers
+- middle layers
+- late layers
+- a selected distributed subset
+- all layers only if compute/memory allows
+
+Screen with one seed first.
+Run finalists with 3 seeds.
+
+E4. Data efficiency
+Train CodeBERT and ASTGuard using:
+- 10%
+- 25%
+- 50%
+- 100%
+of TRAINING data only.
+
+Validation/test sets remain unchanged.
+
+E5. Cross-dataset generalization
+Preferred setting:
+- train on PrimeVul
+- evaluate on DiverseVul
+
+Only perform if label definitions and preprocessing are sufficiently compatible.
+Document mismatches.
+
+E6. PrimeVul vulnerable/patched pairs
+Evaluate whether the model assigns a higher vulnerability probability to the vulnerable function than the patched version.
+Report pair-level metrics where official identifiers allow.
+
+E7. Structural robustness
+Evaluate sensitivity to structural noise by:
+- random edge dropout/corruption at 0%, 5%, 10%, 20%
+- optionally AST-only or DFG-only corruption
+
+Do NOT corrupt source tokens in this experiment unless explicitly separated.
+
+E8. Efficiency
+Compare at least:
+- CodeBERT sequence-only
+- AST+DFG fixed
+- ASTGuard
+
+Measure:
+- total parameters
+- trainable parameters
+- model size
+- mean inference latency
+- median latency
+- p95 latency
+- peak GPU memory
+- preprocessing time per 1,000 functions or similar
+
+Use warmup before timing.
+Synchronize CUDA before/after timed sections.
+
+E9. Gate analysis
+For each layer/head/relation compute:
+- mean gate
+- median gate
+- standard deviation
+- fraction near 0
+- fraction near 1
+
+Aggregate when metadata supports it by:
+- vulnerable vs benign
+- correct vs incorrect
+- CWE
+- dataset
+
+E10. Qualitative error analysis
+Select representative examples from:
+- baseline wrong / ASTGuard right
+- baseline right / ASTGuard wrong
+- both wrong
+- vulnerable/patched pairs
+
+Do not cherry-pick only successes.
+
+==========================================================
+P. GATE ANALYSIS ARTIFACTS
+==========================================================
+
+Save raw analysis tables separately from figures.
+
+Generate data/figures for:
+- layer x relation gate heatmap
+- head x relation gate heatmap
+- AST vs DFG gate distributions
+- gate distribution by label
+- gate distribution by correctness
+- gate distribution by CWE with sufficient sample size
+
+Use matplotlib for figures.
+Keep plotting code separate from metric calculation.
+
+==========================================================
+Q. TESTING
+==========================================================
+
+Use pytest.
+
+At minimum test:
+- C parsing
+- C++ parsing
+- AST extraction
+- DFG extraction
+- byte/span handling
+- token <-> AST alignment
+- token <-> DFG alignment
+- BPE subword alignment
+- truncation consistency
+- padding consistency
+- structural edge batching
+- relation mask dimensions
+- gate dimensions
+- gate values in [0,1]
+- fixed AST path
+- fixed DFG path
+- fixed AST+DFG path
+- adaptive ASTGuard path
+- structural dropout disabled in eval mode
+- forward pass
+- backward pass
+- gradients reach gate parameters
+- gradients reach beta parameters
+- checkpoint save/load
+- metric correctness on known toy examples
+- validation-only threshold selection
+- run-directory non-overwrite behavior
+
+MANDATORY NUMERICAL TEST:
+Zero all structural terms and verify ASTGuard output matches sequence-only CodeBERT within floating-point tolerance.
+
+==========================================================
+R. END-TO-END SMOKE TEST
+==========================================================
+
+Create:
+python scripts/run_smoke_test.py
+
+It must execute the entire pipeline on a tiny subset:
+1. acquire or load a tiny public subset
+2. preprocess source
+3. extract AST
+4. extract DFG
+5. align tokens
+6. build dataloader
+7. initialize sequence baseline
+8. train a few batches
+9. initialize ASTGuard
+10. train a few batches
+11. validate
+12. run test inference
+13. compute metrics
+14. export predictions
+15. export gate statistics
+16. create at least one analysis artifact
+
+The project is NOT complete until this smoke test passes.
+
+==========================================================
+S. REPOSITORY STRUCTURE
+==========================================================
+
+Use a clean structure such as:
+
+ASTGuard/
+    README.md
+    LICENSE
+    pyproject.toml
+    requirements.txt
+    .gitignore
+
+    astguard/
+        data/
+        parsing/
+        alignment/
+        models/
+        baselines/
+        training/
+        evaluation/
+        analysis/
+        utils/
+
+    configs/
+    scripts/
+    tests/
+    docs/
+    results/
+    artifacts/
+
+Suggested baseline substructure:
+
+astguard/baselines/
+    graphcodebert/
+    linevul/
+    regvd/
+    devign/
+
+Raw datasets, caches, checkpoints, and large generated artifacts must be gitignored.
+
+==========================================================
+T. COMMAND-LINE EXPERIENCE
+==========================================================
+
+The final repository should support a workflow approximately like:
+
+pip install -e .
+
+python -m astguard.data.download --dataset primevul
+python -m astguard.data.preprocess --dataset primevul
+
+python -m astguard.train --config configs/primevul_codebert.yaml
+python -m astguard.train --config configs/primevul_ast_dfg_fixed.yaml
+python -m astguard.train --config configs/primevul_astguard.yaml
+
+python -m astguard.evaluate --run <RUN_DIRECTORY>
+python -m astguard.analysis --run <RUN_DIRECTORY>
+
+python scripts/run_smoke_test.py
+
+python scripts/run_experiment_suite.py \
+    --dataset primevul \
+    --models sequence_only ast_fixed dfg_fixed ast_dfg_fixed astguard \
+    --seeds 42 123 456
+
+Create a baseline runner such as:
+
+python scripts/run_baselines.py \
+    --dataset primevul \
+    --baselines graphcodebert linevul regvd devign
+
+It is acceptable for a baseline runner to mark a baseline "not available" with a clear reason if its dependency cannot be reproduced, but it must never fabricate a result.
+
+==========================================================
+U. RESULTS AND PAPER ARTIFACTS
+==========================================================
+
+Automatically produce machine-readable outputs.
+
+results/
+    main_results.csv
+    seed_summary.csv
+    structural_ablation.csv
+    layer_ablation.csv
+    data_efficiency.csv
+    cross_dataset.csv
+    paired_results.csv
+    robustness.csv
+    efficiency.csv
+    gate_statistics.csv
+    baseline_status.csv
+
+Every result row should include enough metadata to trace it to:
+- run ID
+- model
+- dataset
+- split
+- seed
+- threshold
+- config path
+- checkpoint
+
+Do not fill unrun experiments with guessed values.
+Missing runs must be explicitly marked missing.
+
+Generate paper-ready figures, but keep underlying CSV/JSON data.
+
+==========================================================
+V. DOCUMENTATION
+==========================================================
+
+README must explain:
+- research question
+- novelty positioning
+- architecture
+- mathematical formulation
+- datasets
+- all baselines
+- fairness rules
+- installation
+- dataset acquisition
+- preprocessing
+- training
+- evaluation
+- smoke test
+- full reproduction
+- hardware expectations
+- known limitations
+
+Create at least:
+
+docs/method.md
+docs/data.md
+docs/baselines.md
+docs/experiments.md
+docs/reproducibility.md
+docs/limitations.md
+
+In docs/baselines.md, clearly distinguish:
+
+CONTROLLED:
+- CodeBERT sequence-only
+- AST-fixed
+- DFG-fixed
+- AST+DFG-fixed
+
+PROPOSED:
+- ASTGuard
+- ASTGuard + structural dropout
+
+EXTERNAL:
+- GraphCodeBERT
+- LineVul
+- ReGVD
+- Devign
+- optional UniXcoder
+
+Explain why each baseline is included.
+
+==========================================================
+W. IMPLEMENTATION ORDER
+==========================================================
+
+Do this in order.
+
+1. Inspect the current repository/environment once.
+2. Produce a concise implementation plan and dependency map.
+3. Record official dataset/model/baseline sources and licenses.
+4. Scaffold repository only as needed.
+5. Implement PrimeVul acquisition and parsing.
+6. Implement Tree-sitter AST extraction.
+7. Implement DFG extraction.
+8. Implement token-structure alignment.
+9. Add preprocessing cache/versioning.
+10. Implement CodeBERT sequence-only baseline.
+11. Verify training/evaluation on a tiny subset.
+12. Implement fixed AST bias.
+13. Implement fixed DFG bias.
+14. Implement fixed AST+DFG bias.
+15. Implement adaptive ASTGuard gating.
+16. Implement structural dropout.
+17. Add the numerical zero-bias equivalence test.
+18. Add full unit/integration tests.
+19. Run end-to-end smoke test and fix every failure.
+20. Integrate GraphCodeBERT.
+21. Integrate LineVul.
+22. Integrate ReGVD and Devign if reproducible.
+23. Run small baseline sanity experiments.
+24. Run main PrimeVul experiments.
+25. Run ablations.
+26. Run paired evaluation.
+27. Run data-efficiency experiments.
+28. Run cross-dataset/robustness experiments if compatible.
+29. Run efficiency benchmark.
+30. Generate gate analysis.
+31. Aggregate multi-seed results.
+32. Generate publication-ready tables/figures.
+33. Perform a full repository audit.
+
+Do not jump straight to ASTGuard model code while preprocessing/alignment is unverified.
+
+==========================================================
+X. FINAL AUDIT
+==========================================================
+
+Before declaring success, independently verify:
+
+DATA
+- PrimeVul can be acquired or clear manual instructions exist if upstream access changed.
+- Official split is preserved.
+- leakage audit exists.
+- parse coverage is reported.
+
+STRUCTURE
+- AST extraction works.
+- DFG extraction works.
+- token alignment works.
+- truncation preserves alignment.
+- structural edges reach the model correctly.
+
+MODEL
+- sequence-only is truly sequence-only.
+- AST fixed is distinct from DFG fixed.
+- AST+DFG fixed contains no contextual gate.
+- ASTGuard gates are token-conditioned.
+- gate parameters receive gradients.
+- zero structural bias reproduces sequence-only output.
+
+BASELINES
+- GraphCodeBERT status is known and documented.
+- LineVul status is known and documented.
+- ReGVD status is known and documented.
+- Devign status is known and documented.
+- no incompatible published numbers are mixed into same-setting tables.
+
+EVALUATION
+- threshold chosen on validation only.
+- test set not used for architecture selection.
+- class imbalance handled appropriately.
+- PR-AUC/FPR/MCC are reported.
+- VD-Score / paired metrics included when compatible.
+- multi-seed aggregation works.
+
+REPRODUCIBILITY
+- README commands execute.
+- tests pass.
+- smoke test passes.
+- run directories are immutable/non-overwriting.
+- every result can be traced to a run.
+
+Search the repository for:
+TODO
+FIXME
+pass
+NotImplementedError
+placeholder
+dummy
+fake
+
+Resolve anything that affects core functionality.
+
+==========================================================
+Y. REQUIRED FINAL REPORT FROM YOU
+==========================================================
+
+When implementation is complete, give me a concise but complete final report containing:
+
+1. Repository architecture.
+2. What was implemented.
+3. Exact mathematical ASTGuard implementation used.
+4. Dataset acquisition status.
+5. Preprocessing coverage and failure counts.
+6. Controlled baseline status:
+   - CodeBERT
+   - AST-fixed
+   - DFG-fixed
+   - AST+DFG-fixed
+7. Proposed model status:
+   - ASTGuard
+   - ASTGuard + structural dropout
+8. External baseline status:
+   - GraphCodeBERT
+   - LineVul
+   - ReGVD
+   - Devign
+9. Tests that passed/failed.
+10. Smoke-test result.
+11. Exact reproduction commands.
+12. Actual experiment results that have completed.
+13. Experiments still pending.
+14. Estimated full-run GPU memory/runtime.
+15. Any design deviations from this prompt and why.
+16. Known scientific limitations.
+17. No fabricated claims or results.
+
+START NOW
+---------
+Begin by inspecting the current repository/environment and producing a concise implementation plan.
+Then execute the plan end-to-end.
+Do not stop after planning unless an unavoidable external access constraint blocks progress.

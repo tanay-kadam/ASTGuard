@@ -1,0 +1,57 @@
+[
+  {
+    "id": "original",
+    "type": "original"
+  },
+  {
+    "id": "training_mean",
+    "mode": "training_mean",
+    "training_means": "RUN_DIR/analysis/gates/training_means.json",
+    "type": "gate"
+  },
+  {
+    "id": "function_mean",
+    "mode": "function_mean",
+    "type": "gate"
+  },
+  {
+    "id": "zero_ast",
+    "mode": "zero_ast",
+    "type": "gate"
+  },
+  {
+    "id": "zero_dfg",
+    "mode": "zero_dfg",
+    "type": "gate"
+  },
+  {
+    "id": "degree_bin_permutation_1001",
+    "mode": "degree_bin_permutation",
+    "seed": 1001,
+    "type": "gate"
+  },
+  {
+    "id": "degree_bin_permutation_1002",
+    "mode": "degree_bin_permutation",
+    "seed": 1002,
+    "type": "gate"
+  },
+  {
+    "id": "degree_bin_permutation_1003",
+    "mode": "degree_bin_permutation",
+    "seed": 1003,
+    "type": "gate"
+  },
+  {
+    "id": "degree_bin_permutation_1004",
+    "mode": "degree_bin_permutation",
+    "seed": 1004,
+    "type": "gate"
+  },
+  {
+    "id": "degree_bin_permutation_1005",
+    "mode": "degree_bin_permutation",
+    "seed": 1005,
+    "type": "gate"
+  }
+]

@@ -1,0 +1,1013 @@
+{
+  "all_complete_and_valid": false,
+  "jobs": [
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-789-extra",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-1024-extra",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-789-extra",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-1024-extra",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-789-extra",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-1024-extra",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-sequence_only-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_fixed-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-dfg_fixed-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-ast_dfg_fixed-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-astguard_dropout-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-graphcodebert_c_adapted-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E1-linevul_function-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-fixed_adapter-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-linear_relation-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-lr0p00001-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-lr0p00001-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-lr0p00002-m1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-lr0p00002-m5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-promote1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A1-function_gate-42-promote2",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A3-ast_dfg_fixed-42-rewired",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A3-ast_dfg_fixed-123-rewired",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A3-ast_dfg_fixed-456-rewired",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A3-astguard-42-rewired",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A3-astguard-123-rewired",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A3-astguard-456-rewired",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E2-astguard_ast_only-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E2-astguard_ast_only-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E2-astguard_ast_only-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E2-astguard_dfg_only-42-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E2-astguard_dfg_only-123-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E2-astguard_dfg_only-456-final",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-sequence_only-42-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-sequence_only-123-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-sequence_only-456-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-ast_dfg_fixed-42-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-ast_dfg_fixed-123-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-ast_dfg_fixed-456-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-astguard-42-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-astguard-123-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A5-astguard-456-shared-recipe",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-42-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-42-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-42-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-123-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-123-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-123-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-456-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-456-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-456-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-42-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-42-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-42-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-123-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-123-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-123-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-456-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-456-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-456-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-42-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-42-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-42-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-123-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-123-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-123-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-456-fraction0p1",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-456-fraction0p25",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-456-fraction0p5",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-42-early",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-42-middle",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-42-late",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-42-distributed",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-42-all",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-42-best-nondistributed",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-123-best-nondistributed",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E3-astguard-456-best-nondistributed",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-ast_dfg_fixed-42-anchored-ast",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-ast_dfg_fixed-42-degree-normalized",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-ast_dfg_fixed-42-dfg-symmetric",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-ast_dfg_fixed-42-unweighted",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-astguard-42-anchored-ast",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-astguard-42-degree-normalized",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-astguard-42-dfg-symmetric",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A4-astguard-42-unweighted",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A6-astguard-42-head-shared",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A6-astguard-42-layer-shared",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A6-astguard-42-relation-shared",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "A6-astguard-42-frozen-beta",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-sequence_only-42-fraction0p1-fixed-steps",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-ast_dfg_fixed-42-fraction0p1-fixed-steps",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E4-astguard-42-fraction0p1-fixed-steps",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-sequence_only-42-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-sequence_only-123-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-sequence_only-456-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-ast_dfg_fixed-42-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-ast_dfg_fixed-123-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-ast_dfg_fixed-456-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-astguard-42-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-astguard-123-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "INPUT384-astguard-456-max384",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E10b-ast_dfg_fixed-42-visible-prefix",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E10b-ast_dfg_fixed-123-visible-prefix",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E10b-ast_dfg_fixed-456-visible-prefix",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E10b-astguard-42-visible-prefix",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E10b-astguard-123-visible-prefix",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E10b-astguard-456-visible-prefix",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-sequence_only-42-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-sequence_only-123-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-sequence_only-456-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-ast_dfg_fixed-42-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-ast_dfg_fixed-123-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-ast_dfg_fixed-456-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-astguard-42-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-astguard-123-project",
+      "status": "missing"
+    },
+    {
+      "failures": [],
+      "job_id": "E11-astguard-456-project",
+      "status": "missing"
+    }
+  ],
+  "manifest": "protocol\\experiment_manifest.jsonl",
+  "registered_jobs": 200,
+  "scientific_completion_claimed": false,
+  "status": "failed",
+  "status_counts": {
+    "missing": 200
+  },
+  "verified_complete": 0
+}

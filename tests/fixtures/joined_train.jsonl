@@ -1,0 +1,2 @@
+{"sample_id":"a","component_id":"ca","role":"train","split_hash":"split","preprocessing_hash":"pre","label":0,"input_ids":[0,2],"attention_mask":[true,true],"special_tokens_mask":[true,true]}
+{"sample_id":"b","component_id":"cb","role":"train","split_hash":"split","preprocessing_hash":"pre","label":1,"input_ids":[0,5,2],"attention_mask":[true,true,true],"special_tokens_mask":[true,false,true]}

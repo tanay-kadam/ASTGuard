@@ -1,0 +1,1 @@
+{"experiment_id":"E1","models":["sequence_only","ast_fixed","dfg_fixed","ast_dfg_fixed","astguard","astguard_dropout","graphcodebert_c_adapted","linevul_function"],"core_seeds":[42,123,456,789,1024],"other_seeds":[42,123,456]}

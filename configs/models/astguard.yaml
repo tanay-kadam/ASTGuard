@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","model":{"variant":"astguard","relations":["ast","dfg"],"beta_init":0.10}}

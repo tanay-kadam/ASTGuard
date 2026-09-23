@@ -1,0 +1,52 @@
+[
+  {
+    "code_budget": 384,
+    "extractor": "local C/C++ structured CFG",
+    "license": "MIT",
+    "model_id": "graphcodebert_c_adapted",
+    "node_budget": 128,
+    "status": "implemented",
+    "upstream_revision": "c0de43d3aaf38e89290f1efb771f8de845e7a489"
+  },
+  {
+    "license": "MIT",
+    "model_id": "linevul_function",
+    "status": "implemented",
+    "supervised_history": "CodeBERT pretraining only",
+    "upstream_revision": "9401ec6e60b762a9308645961268203244bee048"
+  },
+  {
+    "architecture": "ReGCN",
+    "graph": "unique token IDs with unweighted sliding-window co-occurrence",
+    "model_id": "regvd",
+    "readout": "soft-attention then sum-times-max",
+    "status": "implemented",
+    "upstream_revision": "b5e6657b003ada704b7c75e4bd237c1eee1d8138",
+    "upstream_url": "https://github.com/daiquocnguyen/GNN-ReGVD"
+  },
+  {
+    "model_id": "devign_gnn",
+    "reason": "No faithful rich-graph pipeline has been verified; a generic GNN is not substituted.",
+    "status": "unavailable"
+  },
+  {
+    "model_id": "unixcoder",
+    "reason": "Optional public checkpoint baseline is outside the protected core budget.",
+    "status": "optional_not_installed"
+  },
+  {
+    "model_id": "k_astro",
+    "reason": "No runnable public repository was verified in the registered Stage 0 audit; no surrogate implementation is permitted.",
+    "status": "source_not_verified"
+  },
+  {
+    "model_id": "tna_caf",
+    "reason": "Publisher-preview method; no runnable public repository was verified in the registered Stage 0 audit.",
+    "status": "source_not_verified"
+  },
+  {
+    "model_id": "dualgraphvuld",
+    "reason": "Publisher-preview method; no runnable public repository was verified in the registered Stage 0 audit.",
+    "status": "source_not_verified"
+  }
+]

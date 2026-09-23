@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","model":{"variant":"ast_dfg_fixed","relations":["ast","dfg"],"beta_init":0.05}}

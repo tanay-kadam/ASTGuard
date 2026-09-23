@@ -1,0 +1,610 @@
+{
+  "ast_nonempty_fraction": 0.82,
+  "count": 50,
+  "dfg_supported_fraction": 0.64,
+  "language_counts": {
+    "c": 33,
+    "cpp": 17
+  },
+  "manual_edge_quality_status": "not_reviewed",
+  "samples": [
+    {
+      "ast_edges": 772,
+      "ast_nonempty": true,
+      "dfg_edges": 1,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 57,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:379220"
+    },
+    {
+      "ast_edges": 1332,
+      "ast_nonempty": true,
+      "dfg_edges": 40,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 147,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:47678"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "c",
+      "original_bpe_length": 142,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:54991"
+    },
+    {
+      "ast_edges": 1546,
+      "ast_nonempty": true,
+      "dfg_edges": 4,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 83,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:65787"
+    },
+    {
+      "ast_edges": 232,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 38,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:141306"
+    },
+    {
+      "ast_edges": 556,
+      "ast_nonempty": true,
+      "dfg_edges": 4,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 46,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:60633"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "c",
+      "original_bpe_length": 160,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:447"
+    },
+    {
+      "ast_edges": 3350,
+      "ast_nonempty": true,
+      "dfg_edges": 91,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 418,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:251764"
+    },
+    {
+      "ast_edges": 1880,
+      "ast_nonempty": true,
+      "dfg_edges": 40,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 194,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:32129"
+    },
+    {
+      "ast_edges": 3926,
+      "ast_nonempty": true,
+      "dfg_edges": 264,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 256,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:16308"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "c",
+      "original_bpe_length": 253,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:376852"
+    },
+    {
+      "ast_edges": 2724,
+      "ast_nonempty": true,
+      "dfg_edges": 45,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 257,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:85722"
+    },
+    {
+      "ast_edges": 146,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 57,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:236391"
+    },
+    {
+      "ast_edges": 698,
+      "ast_nonempty": true,
+      "dfg_edges": 16,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 121,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:499620"
+    },
+    {
+      "ast_edges": 6186,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 460,
+      "parse_status": "ok",
+      "reasons": [
+        "goto_statement"
+      ],
+      "sample_id": "primevul:original:53796"
+    },
+    {
+      "ast_edges": 734,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 89,
+      "parse_status": "ok",
+      "reasons": [
+        "non_scalar_update"
+      ],
+      "sample_id": "primevul:original:452791"
+    },
+    {
+      "ast_edges": 716,
+      "ast_nonempty": true,
+      "dfg_edges": 12,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 66,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:41110"
+    },
+    {
+      "ast_edges": 3816,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "cpp",
+      "original_bpe_length": 456,
+      "parse_status": "ok",
+      "reasons": [
+        "for_range_loop"
+      ],
+      "sample_id": "primevul:original:141700"
+    },
+    {
+      "ast_edges": 2066,
+      "ast_nonempty": true,
+      "dfg_edges": 37,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 280,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:301338"
+    },
+    {
+      "ast_edges": 2580,
+      "ast_nonempty": true,
+      "dfg_edges": 39,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 212,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:520167"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "c",
+      "original_bpe_length": 245,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:366928"
+    },
+    {
+      "ast_edges": 92,
+      "ast_nonempty": true,
+      "dfg_edges": 1,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 16,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:237282"
+    },
+    {
+      "ast_edges": 808,
+      "ast_nonempty": true,
+      "dfg_edges": 8,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 183,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:327379"
+    },
+    {
+      "ast_edges": 27614,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 430,
+      "parse_status": "ok",
+      "reasons": [
+        "switch_statement"
+      ],
+      "sample_id": "primevul:original:265473"
+    },
+    {
+      "ast_edges": 558,
+      "ast_nonempty": true,
+      "dfg_edges": 16,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 84,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:60257"
+    },
+    {
+      "ast_edges": 1902,
+      "ast_nonempty": true,
+      "dfg_edges": 244,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 157,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:81841"
+    },
+    {
+      "ast_edges": 1852,
+      "ast_nonempty": true,
+      "dfg_edges": 20,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 195,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:42947"
+    },
+    {
+      "ast_edges": 1738,
+      "ast_nonempty": true,
+      "dfg_edges": 79,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 228,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:519239"
+    },
+    {
+      "ast_edges": 832,
+      "ast_nonempty": true,
+      "dfg_edges": 10,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 149,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:182286"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "c",
+      "original_bpe_length": 320,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:42733"
+    },
+    {
+      "ast_edges": 2052,
+      "ast_nonempty": true,
+      "dfg_edges": 47,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 382,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:75723"
+    },
+    {
+      "ast_edges": 6722,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 484,
+      "parse_status": "ok",
+      "reasons": [
+        "goto_statement"
+      ],
+      "sample_id": "primevul:original:412073"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "cpp",
+      "original_bpe_length": 124,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:384354"
+    },
+    {
+      "ast_edges": 142,
+      "ast_nonempty": true,
+      "dfg_edges": 1,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 33,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:237522"
+    },
+    {
+      "ast_edges": 6528,
+      "ast_nonempty": true,
+      "dfg_edges": 295,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 400,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:169803"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "cpp",
+      "original_bpe_length": 352,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:285387"
+    },
+    {
+      "ast_edges": 4418,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 320,
+      "parse_status": "ok",
+      "reasons": [
+        "expected_one_function_definition"
+      ],
+      "sample_id": "primevul:original:471405"
+    },
+    {
+      "ast_edges": 2364,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 197,
+      "parse_status": "ok",
+      "reasons": [
+        "goto_statement"
+      ],
+      "sample_id": "primevul:original:43683"
+    },
+    {
+      "ast_edges": 372,
+      "ast_nonempty": true,
+      "dfg_edges": 11,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 56,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:77531"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "cpp",
+      "original_bpe_length": 278,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:43347"
+    },
+    {
+      "ast_edges": 414,
+      "ast_nonempty": true,
+      "dfg_edges": 2,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 55,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:424752"
+    },
+    {
+      "ast_edges": 3538,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 206,
+      "parse_status": "ok",
+      "reasons": [
+        "switch_statement"
+      ],
+      "sample_id": "primevul:original:310636"
+    },
+    {
+      "ast_edges": 2720,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "unsupported",
+      "language": "c",
+      "original_bpe_length": 314,
+      "parse_status": "ok",
+      "reasons": [
+        "unsequenced_modifying_expression"
+      ],
+      "sample_id": "primevul:original:258468"
+    },
+    {
+      "ast_edges": 514,
+      "ast_nonempty": true,
+      "dfg_edges": 4,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 55,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:449630"
+    },
+    {
+      "ast_edges": 638,
+      "ast_nonempty": true,
+      "dfg_edges": 50,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 75,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:300618"
+    },
+    {
+      "ast_edges": 1814,
+      "ast_nonempty": true,
+      "dfg_edges": 3,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 133,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:23299"
+    },
+    {
+      "ast_edges": 1082,
+      "ast_nonempty": true,
+      "dfg_edges": 2,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 160,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:138478"
+    },
+    {
+      "ast_edges": 0,
+      "ast_nonempty": false,
+      "dfg_edges": 0,
+      "dfg_status": "parse_failed",
+      "language": "c",
+      "original_bpe_length": 35,
+      "parse_status": "parse_failed",
+      "reasons": [
+        "tree_contains_error_or_missing_node",
+        "parse_failed"
+      ],
+      "sample_id": "primevul:original:441223"
+    },
+    {
+      "ast_edges": 1456,
+      "ast_nonempty": true,
+      "dfg_edges": 0,
+      "dfg_status": "ok",
+      "language": "cpp",
+      "original_bpe_length": 225,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:126436"
+    },
+    {
+      "ast_edges": 538,
+      "ast_nonempty": true,
+      "dfg_edges": 5,
+      "dfg_status": "ok",
+      "language": "c",
+      "original_bpe_length": 55,
+      "parse_status": "ok",
+      "reasons": [],
+      "sample_id": "primevul:original:377927"
+    }
+  ],
+  "scope": "train_only_hash_sample",
+  "seconds": 11.15319830000226,
+  "status": "failed"
+}

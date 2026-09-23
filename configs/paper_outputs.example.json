@@ -1,0 +1,18 @@
+{
+  "main_predictions": ["runs/REPLACE/predictions/test.json"],
+  "claim_evidence": "results/claim_evidence.json",
+  "tables": {
+    "T1": {"path": "results/data_summary.json"},
+    "T3": {"path": "results/ablation_results.json"},
+    "T4": {"path": "results/paired_results.json"},
+    "T5": {"path": "results/transfer_results.json"},
+    "T6": {"path": "results/efficiency_results.json"}
+  },
+  "figures": {
+    "F2": {"path": "results/data_efficiency.json", "x": "train_fraction", "y": "average_precision", "group": "model_id"},
+    "F3": {"path": "results/pr_curve_rows.json", "pair_path": "results/pair_margin_rows.json", "x": "recall", "y": "precision", "group": "model_id"},
+    "F4": {"path": "results/intervention_plot_rows.json", "x": "condition_index", "y": "average_precision", "group": "model_id"},
+    "F5": {"path": "results/robustness_plot_rows.json", "x": "achieved_rate", "y": "average_precision", "group": "model_id"},
+    "F6": {"path": "results/failure_strata.json", "x": "stratum_index", "y": "average_precision", "group": "model_id"}
+  }
+}

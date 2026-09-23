@@ -1,0 +1,1 @@
+{"experiment_id":"E7","rates":[0,0.05,0.10,0.20,0.40,1.0],"corruptions":["deletion","swaps"],"relations":["ast","dfg","both"],"model_seeds":[42,123,456],"corruption_seeds":[1001,1002,1003,1004,1005]}

@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","model":{"variant":"unixcoder","checkpoint":"microsoft/unixcoder-base","revision":"UNRESOLVED"}}

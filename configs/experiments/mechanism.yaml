@@ -1,0 +1,1 @@
+{"experiment_ids":["A1","A2","A3"],"controls":["fixed_adapter","linear_relation","function_gate","gate_interventions","rewired_graphs"],"seeds":[42,123,456]}

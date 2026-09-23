@@ -1,0 +1,31 @@
+{
+  "cache_directory": "data\\cache\\benchmarks\\1497b62326304832f18be4db1310f7840bd78a0f6d5cd52cf90ea7ee459ebc01-7cd29d9b",
+  "cold_cache": {
+    "items_per_second": 43.12175643347141,
+    "mean_seconds": 0.023190150001028087,
+    "median_seconds": 0.02332735000527464,
+    "p95_seconds": 0.023587700008647516,
+    "total_seconds": 0.09276060000411235
+  },
+  "information_boundary": "train_only",
+  "preprocessing_hash": "1497b62326304832f18be4db1310f7840bd78a0f6d5cd52cf90ea7ee459ebc01",
+  "records_sha256": "2fd61addef16b71c7514a13d6dc3d8b248809126e36cefb7a31385ed1878ba98",
+  "sample_count": 4,
+  "sample_namespace": "e8-fixed-sample-v1",
+  "schema_version": "e8-preprocessing-v1",
+  "scientific_result": false,
+  "uncached_end_to_end": {
+    "items_per_second": 58.991220621397304,
+    "mean_seconds": 0.016951675002928823,
+    "median_seconds": 0.0049581500061322,
+    "p95_seconds": 0.05388459999812767,
+    "total_seconds": 0.06780670001171529
+  },
+  "warm_cache": {
+    "items_per_second": 33.945627586499334,
+    "mean_seconds": 0.02945887500391109,
+    "median_seconds": 0.030218500003684312,
+    "p95_seconds": 0.03166139998938888,
+    "total_seconds": 0.11783550001564436
+  }
+}

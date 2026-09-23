@@ -1,0 +1,1 @@
+{"experiment_id":"E8","sample_count":1000,"batch_sizes":[1,16],"warmup_batches":50,"timed_batches":200,"repeats":3}

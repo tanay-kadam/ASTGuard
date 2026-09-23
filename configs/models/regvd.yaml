@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","model":{"variant":"regvd","checkpoint":"microsoft/graphcodebert-base","revision":"UNRESOLVED","regvd_hidden_size":128,"regvd_layers":2,"regvd_window_size":5}}

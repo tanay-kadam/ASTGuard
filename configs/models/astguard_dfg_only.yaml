@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","experiment_id":"E2","model":{"variant":"astguard_dfg_only","relations":["dfg"]}}

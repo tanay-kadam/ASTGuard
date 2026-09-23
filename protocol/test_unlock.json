@@ -1,0 +1,4 @@
+{
+  "status": "locked",
+  "reason": "Immutable sources are registered, but the full clone/split audit, manual extraction gold review, HPO selections, and target hardware runs are incomplete. The 500-function AST coverage pilot failed the 90% release gate (86.8%). Do not unlock until all stage gates pass."
+}

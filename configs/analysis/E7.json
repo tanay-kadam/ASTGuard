@@ -1,0 +1,1254 @@
+[
+  {
+    "id": "original",
+    "type": "original"
+  },
+  {
+    "id": "delete_ast_0.00_1001",
+    "operation": "delete",
+    "rate": 0.0,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.05_1001",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.05_1002",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.05_1003",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.05_1004",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.05_1005",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.10_1001",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.10_1002",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.10_1003",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.10_1004",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.10_1005",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.20_1001",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.20_1002",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.20_1003",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.20_1004",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.20_1005",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.40_1001",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.40_1002",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.40_1003",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.40_1004",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_0.40_1005",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_1.00_1001",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_1.00_1002",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_1.00_1003",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_1.00_1004",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_ast_1.00_1005",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.00_1001",
+    "operation": "delete",
+    "rate": 0.0,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.05_1001",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.05_1002",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.05_1003",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.05_1004",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.05_1005",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.10_1001",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.10_1002",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.10_1003",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.10_1004",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.10_1005",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.20_1001",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.20_1002",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.20_1003",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.20_1004",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.20_1005",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.40_1001",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.40_1002",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.40_1003",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.40_1004",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_0.40_1005",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_1.00_1001",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_1.00_1002",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_1.00_1003",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_1.00_1004",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_dfg_1.00_1005",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.00_1001",
+    "operation": "delete",
+    "rate": 0.0,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.05_1001",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.05_1002",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.05_1003",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.05_1004",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.05_1005",
+    "operation": "delete",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.10_1001",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.10_1002",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.10_1003",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.10_1004",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.10_1005",
+    "operation": "delete",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.20_1001",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.20_1002",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.20_1003",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.20_1004",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.20_1005",
+    "operation": "delete",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.40_1001",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.40_1002",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.40_1003",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.40_1004",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_0.40_1005",
+    "operation": "delete",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_1.00_1001",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_1.00_1002",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_1.00_1003",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_1.00_1004",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "delete_both_1.00_1005",
+    "operation": "delete",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.00_1001",
+    "operation": "swap",
+    "rate": 0.0,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.05_1001",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.05_1002",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.05_1003",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.05_1004",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.05_1005",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.10_1001",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.10_1002",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.10_1003",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.10_1004",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.10_1005",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.20_1001",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.20_1002",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.20_1003",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.20_1004",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.20_1005",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.40_1001",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.40_1002",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.40_1003",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.40_1004",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_0.40_1005",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_1.00_1001",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_1.00_1002",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_1.00_1003",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_1.00_1004",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_ast_1.00_1005",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "ast",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.00_1001",
+    "operation": "swap",
+    "rate": 0.0,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.05_1001",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.05_1002",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.05_1003",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.05_1004",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.05_1005",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.10_1001",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.10_1002",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.10_1003",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.10_1004",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.10_1005",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.20_1001",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.20_1002",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.20_1003",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.20_1004",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.20_1005",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.40_1001",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.40_1002",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.40_1003",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.40_1004",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_0.40_1005",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_1.00_1001",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_1.00_1002",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_1.00_1003",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_1.00_1004",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_dfg_1.00_1005",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "dfg",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.00_1001",
+    "operation": "swap",
+    "rate": 0.0,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.05_1001",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.05_1002",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.05_1003",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.05_1004",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.05_1005",
+    "operation": "swap",
+    "rate": 0.05,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.10_1001",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.10_1002",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.10_1003",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.10_1004",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.10_1005",
+    "operation": "swap",
+    "rate": 0.1,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.20_1001",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.20_1002",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.20_1003",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.20_1004",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.20_1005",
+    "operation": "swap",
+    "rate": 0.2,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.40_1001",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.40_1002",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.40_1003",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.40_1004",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_0.40_1005",
+    "operation": "swap",
+    "rate": 0.4,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_1.00_1001",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1001,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_1.00_1002",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1002,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_1.00_1003",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1003,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_1.00_1004",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1004,
+    "type": "corruption"
+  },
+  {
+    "id": "swap_both_1.00_1005",
+    "operation": "swap",
+    "rate": 1.0,
+    "relation": "both",
+    "seed": 1005,
+    "type": "corruption"
+  }
+]

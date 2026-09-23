@@ -1,0 +1,1 @@
+{"extends":"../base.yaml","model":{"variant":"graphcodebert_c_adapted","checkpoint":"microsoft/graphcodebert-base","revision":"UNRESOLVED"},"preprocessing":{"max_length":384}}

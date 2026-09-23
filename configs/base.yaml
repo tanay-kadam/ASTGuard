@@ -1,0 +1,11 @@
+{
+  "protocol_version": "1.0",
+  "experiment_id": "E1",
+  "dataset": {"name": "primevul", "view": "P_clean", "manifest_hash": "UNRESOLVED", "train_fraction": 1.0, "tune_role": "tune", "calibration_role": "cal"},
+  "preprocessing": {"max_length": 512, "canonicalization": "crlf_to_lf", "ast_relation": "leaf_path_radius4", "ast_radius": 4, "dfg_version": "limited-rd-v1", "structural_context": "full_function", "cache_hash": "UNRESOLVED"},
+  "model": {"variant": "astguard", "checkpoint": "microsoft/codebert-base", "revision": "UNRESOLVED", "structural_layers": [2,5,8,11], "relations": ["ast","dfg"], "gate_mode": "token", "beta_init": 0.10, "gate_init": "zero", "head_dropout": 0.1, "structural_dropout": 0.0},
+  "training": {"seed": 42, "epochs": 5, "effective_batch_size": 32, "microbatch_size": 4, "gradient_accumulation": 8, "pretrained_lr": 0.00002, "new_module_lr_multiplier": 1, "optimizer": "adamw", "adam_betas": [0.9,0.999], "adam_epsilon": 0.00000001, "weight_decay": 0.01, "warmup_fraction": 0.10, "scheduler": "linear", "grad_clip_norm": 1.0, "loss": "weighted_bce", "precision": "bf16_if_supported", "activation_checkpointing": true, "validation_frequency": "epoch", "selection_metric": "average_precision", "min_epochs": 3, "patience": 2, "min_delta": 0.0001},
+  "evaluation": {"thresholds": ["max_f1","fpr_0.005","recall_0.80"], "threshold_fit_role": "cal", "bootstrap_replicates": 10000, "analysis_seed": 20260921},
+  "resources": {"host_profile": "ssh", "max_vram_gb": "measured_device_limit_minus_4"},
+  "provenance": {"hpo_parent": null, "protocol_hash": "UNRESOLVED"}
+}

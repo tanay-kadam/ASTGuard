@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "astguard"
+version = "0.1.0"
+description = "Auditable adaptive structural attention experiments for C/C++ vulnerability detection"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "See LICENSE and third_party/LICENSES for scope and upstream terms" }
+authors = [{ name = "ASTGuard research artifact contributors" }]
+dependencies = []
+
+[project.optional-dependencies]
+research = [
+  "numpy",
+  "scipy",
+  "scikit-learn",
+  "pandas",
+  "pyarrow",
+  "PyYAML",
+  "matplotlib",
+  "torch",
+  "transformers<5",
+  "tokenizers",
+  "safetensors",
+  "tree-sitter",
+  "tree-sitter-c",
+  "tree-sitter-cpp",
+  "gdown",
+  "filelock",
+]
+test = ["pytest"]
+
+[project.scripts]
+astguard-train = "astguard.train:main"
+astguard-evaluate = "astguard.evaluate:main"
+
+[tool.setuptools.packages.find]
+include = ["astguard*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

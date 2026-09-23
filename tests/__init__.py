@@ -1,0 +1,1 @@
+"""ASTGuard tests."""
