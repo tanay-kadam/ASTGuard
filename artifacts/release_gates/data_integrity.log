@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "schema_version": "frozen-data-validation-v1",
+  "checks": {
+    "P_clean_ids_exist": true,
+    "P_clean_component_isolation": true,
+    "P_project_ids_exist": true,
+    "P_project_component_isolation": true,
+    "D_transfer_ids_exist": true,
+    "D_transfer_component_isolation": true,
+    "official_test_unchanged": true,
+    "P_clean_tune_both_classes": true,
+    "P_clean_cal_both_classes": true
+  },
+  "interpretation_gates": {
+    "D_transfer_confirmatory": true,
+    "P_project_confirmatory": true,
+    "P_clean_tune_rare_operating_point": true,
+    "P_clean_cal_rare_operating_point": true
+  },
+  "composition": {
+    "P_clean": {
+      "cal": {
+        "count": 8856,
+        "positives": 268,
+        "negatives": 8588,
+        "projects": 126
+      },
+      "test": {
+        "count": 25911,
+        "positives": 695,
+        "negatives": 25216,
+        "projects": 222
+      },
+      "train": {
+        "count": 141565,
+        "positives": 4305,
+        "negatives": 137260,
+        "projects": 606
+      },
+      "tune": {
+        "count": 10566,
+        "positives": 330,
+        "negatives": 10236,
+        "projects": 129
+      }
+    },
+    "P_project": {
+      "cal": {
+        "count": 19472,
+        "positives": 660,
+        "negatives": 18812,
+        "projects": 74
+      },
+      "test": {
+        "count": 9037,
+        "positives": 461,
+        "negatives": 8576,
+        "projects": 64
+      },
+      "train": {
+        "count": 143197,
+        "positives": 4251,
+        "negatives": 138946,
+        "projects": 531
+      },
+      "tune": {
+        "count": 44840,
+        "positives": 1239,
+        "negatives": 43601,
+        "projects": 80
+      }
+    },
+    "D_transfer": {
+      "transfer": {
+        "count": 56750,
+        "positives": 4170,
+        "negatives": 52580,
+        "projects": 354
+      }
+    }
+  },
+  "manifest_hashes": {
+    "P_clean": "5ac0061634ad9f2454493b7cb53087fbbb57f8808c2cab855abb6971cb0435df",
+    "P_project": "b006716b0b828197ddd36415c0e324ba318e7700c6f7c94e87b2644ffa199293",
+    "D_transfer": "2ab1d5e8002d4d43091e20033b0eb95bb02ecf7d9e6b40dd3afccf8058cced6f"
+  },
+  "record_hashes": {
+    "data\\interim\\primevul\\records.jsonl": "5922ee100c4d3b0f0619cbce62f808de3b8e3a36a23299d1b4317c0dbba50ccd",
+    "data\\interim\\diversevul\\records.jsonl": "8b16d4ee4dbe0a123ee860a54d949467cf01e8619d861e4cd216417d572765c9"
+  }
+}

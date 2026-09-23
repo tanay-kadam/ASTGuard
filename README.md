@@ -17,7 +17,7 @@ py -3.11 -m venv .venv
 .venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
 ```
 
-The original development workspace also contained a local Python in `.python/`; ignored environments are not part of a clone. CUDA was not available on that machine. `requirements.lock` records the tested local environment, not a cross-platform bitwise guarantee.
+The original development workspace also contained a local Python in `.python/`; ignored environments are not part of a clone. CUDA was not available on that machine; the release-gate host (NVIDIA RTX 6000 Ada, 48 GB) is profiled in `artifacts/environment/local_rtx6000ada.json`. `requirements.lock` records the tested local environment, not a cross-platform bitwise guarantee.
 
 Restore the checksum-locked development fixture and pinned checkpoint/tokenizer files before running the neural smoke and pretrained-equivalence checks. Omit `--weights` if only the tokenizer-backed neural smoke is needed.
 
@@ -35,11 +35,30 @@ Restore the checksum-locked development fixture and pinned checkpoint/tokenizer 
 .venv\Scripts\python.exe scripts\audit_extraction.py --count 500 --output artifacts\audits\extraction_pilot_500.json
 ```
 
-After a train-only split and its clean feature cohort exist, generate the independent human-review pack. Reviewers must fill its blank `review` fields; the evaluator refuses incomplete rows.
+The manual edge-review pack and the baseline-overfit fixture are drawn from the P_clean train role in fixed hash order, so only that prefix needs preprocessing. Reviewers annotate the blind worksheets in `artifacts/audits/manual_review/` and fill a copy of `gold_template.json` as `gold.json`; `import` refuses incomplete or invalid edges.
 
 ```powershell
-.venv\Scripts\python.exe scripts\manual_extraction_audit.py prepare --records data\interim\primevul\records.jsonl --features data\processed\cohorts\P_clean\CLEAN_KEY\features.jsonl --manifest artifacts\audits\P_clean.json --output artifacts\audits\manual_extraction_pack.jsonl
+.venv\Scripts\python.exe scripts\prepare_release_subsets.py --checkpoint data\raw\checkpoints\codebert\3b0952feddeffad0063f274080e3c23d75e7eb39
+.venv\Scripts\python.exe scripts\manual_extraction_audit.py prepare --records data\interim\primevul\records.jsonl --features data\processed\release_subsets\review_features.jsonl --manifest artifacts\audits\P_clean.json --output artifacts\audits\manual_extraction_pack.jsonl
+.venv\Scripts\python.exe scripts\manual_extraction_audit.py worksheet --pack artifacts\audits\manual_extraction_pack.jsonl --output-dir artifacts\audits\manual_review
+.venv\Scripts\python.exe scripts\manual_extraction_audit.py import --pack artifacts\audits\manual_extraction_pack.jsonl --features data\processed\release_subsets\review_features.jsonl --gold artifacts\audits\manual_review\gold.json --output artifacts\audits\manual_extraction_pack.reviewed.jsonl
 .venv\Scripts\python.exe scripts\manual_extraction_audit.py evaluate --pack artifacts\audits\manual_extraction_pack.reviewed.jsonl --output artifacts\audits\manual_extraction_gold.json
+```
+
+Other release gates (per-host resolved configs live under `artifacts/release_gates/configs/`):
+
+```powershell
+.venv\Scripts\python.exe scripts\validate_frozen_data.py --records data\interim\primevul\records.jsonl data\interim\diversevul\records.jsonl --p-clean artifacts\audits\P_clean.json --p-project artifacts\audits\P_project.json --d-transfer artifacts\audits\D_transfer.json --output artifacts\release_gates\data_integrity.json
+.venv\Scripts\python.exe scripts\check_baseline_overfit.py --config artifacts\release_gates\configs\astguard.json --features data\processed\release_subsets\overfit_train.jsonl --output artifacts\release_gates\overfit_astguard.json
+.venv\Scripts\python.exe scripts\combine_overfit_gate.py --result artifacts\release_gates\overfit_sequence_only.json --result artifacts\release_gates\overfit_ast_dfg_fixed.json --result artifacts\release_gates\overfit_astguard.json --output artifacts\release_gates\baseline_overfit.json
+.venv\Scripts\python.exe scripts\warm_feature_cache.py --plan artifacts\release_gates\registry_plan.json --variants 0
+.venv\Scripts\python.exe scripts\prepare_feature_registry.py --plan artifacts\release_gates\registry_plan.json
+```
+
+After final predictions exist, the R1 secondary parse-status subgroup analysis uses the same plan format as `statistical_comparisons.py`:
+
+```powershell
+.venv\Scripts\python.exe scripts\subgroup_analysis.py --plan PLAN.json --features FEATURES.jsonl --output artifacts\analysis\parse_status_subgroups.json
 ```
 
 The acquisition commands validate registered checksums on repeat runs. Raw releases stay in `data/raw/`; normalized JSONL/Parquet and quarantine reports are in `data/interim/`. A full clone audit is potentially compute/memory intensive and has **not** been completed here. To build the source split on a capable host:

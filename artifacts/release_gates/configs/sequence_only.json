@@ -1,0 +1,6 @@
+{"extends":"../../../configs/models/sequence_only.yaml",
+ "dataset":{"manifest_hash":"e631d90d2f43ec09922bc2df806384d8b1aff091b58d2ae03a1c17e0052451e0"},
+ "preprocessing":{"cache_hash":"177f8bead3cd4a759ae667f39a9624a71ff413d339b4f91690b69af275e490e9","annotation_masking":"a_priori_v1"},
+ "model":{"checkpoint":"data/raw/checkpoints/codebert/3b0952feddeffad0063f274080e3c23d75e7eb39","revision":"3b0952feddeffad0063f274080e3c23d75e7eb39"},
+ "resources":{"host_profile":"local_rtx6000ada","max_vram_gb":44},
+ "provenance":{"protocol_hash":"cb89f6ffb1a1adad83f82e8ae4f300937f8706e909a8d47cb4405607ee326770"}}

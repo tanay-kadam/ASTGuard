@@ -1,0 +1,27 @@
+{
+  "captured_utc": "2026-09-23T19:09:03.353664+00:00",
+  "gpus": [
+    {
+      "bf16_supported": true,
+      "index": 0,
+      "name": "NVIDIA RTX 6000 Ada Generation",
+      "total_memory_bytes": 51526500352
+    }
+  ],
+  "hostname": "LIB-42305",
+  "machine": "AMD64",
+  "packages": {
+    "numpy": "2.4.6",
+    "torch": "2.14.0+cu130",
+    "transformers": "4.57.6",
+    "tree-sitter": "0.26.0"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 143 Stepping 8, GenuineIntel",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "torch": {
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "version": "2.14.0+cu130"
+  }
+}

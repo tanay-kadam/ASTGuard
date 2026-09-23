@@ -1,0 +1,32 @@
+{
+  "models": {
+    "ast_dfg_fixed": {
+      "accuracy": 1.0,
+      "artifact": "artifacts\\release_gates\\overfit_ast_dfg_fixed.json",
+      "config_hash": "aa7880f8fa74c6d2d5043e594141c3b336d724a37ac3fc6771ee36d08a14e4d5",
+      "device": "cuda",
+      "optimizer_steps": 18,
+      "sha256": "12b10a714b83f02655edbc0a7fc2e34d50d976ef078a368326b4ab92cb9f0dc6",
+      "status": "passed"
+    },
+    "astguard": {
+      "accuracy": 1.0,
+      "artifact": "artifacts\\release_gates\\overfit_astguard.json",
+      "config_hash": "8423260f1c4bc6d8c49cdb0137f1e63d4a85f0041cf5ca10a6c69bcc83b92784",
+      "device": "cuda",
+      "optimizer_steps": 18,
+      "sha256": "efd8d5981e65558d4dccfbd1dedfd04668e5a59c28d9b3711cb3bd9f5a956335",
+      "status": "passed"
+    },
+    "sequence_only": {
+      "accuracy": 1.0,
+      "artifact": "artifacts\\release_gates\\overfit_sequence_only.json",
+      "config_hash": "7fc364e6011f7e2779e3e96655209bac190e4c8bac2d8e2977a7f89caa1bba5d",
+      "device": "cuda",
+      "optimizer_steps": 19,
+      "sha256": "a6cf71461386d439c62783256cd69246823387451512d1827e14c9d6e98eaed8",
+      "status": "passed"
+    }
+  },
+  "status": "passed"
+}
