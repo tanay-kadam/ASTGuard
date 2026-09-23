@@ -19,14 +19,14 @@ from astguard.utils.atomic_io import atomic_write_json,atomic_write_text,append_
 from astguard.utils.hashing import object_hash,sha256_file
 
 
-DEFAULT_VARIANTS=(
+DEFAULT_VARIANTS=tuple({**variant,'annotation_masking':'a_priori_v1'} for variant in (
     {'max_length':512,'ast_relation':'leaf_path_radius4','dfg_symmetry':False,'structural_context':'full_function','topology':'clean'},
     {'max_length':384,'ast_relation':'leaf_path_radius4','dfg_symmetry':False,'structural_context':'full_function','topology':'clean'},
     {'max_length':512,'ast_relation':'anchored_parent_child','dfg_symmetry':False,'structural_context':'full_function','topology':'clean'},
     {'max_length':512,'ast_relation':'leaf_path_radius4','dfg_symmetry':True,'structural_context':'full_function','topology':'clean'},
     {'max_length':512,'ast_relation':'leaf_path_radius4','dfg_symmetry':False,'structural_context':'visible_prefix','topology':'clean'},
     {'max_length':512,'ast_relation':'leaf_path_radius4','dfg_symmetry':False,'structural_context':'full_function','topology':'degree_preserving_rewired'},
-)
+))
 
 
 def prepare(plan_path: Path,output_root: Path,context_path: Path):
@@ -41,12 +41,13 @@ def prepare(plan_path: Path,output_root: Path,context_path: Path):
         if manifest['view']!=view:raise ValueError(f'cohort name/manifest view mismatch: {view}')
         wanted=set(manifest['ordered_sample_ids'])
         for fields in variants:
-            fields=dict(fields)
+            fields={'annotation_masking':'a_priori_v1',**fields}
             key=object_hash({'view':view,**fields})
             directory=output_root/view/key;directory.mkdir(parents=True,exist_ok=True)
             feature_path=directory/'features.jsonl';partial=directory/'features.jsonl.partial'
             expected_hash=_preprocessing_hash(tokenizer.identity_hash,fields['max_length'],False,
-                fields['ast_relation'],fields['dfg_symmetry'],fields['structural_context'],fields['topology'])
+                fields['ast_relation'],fields['dfg_symmetry'],fields['structural_context'],fields['topology'],
+                fields['annotation_masking'])
             cache=FeatureCache(cache_root/expected_hash,expected_hash)
             failure_path=directory/'preprocessing_failures.jsonl';atomic_write_text(failure_path,'')
             hashes=set();seen=set();failures=[0]

@@ -31,5 +31,28 @@
     "H4",
     "H5",
     "H6"
+  ],
+  "release_gates": {
+    "extraction_ast_nonempty_min": 0.89,
+    "extraction_dfg_supported_min": 0.6
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "date": "2026-09-23",
+      "status": "adopted_pre_test",
+      "test_access_before_revision": "none; protocol/test_unlock.json locked",
+      "document": "protocol/revisions/R1_annotation_masking.md",
+      "changes": [
+        "primary extraction masks the fixed a-priori annotation macro list (astguard/parsing/annotations.py, annotation_masking=a_priori_v1)",
+        "AST nonempty release gate 0.90 -> 0.89; DFG gate unchanged at 0.60",
+        "adds pre-registered secondary parse-status subgroup analysis"
+      ],
+      "evidence": [
+        "artifacts/audits/annotation_masking_diagnostic.json",
+        "artifacts/audits/extraction_pilot_500_r1.json",
+        "artifacts/audits/extraction_heldout_500_r1.json"
+      ]
+    }
   ]
 }

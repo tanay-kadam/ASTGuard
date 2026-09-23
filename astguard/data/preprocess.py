@@ -10,6 +10,7 @@ from astguard.alignment.projection import RelationProjector
 from astguard.alignment.tokenizer import CanonicalTokenizer, SmokeTokenizer
 from astguard.data.schema import FeatureRecord, SampleRecord, read_jsonl, write_jsonl
 from astguard.data.cache import FeatureCache
+from astguard.parsing.annotations import ANNOTATION_MASKING_MODES, mask_annotation_macros
 from astguard.parsing.lowering import extract_dependencies,extract_visible_prefix_dependencies
 from astguard.parsing.lexical import lex
 from astguard.parsing.relations import SyntaxRelationBuilder
@@ -19,7 +20,8 @@ from astguard.utils.hashing import object_hash
 
 @lru_cache(maxsize=16)
 def _preprocessing_hash(tokenizer_hash: str, max_length: int, smoke: bool,
-                        ast_relation: str, dfg_symmetry: bool, structural_context: str, topology: str) -> str:
+                        ast_relation: str, dfg_symmetry: bool, structural_context: str, topology: str,
+                        annotation_masking: str = 'a_priori_v1') -> str:
     import importlib.metadata
     from astguard.utils.hashing import sha256_file
     dependencies={name:importlib.metadata.version(name) for name in ['tree-sitter','tree-sitter-c','tree-sitter-cpp','transformers','tokenizers']} if not smoke else {}
@@ -28,12 +30,15 @@ def _preprocessing_hash(tokenizer_hash: str, max_length: int, smoke: bool,
     code_hashes={str(path):sha256_file(path) for path in code_paths}
     return object_hash({'schema':3,'versions':dependencies,'code':code_hashes,'tokenizer':tokenizer_hash,
                         'max_length':max_length,'smoke':smoke,'ast_radius':4,'ast_relation':ast_relation,
-                        'dfg_symmetry':dfg_symmetry,'structural_context':structural_context,'topology':topology})
+                        'dfg_symmetry':dfg_symmetry,'structural_context':structural_context,'topology':topology,
+                        'annotation_masking':annotation_masking})
 
 
-def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512, smoke: bool = False, ast_relation='leaf_path_radius4', dfg_symmetry=False, structural_context='full_function', topology='clean') -> FeatureRecord:
+def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512, smoke: bool = False, ast_relation='leaf_path_radius4', dfg_symmetry=False, structural_context='full_function', topology='clean', annotation_masking='a_priori_v1') -> FeatureRecord:
     if topology not in {'clean','degree_preserving_rewired'}:
         raise ValueError(f'unsupported topology: {topology}')
+    if annotation_masking not in ANNOTATION_MASKING_MODES:
+        raise ValueError(f'unsupported annotation masking: {annotation_masking}')
     source = record.source_canonical
     encoded = tokenizer.encode(source, max_length=max_length)
     lexical_error=None
@@ -48,11 +53,17 @@ def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512,
     lexical_to_bpe, eligible = ByteSpanAligner().align(full_offsets, spans, full_special,1+encoded.retained_bpe_length)
     ast_to_bpe = lexical_to_bpe
     prefix_incomplete=False
+    prefix_masked=False
+    masked_tokens: list[int] = []
     extraction_source=source
+    if not smoke and lexical_error is None:
+        extraction_source, masked_tokens = mask_annotation_macros(source, lexical, annotation_masking)
     if structural_context=='visible_prefix' and encoded.original_bpe_length>encoded.retained_bpe_length:
         boundary=max((spans[i][1] for i in eligible),default=0)
-        raw=source.encode('utf-8')
-        extraction_source=(raw[:boundary]+bytes(10 if b==10 else 32 for b in raw[boundary:])).decode('utf-8')
+        raw=extraction_source.encode('utf-8')
+        prefix_source=(raw[:boundary]+bytes(10 if b==10 else 32 for b in raw[boundary:])).decode('utf-8')
+        prefix_masked=prefix_source!=extraction_source
+        extraction_source=prefix_source
     reasons: list[str] = []
     language = record.language_metadata if record.language_metadata in {"c", "cpp"} else "c"
     if smoke:
@@ -64,7 +75,7 @@ def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512,
     else:
         tree = select_c_or_cpp(extraction_source, record.language_metadata)
         native_tree=tree
-        if structural_context=='visible_prefix' and extraction_source!=source and not tree.successful:
+        if prefix_masked and not tree.successful:
             tree=error_free_prefix_forest(tree,boundary)
             prefix_incomplete=True
         language = tree.language
@@ -79,7 +90,7 @@ def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512,
             ast_lexical = []
             ast_status = "parse_failed"
             reasons.append("tree_contains_error_or_missing_node")
-        if lexical_error is None and structural_context=='visible_prefix' and extraction_source!=source:
+        if lexical_error is None and prefix_masked:
             extraction=extract_visible_prefix_dependencies(extraction_source,native_tree,lexical,boundary)
         else:
             extraction = extract_dependencies(extraction_source, native_tree, lexical) if lexical_error is None else None
@@ -111,7 +122,8 @@ def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512,
     if tokenizer_hash is None:
         tokenizer_hash=object_hash(tokenizer.tokenizer.backend_tokenizer.to_str()) if hasattr(tokenizer,'tokenizer') else 'smoke'
         tokenizer.identity_hash=tokenizer_hash
-    preprocessing_hash=_preprocessing_hash(tokenizer_hash,max_length,smoke,ast_relation,dfg_symmetry,structural_context,topology)
+    preprocessing_hash=_preprocessing_hash(tokenizer_hash,max_length,smoke,ast_relation,dfg_symmetry,structural_context,topology,
+                                           annotation_masking)
     return FeatureRecord(
         sample_id=record.sample_id, source_sha256=record.raw_sha256, preprocessing_hash=preprocessing_hash,
         input_ids=encoded.input_ids, attention_mask=encoded.attention_mask,
@@ -125,7 +137,8 @@ def preprocess_record(record: SampleRecord, tokenizer, *, max_length: int = 512,
         ast_leaf_to_bpe=ast_to_bpe,
         ast_token_edges=ast_edges, dfg_token_edges=dfg_edges,
         edge_projection_groups=groups + dfg_groups,
-        relation_stats={"ast_edges": len(ast_edges), "dfg_edges": len(dfg_edges), "eligible_leaves": len(eligible), **topology_stats},
+        relation_stats={"ast_edges": len(ast_edges), "dfg_edges": len(dfg_edges), "eligible_leaves": len(eligible),
+                        "annotation_masked_tokens": len(masked_tokens), **topology_stats},
     )
 
 
@@ -143,13 +156,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument('--dfg-symmetry', action='store_true')
     parser.add_argument('--structural-context', choices=['full_function','visible_prefix'], default='full_function')
     parser.add_argument('--topology', choices=['clean','degree_preserving_rewired'], default='clean')
+    parser.add_argument('--annotation-masking', choices=list(ANNOTATION_MASKING_MODES), default='a_priori_v1')
     parser.add_argument('--cache-root',default='data/cache/features')
     parser.add_argument('--failures',help='JSONL failure ledger (defaults beside --output)')
     args = parser.parse_args(argv)
     tokenizer = SmokeTokenizer() if args.smoke else CanonicalTokenizer(args.checkpoint, args.revision)
     tokenizer_hash=getattr(tokenizer,'identity_hash','smoke')
     preprocessing_hash=_preprocessing_hash(tokenizer_hash,args.max_length,args.smoke,args.ast_relation,
-                                           args.dfg_symmetry,args.structural_context,args.topology)
+                                           args.dfg_symmetry,args.structural_context,args.topology,args.annotation_masking)
     cache=FeatureCache(Path(args.cache_root)/preprocessing_hash,preprocessing_hash)
     failure_path=Path(args.failures or (str(args.output)+'.failures.jsonl'))
     from astguard.utils.atomic_io import atomic_write_text
@@ -162,7 +176,8 @@ def main(argv: list[str] | None = None) -> int:
             try:
                 yield cache.get_or_build(record.raw_sha256,lambda:dataclasses.asdict(preprocess_record(
                     record,tokenizer,max_length=args.max_length,smoke=args.smoke,ast_relation=args.ast_relation,
-                    dfg_symmetry=args.dfg_symmetry,structural_context=args.structural_context,topology=args.topology)),
+                    dfg_symmetry=args.dfg_symmetry,structural_context=args.structural_context,topology=args.topology,
+                    annotation_masking=args.annotation_masking)),
                     sample_id=record.sample_id)
             except Exception as exc:
                 failure_count[0]+=1

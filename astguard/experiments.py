@@ -100,7 +100,7 @@ def resolve_job(job,jobs,context,state_dir):
     base=_deep_merge(base,changes)
     base['model']['revision']=context['checkpoint_revisions'][base['model']['checkpoint']]
     if fixed_steps:base['training']['max_optimizer_steps']=context['full_data_optimizer_steps']
-    fields={key:base['preprocessing'][key] for key in ['max_length','ast_relation','dfg_symmetry','structural_context','topology']}
+    fields={key:base['preprocessing'][key] for key in ['max_length','ast_relation','dfg_symmetry','structural_context','topology','annotation_masking']}
     feature_key=object_hash({'view':base['dataset']['view'],**fields})
     artifact=context['feature_registry'].get(feature_key)
     if artifact is None:raise RuntimeError(f'prepare missing feature cohort {feature_key}: {fields}')

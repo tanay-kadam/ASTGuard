@@ -29,6 +29,7 @@ class PreprocessingConfig:
     ast_radius: int = 4
     dfg_version: str = "limited-rd-v1"
     structural_context: str = "full_function"
+    annotation_masking: str = "a_priori_v1"
     cache_hash: str = "smoke"
     topology: str = 'clean'
     dfg_symmetry: bool = False
@@ -131,6 +132,7 @@ class ExperimentConfig:
         if self.evaluation.threshold_fit_role!='cal':raise ConfigError('threshold fitting must use cal')
         if self.model.gate_sharing not in {'none','head','layer','relation'}:raise ConfigError('unknown gate sharing')
         if self.preprocessing.structural_context not in {'full_function','visible_prefix'}:raise ConfigError('unknown structural context')
+        if self.preprocessing.annotation_masking not in {'a_priori_v1','none'}:raise ConfigError('unknown annotation masking')
         if not 0<=self.model.structural_dropout<=1:raise ConfigError('invalid structural dropout')
         if not allow_unresolved:
             blob = json.dumps(dataclasses.asdict(self))

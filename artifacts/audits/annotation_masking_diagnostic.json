@@ -1,0 +1,149 @@
+{
+  "a_priori_words": {
+    "linux_attribute": [
+      "__init",
+      "__exit",
+      "__initdata",
+      "__always_inline",
+      "noinline",
+      "asmlinkage",
+      "__cold",
+      "__hot",
+      "__pure",
+      "__must_check",
+      "__maybe_unused",
+      "__used",
+      "notrace",
+      "__weak",
+      "__sched",
+      "__visible"
+    ],
+    "linux_sparse": [
+      "__user",
+      "__kernel",
+      "__iomem",
+      "__force",
+      "__rcu",
+      "__percpu",
+      "__bitwise",
+      "__safe",
+      "__nocast",
+      "__private"
+    ],
+    "windows_calling_convention": [
+      "WINAPI",
+      "CALLBACK",
+      "APIENTRY",
+      "STDMETHODCALLTYPE",
+      "STDAPICALLTYPE"
+    ]
+  },
+  "metric": "selected tree has no error/missing node (equals AST nonempty on the registered pilot)",
+  "pilot_derived_project_words": [
+    "MagickExport",
+    "FLAC_API",
+    "R_API",
+    "PHPAPI",
+    "STBIDEF",
+    "HIDDEN",
+    "NOINLINE"
+  ],
+  "samples": {
+    "heldout": {
+      "excludes_pilot_ids": true,
+      "results": {
+        "a_priori": {
+          "by_selected_language": {
+            "c": {
+              "n": 286,
+              "ok": 251
+            },
+            "cpp": {
+              "n": 214,
+              "ok": 198
+            }
+          },
+          "n": 500,
+          "parse_ok_fraction": 0.898
+        },
+        "a_priori_plus_pilot_project": {
+          "by_selected_language": {
+            "c": {
+              "n": 286,
+              "ok": 252
+            },
+            "cpp": {
+              "n": 214,
+              "ok": 198
+            }
+          },
+          "n": 500,
+          "parse_ok_fraction": 0.9
+        },
+        "baseline": {
+          "by_selected_language": {
+            "c": {
+              "n": 286,
+              "ok": 236
+            },
+            "cpp": {
+              "n": 214,
+              "ok": 196
+            }
+          },
+          "n": 500,
+          "parse_ok_fraction": 0.864
+        }
+      },
+      "salt": "extraction-heldout-v1"
+    },
+    "pilot": {
+      "results": {
+        "a_priori": {
+          "by_selected_language": {
+            "c": {
+              "n": 293,
+              "ok": 256
+            },
+            "cpp": {
+              "n": 207,
+              "ok": 193
+            }
+          },
+          "n": 500,
+          "parse_ok_fraction": 0.898
+        },
+        "a_priori_plus_pilot_project": {
+          "by_selected_language": {
+            "c": {
+              "n": 293,
+              "ok": 267
+            },
+            "cpp": {
+              "n": 207,
+              "ok": 193
+            }
+          },
+          "n": 500,
+          "parse_ok_fraction": 0.92
+        },
+        "baseline": {
+          "by_selected_language": {
+            "c": {
+              "n": 293,
+              "ok": 242
+            },
+            "cpp": {
+              "n": 207,
+              "ok": 192
+            }
+          },
+          "n": 500,
+          "parse_ok_fraction": 0.868
+        }
+      },
+      "salt": "extraction-pilot-v1"
+    }
+  },
+  "status": "diagnostic_only_extractor_unchanged"
+}

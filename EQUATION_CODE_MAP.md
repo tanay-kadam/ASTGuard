@@ -3,6 +3,7 @@
 | Equation / mechanism | Source | Function/class | Test | Experiment |
 |---|---|---|---|---|
 | M1 canonical input and offsets | `astguard/alignment/tokenizer.py`, `byte_spans.py` | `CanonicalTokenizer`, `ByteSpanAligner` | `test_alignment.py`, `test_lexical.py` | E1, E10b |
+| R1 extraction-only annotation masking | `astguard/parsing/annotations.py`, `data/preprocess.py` | `mask_annotation_macros`, `preprocess_record` | `test_annotations.py` | all structural variants |
 | M2 radius-4 leaf path | `astguard/parsing/relations.py` | `SyntaxRelationBuilder.build` | `test_alignment.py`; manual gold coverage pending | E1, E2, A4 |
 | M3 reaching definitions | `astguard/parsing/lowering.py`, `reaching_defs.py` | `extract_dependencies`, `ReachingDefinitions.solve` | `test_lowering.py`, `test_reaching_defs.py`; manual gold pending | E1, E2, A3 |
 | M4 directed DFG projection | `astguard/alignment/projection.py`, `parsing/lowering.py` | `RelationProjector.project`, `extract_dependencies` | `test_alignment.py`, `test_lowering.py` | E1, E2 |
@@ -16,4 +17,4 @@
 | M12 calibrated operating point | `astguard/evaluation/thresholds.py` | `ThresholdSelector.fit` | `test_metrics.py` | E1, E5, E7 |
 | M13 pairs | `astguard/evaluation/pairs.py` | `evaluate_pairs` | `test_metrics.py` | E6 |
 
-Unit and smoke tests establish engineering behavior; the extraction gate and manual gold review still block scientific release.
+Unit and smoke tests establish engineering behavior; the coverage gate passes under revision R1, and the manual gold review still blocks scientific release.
