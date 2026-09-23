@@ -16,6 +16,12 @@ data/processed/
 data/cache/
 artifacts/cache/
 artifacts/test/
+# Large generated audit/split manifests; regenerate with astguard.data.audit/splits.
+artifacts/audits/joint_components.json
+artifacts/audits/prime_components.json
+artifacts/audits/P_clean.json
+artifacts/audits/P_project.json
+artifacts/audits/D_transfer.json
 runs/*
 !runs/.gitkeep
 results/*

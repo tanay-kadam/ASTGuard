@@ -117,6 +117,19 @@
       "upstream_revision": "ac74a62802a0dd159b3258c78a2df8ad36cdf2b9"
     },
     {
+      "bytes": 61532917,
+      "license_access_notes": "CodeXGLUE data terms apply; training-only development smoke fixture",
+      "local_immutable_path": "data\\raw\\development\\function.json",
+      "logical_name": "CodeXGLUE/function.json",
+      "official_landing_url": "https://github.com/microsoft/CodeXGLUE/tree/ac74a62802a0dd159b3258c78a2df8ad36cdf2b9/Code-Code/Defect-detection",
+      "release": "development",
+      "resolved_download_url": "https://drive.google.com/uc?id=1x6hoF7G-tSYxg8AFybggypLZgMGDNHfF",
+      "retrieved_utc": "2026-09-23T17:49:00+00:00",
+      "rows": 27318,
+      "sha256": "0a3b2d561dc6280e53795886ede727d0045c016d083905ba3e9ce384a7eab246",
+      "upstream_revision": "ac74a62802a0dd159b3258c78a2df8ad36cdf2b9"
+    },
+    {
       "bytes": 1168,
       "license_access_notes": "Upstream terms apply; see pinned LICENSE",
       "local_immutable_path": "C:\\Users\\kadam\\AST\\third_party\\sources\\CodeBERT\\c0de43d3aaf38e89290f1efb771f8de845e7a489\\GraphCodeBERT\\codesearch\\model.py",

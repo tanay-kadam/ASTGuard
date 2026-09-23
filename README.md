@@ -4,7 +4,7 @@ ASTGuard tests whether token-conditioned AST and approximate data-dependency att
 
 ## Verified local status (2026-09-23)
 
-Python 3.11.16, the research dependencies, and a tested environment lock are installed locally. Original PrimeVul (235,768 rows), standalone DiverseVul (330,492 rows), pinned CodeBERT and GraphCodeBERT checkpoints, and upstream baseline source files were acquired with checksums in `sources.lock.json`. The 57-test suite passes, upstream zero-bias CodeBERT equivalence passes, and both plumbing and neural training-only smoke pipelines produce checkpoints, predictions, tables, and figures. None of the 200 registered full jobs or official-test evaluations has run. The official test remains locked: the train-only 500-function AST coverage pilot is 86.8%, below the protocol's 90% gate; DFG support is 72.4%, above its 60% gate. Manual dependency-edge quality review is also pending. See `IMPLEMENTATION_NOTES.md`.
+On the original development host, Python 3.11.16, the research dependencies, and a tested environment lock were installed. Original PrimeVul (235,768 rows), standalone DiverseVul (330,492 rows), pinned CodeBERT and GraphCodeBERT checkpoints, and upstream baseline source files were acquired there with checksums in `sources.lock.json`; ignored raw data and checkpoints are not included in a fresh clone. The current 59-test suite passes on Python 3.11, upstream zero-bias CodeBERT equivalence passes, and both plumbing and neural training-only smoke pipelines produce checkpoints, predictions, tables, and figures. None of the 200 registered full jobs or official-test evaluations has run. The official test remains locked: the train-only 500-function AST coverage pilot is 86.8%, below the protocol's 90% gate; DFG support is 72.4%, above its 60% gate. Manual dependency-edge quality review is also pending. See `IMPLEMENTATION_NOTES.md`.
 
 ## Environment
 
@@ -17,7 +17,13 @@ py -3.11 -m venv .venv
 .venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
 ```
 
-This workspace also contains a local Python in `.python/`; `.venv/` has been tested here. CUDA is not available on this machine. `requirements.lock` records the tested local environment, not a cross-platform bitwise guarantee.
+The original development workspace also contained a local Python in `.python/`; ignored environments are not part of a clone. CUDA was not available on that machine. `requirements.lock` records the tested local environment, not a cross-platform bitwise guarantee.
+
+Restore the checksum-locked development fixture and pinned checkpoint/tokenizer files before running the neural smoke and pretrained-equivalence checks. Omit `--weights` if only the tokenizer-backed neural smoke is needed.
+
+```powershell
+.venv\Scripts\python.exe scripts\acquire_development_sources.py --weights
+```
 
 ## Data and release gates
 

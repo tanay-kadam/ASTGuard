@@ -39,21 +39,30 @@ def acquire_primevul(lock_path):
         logical='primevul/'+name
         registered=next((row for row in lock['sources'] if row['logical_name']==logical),None)
         if registered:
-            if not target.exists() or sha256_file(target)!=registered['sha256']:
-                raise ValueError(f'registered source missing or changed: {target}')
-            continue
+            if target.exists():
+                if sha256_file(target)!=registered['sha256']:
+                    raise ValueError(f'registered source changed: {target}')
+                continue
         if target.exists():
             raise ValueError(f'unregistered existing payload: {target}; import with an explicit checksum')
         partial=target.with_suffix('.partial')
         url=f'https://drive.google.com/uc?id={file_id}'
         gdown.download(url,str(partial),quiet=False)
+        if registered and sha256_file(partial)!=registered['sha256']:
+            partial.unlink(missing_ok=True)
+            raise ValueError(f'registered source checksum mismatch: {target}')
         count=0
         with partial.open(encoding='utf-8') as handle:
             for line in handle:
                 row=json.loads(line)
                 if not isinstance(row,dict): raise ValueError('expected JSON object')
                 count+=1
+        if registered and registered.get('rows') is not None and count!=registered['rows']:
+            partial.unlink(missing_ok=True)
+            raise ValueError(f'registered source row count mismatch: {target}')
         partial.replace(target)
+        if registered:
+            continue
         lock['sources'].append({'logical_name':logical,'release':'original','official_landing_url':OFFICIAL['primevul'],
             'resolved_download_url':url,'upstream_revision':'6f54687c84947b1d17486495440b37030d147289',
             'retrieved_utc':datetime.now(timezone.utc).isoformat(),'bytes':target.stat().st_size,'sha256':sha256_file(target),
@@ -71,18 +80,27 @@ def acquire_diversevul(lock_path):
     logical='diversevul/standalone'
     known=next((row for row in lock['sources'] if row['logical_name']==logical),None)
     if known:
-        if not path.exists() or sha256_file(path)!=known['sha256']:raise ValueError('registered DiverseVul payload changed')
-        return
+        if path.exists():
+            if sha256_file(path)!=known['sha256']:raise ValueError('registered DiverseVul payload changed')
+            return
     if path.exists():raise ValueError('existing DiverseVul payload not registered')
     url='https://drive.google.com/uc?id='+DIVERSEVUL_FILE_ID
     partial=path.with_suffix('.partial')
     gdown.download(url,str(partial),quiet=False)
+    if known and sha256_file(partial)!=known['sha256']:
+        partial.unlink(missing_ok=True)
+        raise ValueError('registered DiverseVul payload checksum mismatch')
     count=0
     with partial.open(encoding='utf-8') as handle:
         for line in handle:
             if not isinstance(json.loads(line),dict):raise ValueError('DiverseVul row must be a JSON object')
             count+=1
+    if known and known.get('rows') is not None and count!=known['rows']:
+        partial.unlink(missing_ok=True)
+        raise ValueError('registered DiverseVul payload row count mismatch')
     partial.replace(path)
+    if known:
+        return
     lock['sources'].append({'logical_name':logical,'release':'standalone','official_landing_url':OFFICIAL['diversevul'],
         'resolved_download_url':url,'upstream_revision':'official standalone release','retrieved_utc':datetime.now(timezone.utc).isoformat(),
         'bytes':path.stat().st_size,'sha256':sha256_file(path),'rows':count,'license_access_notes':'verify dataset upstream rights',

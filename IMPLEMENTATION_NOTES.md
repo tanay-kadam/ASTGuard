@@ -1,5 +1,11 @@
 # Implementation notes and protocol deviations
 
+## 2026-09-23 fresh-clone verification
+
+- A clean clone was recreated on Python 3.11.9. The current 59-test suite, packaging build, dependency check, deterministic plumbing smoke, training-only neural smoke, and pinned CodeBERT zero-bias equivalence all pass on CPU.
+- Fresh-clone source restoration now consumes the revisions and checksums already recorded in `sources.lock.json`. The CodeXGLUE/Devign training-only smoke fixture is registered there, and registered PrimeVul/DiverseVul payloads can be reacquired when their ignored local files are absent.
+- This verification does not change scientific status: all 200 registered jobs remain missing, the protocol remains unfrozen, the test lock remains locked, the 86.8% AST coverage result still fails the 90% gate, and manual edge review remains pending.
+
 ## 2026-09-23 verified local state
 
 - Environment: Python 3.11.16 and research dependencies are installed in `.venv`; the current suite has 57 passing tests. PyTorch is CPU-only, no Git executable is available, and this host cannot validate the specified ~46 GB GPU training/throughput. The local source-archive identity is used when Git is absent. No cross-GPU determinism claim is made.
