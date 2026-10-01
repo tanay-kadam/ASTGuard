@@ -50,6 +50,7 @@ class ModelConfig:
     structural_dropout: float = 0.0
     gate_sharing: str = 'none'
     freeze_beta: bool = False
+    shuffle_training_graphs: bool = False
     regvd_hidden_size: int = 128
     regvd_layers: int = 2
     regvd_window_size: int = 5

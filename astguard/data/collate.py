@@ -20,13 +20,15 @@ class SequenceCollator:
 
 
 class StructuralCollator:
-    def __init__(self, structural_dropout: float = 0.0, run_seed: int = 42, epoch: int = 0, presentation_counts: dict[str, int] | None = None):
+    def __init__(self, structural_dropout: float = 0.0, run_seed: int = 42, epoch: int = 0, presentation_counts: dict[str, int] | None = None, shuffle_graphs: bool = False):
         if not 0 <= structural_dropout <= 1:
             raise ValueError("structural_dropout must be in [0,1]")
         self.structural_dropout = structural_dropout
         self.run_seed = run_seed
         self.epoch = epoch
         self.presentation_counts = presentation_counts if presentation_counts is not None else {}
+        self.shuffle_graphs = shuffle_graphs
+        self._shuffle_call_count = 0
 
     def __call__(self, batch: list[dict]):
         try:
@@ -67,11 +69,33 @@ class StructuralCollator:
             relation_masks.append(dense)
             labels.append(int(item["label"]))
             metadata.append(item["sample_id"])
+        stacked_relation_masks = torch.stack(relation_masks)
+        if self.shuffle_graphs and len(batch) > 1:
+            stacked_relation_masks = self._shuffle_batch_graphs(stacked_relation_masks)
         return {
             "input_ids": torch.tensor(ids, dtype=torch.long),
             "attention_mask": torch.tensor(masks, dtype=torch.bool),
             "special_tokens_mask": torch.tensor(specials, dtype=torch.bool),
-            "relation_masks": torch.stack(relation_masks),
+            "relation_masks": stacked_relation_masks,
             "labels": torch.tensor(labels, dtype=torch.float32),
             "sample_ids": metadata,
         }
+
+    def _shuffle_batch_graphs(self, relation_masks):
+        """Pair each example's tokens with another example's graph (no fixed points).
+
+        Capacity-matched topology ablation: breaks the correspondence between a
+        function's structure and its own AST/DFG edges while leaving the model
+        architecture, parameter count, and edge density distribution untouched.
+        """
+        import torch
+
+        n = relation_masks.shape[0]
+        self._shuffle_call_count += 1
+        generator = torch.Generator(device="cpu")
+        generator.manual_seed(augmentation_seed(self.run_seed, self.epoch, "shuffle_graphs", self._shuffle_call_count))
+        while True:
+            perm = torch.randperm(n, generator=generator)
+            if n == 1 or bool((perm != torch.arange(n)).all()):
+                break
+        return relation_masks[perm]

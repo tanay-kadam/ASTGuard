@@ -27,4 +27,5 @@ def create_collator(config,training=False):
         from astguard.data.collate import SequenceCollator
         return SequenceCollator()
     from astguard.data.collate import StructuralCollator
-    return StructuralCollator(config.model.structural_dropout if training else 0.,config.training.seed)
+    return StructuralCollator(config.model.structural_dropout if training else 0.,config.training.seed,
+        shuffle_graphs=training and config.model.shuffle_training_graphs)

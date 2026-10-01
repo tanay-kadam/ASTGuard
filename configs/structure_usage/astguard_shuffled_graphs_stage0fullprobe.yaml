@@ -1,0 +1,1 @@
+{"extends": "astguard_shuffled_graphs.yaml", "training": {"max_optimizer_steps": 4424}}
