@@ -1,0 +1,9 @@
+{
+  "extends": "../base.yaml",
+  "experiment_id": "SU0",
+  "dataset": {"manifest_hash": "e631d90d2f43ec09922bc2df806384d8b1aff091b58d2ae03a1c17e0052451e0"},
+  "preprocessing": {"cache_hash": "435aff72451638dae06492868e79a97c591178ea66ad2935799a61245bf0e869"},
+  "model": {"structural_layers": [2, 5, 8, 10], "revision": "3b0952feddeffad0063f274080e3c23d75e7eb39"},
+  "resources": {"host_profile": "ssh_lab_8xL40S"},
+  "provenance": {"hpo_parent": null, "protocol_hash": "structure_usage_study_dev_unfrozen_stage0"}
+}

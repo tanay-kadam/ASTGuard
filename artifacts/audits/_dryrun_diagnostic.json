@@ -1,0 +1,84 @@
+{
+  "kind": "development_structure_sensitivity_diagnostic_not_model_evaluation",
+  "config_path": "C:\\Users\\tkadam\\ASTGuard\\configs\\structure_usage\\astguard.yaml",
+  "variant": "astguard",
+  "structural_layers": [
+    2,
+    5,
+    8,
+    10
+  ],
+  "checkpoint": null,
+  "device": "cuda",
+  "n_batches": 1,
+  "n_examples": 4,
+  "n_positive": 2,
+  "gradient_reach": [
+    {
+      "loss": 0.6768130660057068,
+      "per_layer": {
+        "2": {
+          "beta_grad_norm": 8.987614273792133e-05,
+          "beta_grad_finite": true,
+          "gate_grad_norm": 8.860004891175777e-05,
+          "gate_grad_finite": true
+        },
+        "5": {
+          "beta_grad_norm": 0.00010099105566041544,
+          "beta_grad_finite": true,
+          "gate_grad_norm": 9.845428576227278e-05,
+          "gate_grad_finite": true
+        },
+        "8": {
+          "beta_grad_norm": 0.00013427862722892314,
+          "beta_grad_finite": true,
+          "gate_grad_norm": 0.0001334716216661036,
+          "gate_grad_finite": true
+        },
+        "10": {
+          "beta_grad_norm": 9.334518836112693e-05,
+          "beta_grad_finite": true,
+          "gate_grad_norm": 0.00010321527952328324,
+          "gate_grad_finite": true
+        }
+      }
+    }
+  ],
+  "empty_graph_sensitivity": [
+    {
+      "mean_abs_logit_delta": 5.6286342442035675e-05,
+      "max_abs_logit_delta": 6.867945194244385e-05,
+      "fraction_examples_with_nonzero_edges": 1.0,
+      "spearman_real_vs_empty": 1.0,
+      "n": 4
+    }
+  ],
+  "gate_values": [
+    {
+      "2": {
+        "mean": 0.5,
+        "std": 0.0,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "5": {
+        "mean": 0.5,
+        "std": 0.0,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "8": {
+        "mean": 0.5,
+        "std": 0.0,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "10": {
+        "mean": 0.5,
+        "std": 0.0,
+        "min": 0.5,
+        "max": 0.5
+      }
+    }
+  ]
+}

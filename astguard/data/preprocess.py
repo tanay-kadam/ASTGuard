@@ -185,7 +185,7 @@ def main(argv: list[str] | None = None) -> int:
                     "stage":"preprocess","exception":type(exc).__name__,"reason":str(exc),
                     "source_length":len(record.source_canonical),"language":record.language_metadata,
                     "cache_version":preprocessing_hash})
-    write_jsonl(args.output, features)
+    write_jsonl(args.output, features())
     if failure_count[0]:
         raise RuntimeError(f"{failure_count[0]} preprocessing failures; see {failure_path}")
     return 0

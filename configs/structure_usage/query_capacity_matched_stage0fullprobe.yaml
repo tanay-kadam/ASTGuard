@@ -1,0 +1,1 @@
+{"extends": "query_capacity_matched.yaml", "training": {"max_optimizer_steps": 4424}}
