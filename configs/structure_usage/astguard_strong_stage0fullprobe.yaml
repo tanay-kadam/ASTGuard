@@ -1,0 +1,1 @@
+{"extends": "astguard_stage0fullprobe.yaml", "model": {"beta_init": 1.0}, "training": {"new_module_lr_multiplier": 50}}

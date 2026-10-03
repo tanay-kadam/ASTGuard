@@ -1,0 +1,17 @@
+[
+  {"tag": "pB_astguard_strong_s42", "train_cfg": "configs/structure_usage/astguard_strong_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/astguard.yaml", "seed": 42},
+  {"tag": "pB_shuffled_strong_s42", "train_cfg": "configs/structure_usage/astguard_strong_shuffled_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/astguard.yaml", "seed": 42},
+  {"tag": "pB_fixed_strong_s42", "train_cfg": "configs/structure_usage/ast_dfg_fixed_strong_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/ast_dfg_fixed.yaml", "seed": 42},
+  {"tag": "pA_seqonly_s42", "train_cfg": "configs/structure_usage/sequence_only_stage0fullprobe.yaml", "diag_cfg": null, "seed": 42},
+  {"tag": "pB_seqonly_strong_s42", "train_cfg": "configs/structure_usage/sequence_only_strong_stage0fullprobe.yaml", "diag_cfg": null, "seed": 42},
+  {"tag": "pB_astguard_strong_s123", "train_cfg": "configs/structure_usage/astguard_strong_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/astguard.yaml", "seed": 123},
+  {"tag": "pB_shuffled_strong_s123", "train_cfg": "configs/structure_usage/astguard_strong_shuffled_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/astguard.yaml", "seed": 123},
+  {"tag": "pB_fixed_strong_s123", "train_cfg": "configs/structure_usage/ast_dfg_fixed_strong_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/ast_dfg_fixed.yaml", "seed": 123},
+  {"tag": "pA_seqonly_s123", "train_cfg": "configs/structure_usage/sequence_only_stage0fullprobe.yaml", "diag_cfg": null, "seed": 123},
+  {"tag": "pB_seqonly_strong_s123", "train_cfg": "configs/structure_usage/sequence_only_strong_stage0fullprobe.yaml", "diag_cfg": null, "seed": 123},
+  {"tag": "pB_astguard_strong_s456", "train_cfg": "configs/structure_usage/astguard_strong_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/astguard.yaml", "seed": 456},
+  {"tag": "pB_shuffled_strong_s456", "train_cfg": "configs/structure_usage/astguard_strong_shuffled_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/astguard.yaml", "seed": 456},
+  {"tag": "pB_fixed_strong_s456", "train_cfg": "configs/structure_usage/ast_dfg_fixed_strong_stage0fullprobe.yaml", "diag_cfg": "configs/structure_usage/ast_dfg_fixed.yaml", "seed": 456},
+  {"tag": "pA_seqonly_s456", "train_cfg": "configs/structure_usage/sequence_only_stage0fullprobe.yaml", "diag_cfg": null, "seed": 456},
+  {"tag": "pB_seqonly_strong_s456", "train_cfg": "configs/structure_usage/sequence_only_strong_stage0fullprobe.yaml", "diag_cfg": null, "seed": 456}
+]

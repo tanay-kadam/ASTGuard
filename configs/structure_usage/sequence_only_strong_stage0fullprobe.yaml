@@ -1,0 +1,1 @@
+{"extends": "sequence_only_stage0fullprobe.yaml", "training": {"new_module_lr_multiplier": 50}}

@@ -51,6 +51,7 @@ class ModelConfig:
     gate_sharing: str = 'none'
     freeze_beta: bool = False
     shuffle_training_graphs: bool = False
+    graph_shuffle_scope: str = 'batch'
     regvd_hidden_size: int = 128
     regvd_layers: int = 2
     regvd_window_size: int = 5
@@ -135,6 +136,7 @@ class ExperimentConfig:
         if self.preprocessing.structural_context not in {'full_function','visible_prefix'}:raise ConfigError('unknown structural context')
         if self.preprocessing.annotation_masking not in {'a_priori_v1','none'}:raise ConfigError('unknown annotation masking')
         if not 0<=self.model.structural_dropout<=1:raise ConfigError('invalid structural dropout')
+        if self.model.graph_shuffle_scope not in {'batch','length_matched'}:raise ConfigError('unknown graph shuffle scope')
         if not allow_unresolved:
             blob = json.dumps(dataclasses.asdict(self))
             if "UNRESOLVED" in blob or "resolved_" in blob:

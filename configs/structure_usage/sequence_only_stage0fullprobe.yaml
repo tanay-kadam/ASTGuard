@@ -1,0 +1,1 @@
+{"extends": "base.yaml", "model": {"variant": "sequence_only", "relations": [], "beta_init": 0.0}, "training": {"max_optimizer_steps": 4424}}

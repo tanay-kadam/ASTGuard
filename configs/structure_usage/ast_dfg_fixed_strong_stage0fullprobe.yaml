@@ -1,0 +1,1 @@
+{"extends": "ast_dfg_fixed_stage0fullprobe.yaml", "model": {"beta_init": 0.5}, "training": {"new_module_lr_multiplier": 50}}

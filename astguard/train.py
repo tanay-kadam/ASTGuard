@@ -24,7 +24,7 @@ class _FeatureDataset:
     def __init__(self,path,*,role,manifest_hash,preprocessing_hash,fraction=1.0):
         from astguard.data.splits import component_fraction
         self.path=Path(path);self.offsets=[];self.ids=set();self.components=set()
-        self.positives=0;self.max_input_length=0;self._handle=None
+        self.positives=0;self.max_input_length=0;self._handle=None;self.lengths=[]
         with self.path.open('rb') as handle:
             while True:
                 offset=handle.tell();line=handle.readline()
@@ -40,6 +40,7 @@ class _FeatureDataset:
                 if sample_id in self.ids:raise ValueError(f'duplicate feature sample ID: {sample_id}')
                 self.ids.add(sample_id);self.components.add(row['component_id']);self.offsets.append(offset)
                 self.positives+=int(row['label']);self.max_input_length=max(self.max_input_length,len(row['input_ids']))
+                self.lengths.append(len(row['input_ids']))
     def __len__(self):return len(self.offsets)
     def __getitem__(self,index):
         if self._handle is None or self._handle.closed:self._handle=self.path.open('rb')
@@ -122,7 +123,12 @@ def main(argv=None) -> int:
                             betas=config.training.adam_betas, epsilon=config.training.adam_epsilon)
     collator=create_collator(config,training=True)
     tune_collator=create_collator(config,training=False)
-    loader = DataLoader(train_dataset, batch_size=config.training.microbatch_size,
+    train_view=train_dataset
+    if config.model.shuffle_training_graphs and config.model.graph_shuffle_scope=='length_matched':
+        from astguard.data.graph_donors import GraphDonorDataset
+        train_view=GraphDonorDataset(train_dataset,train_dataset.lengths,config.training.seed)
+        atomic_write_json(run_dir/'graph_donors.json',train_view.stats)
+    loader = DataLoader(train_view, batch_size=config.training.microbatch_size,
                         shuffle=True, collate_fn=collator,
                         generator=torch.Generator().manual_seed(config.training.seed))
     class_weights = {0: len(train_dataset)/(2*negatives), 1: len(train_dataset)/(2*positives)}
