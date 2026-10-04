@@ -1,0 +1,11 @@
+[
+  {"tag":"nc_seq_s42","train_cfg":"configs/structure_usage/sequence_only_adapterlr10_stage0fullprobe.yaml","diag_cfg":null,"seed":42},
+  {"tag":"nc_uncentered_s42","train_cfg":"configs/structure_usage/graph_adapter_stage0fullprobe.yaml","diag_cfg":null,"seed":42},
+  {"tag":"nc_centered_s42","train_cfg":"configs/structure_usage/null_centered_graph_adapter_stage0fullprobe.yaml","diag_cfg":null,"seed":42},
+  {"tag":"nc_seq_s123","train_cfg":"configs/structure_usage/sequence_only_adapterlr10_stage0fullprobe.yaml","diag_cfg":null,"seed":123},
+  {"tag":"nc_uncentered_s123","train_cfg":"configs/structure_usage/graph_adapter_stage0fullprobe.yaml","diag_cfg":null,"seed":123},
+  {"tag":"nc_centered_s123","train_cfg":"configs/structure_usage/null_centered_graph_adapter_stage0fullprobe.yaml","diag_cfg":null,"seed":123},
+  {"tag":"nc_seq_s456","train_cfg":"configs/structure_usage/sequence_only_adapterlr10_stage0fullprobe.yaml","diag_cfg":null,"seed":456},
+  {"tag":"nc_uncentered_s456","train_cfg":"configs/structure_usage/graph_adapter_stage0fullprobe.yaml","diag_cfg":null,"seed":456},
+  {"tag":"nc_centered_s456","train_cfg":"configs/structure_usage/null_centered_graph_adapter_stage0fullprobe.yaml","diag_cfg":null,"seed":456}
+]

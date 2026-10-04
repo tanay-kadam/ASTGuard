@@ -41,3 +41,22 @@ Phase A adds `sequence_only` (3 seeds). Phase B repeats real / shuffled / fixed 
 sequence_only with `beta_init` 1.0 (0.5 for fixed) and `new_module_lr_multiplier = 50`.
 Pre-registered checks: structure used (mean |empty-graph logit change| >= 0.05 and gate
 std > 0.05) and topology matters (real minus shuffled AP positive on all 3 seeds, mean >= 0.02).
+
+## Phase A/B completion and independent artifact audit
+
+All 15 jobs completed at 4,424 optimizer steps on the same train/tune feature hashes.
+The exact mean AP values were: sequence default 0.195753, sequence strong 0.199910,
+strong ASTGuard with real graphs 0.201728, strong ASTGuard with length-matched
+shuffled graphs 0.203674, and strong fixed bias 0.154273.
+
+Strong real-minus-shuffled paired differences were +0.096851, -0.080513, and
+-0.022176 (mean -0.001946). The structure-use threshold also failed: real-graph
+empty-graph mean absolute logit deltas were 0.034287, 0.035558, and 0.016434,
+all below 0.05. The authentic-topology and capacity claims are unsupported.
+
+A read-only server audit traced every value to its run, resolved config, selected
+checkpoint, feature hashes, and diagnostic. It rehashed 183 smaller run artifacts
+without mismatch and independently matched the important remotely executed source
+files to this workspace. See
+`artifacts/audits/phase_ab_server_audit_20261004.json`. Large checkpoint hashes were
+recorded by the runs but were not recomputed during this audit.

@@ -26,9 +26,11 @@ class Trainer:
             return self.model(**{key:batch[key].to(self.device) for key in ('input_ids','position_ids','graph_attention_mask')})
         if 'relation_masks' not in batch:
             return self.model(batch['input_ids'].to(self.device),batch['attention_mask'].to(self.device))
+        kwargs = {'special_tokens_mask':batch['special_tokens_mask'].to(self.device)}
+        if 'null_relation_masks' in batch:
+            kwargs['null_relation_masks'] = batch['null_relation_masks'].to(self.device)
         return self.model(batch['input_ids'].to(self.device),batch['attention_mask'].to(self.device),
-                          batch['relation_masks'].to(self.device),
-                          special_tokens_mask=batch['special_tokens_mask'].to(self.device))
+                          batch['relation_masks'].to(self.device),**kwargs)
 
     def train_epoch(self, loader, class_weights: dict[int, float], max_optimizer_steps: int | None = None) -> dict:
         import torch
@@ -77,11 +79,18 @@ class Trainer:
         result = []
         with torch.no_grad():
             for batch in loader:
-                logits = self.forward(batch)['logits'].float().cpu()
+                outputs = self.forward(batch)
+                logits = outputs['logits'].float().cpu()
                 if not torch.isfinite(logits).all():
                     raise FloatingPointError('nonfinite inference logits')
-                for sample_id, label, logit, probability in zip(batch['sample_ids'],batch['labels'],logits,logits.sigmoid()):
-                    result.append({'sample_id':sample_id,'label':int(label),'logit':float(logit),'probability':float(probability)})
+                extras = {name:outputs[name].detach().float().cpu() for name in
+                          ('base_logits','graph_response','null_graph_response','structural_correction')
+                          if name in outputs}
+                for index,(sample_id, label, logit, probability) in enumerate(zip(
+                        batch['sample_ids'],batch['labels'],logits,logits.sigmoid())):
+                    row={'sample_id':sample_id,'label':int(label),'logit':float(logit),'probability':float(probability)}
+                    row.update({name:float(values[index]) for name,values in extras.items()})
+                    result.append(row)
         return result
 
     def fit(self, train_loader, tune_loader, class_weights, config, run_dir, config_hash, resume=None):
@@ -89,7 +98,7 @@ class Trainer:
         from safetensors.torch import save_model, load_model
         from astguard.evaluation.metrics import average_precision
         from astguard.training.checkpoint import save_resume_checkpoint, load_resume_checkpoint
-        from astguard.utils.atomic_io import atomic_write_json, append_jsonl
+        from astguard.utils.atomic_io import atomic_write_json, atomic_write_text, append_jsonl
         run_dir = Path(run_dir)
         checkpoints = run_dir/'checkpoints'
         checkpoints.mkdir(parents=True,exist_ok=True)
@@ -116,6 +125,9 @@ class Trainer:
             train_loader.collate_fn.epoch = epoch
             log = self.train_epoch(train_loader,class_weights,max_optimizer_steps=config.max_optimizer_steps)
             predictions = self.predict(tune_loader)
+            prediction_dir=run_dir/'validation_predictions';prediction_dir.mkdir(parents=True,exist_ok=True)
+            atomic_write_text(prediction_dir/f'epoch_{epoch+1}.jsonl',
+                              ''.join(__import__('json').dumps(row,sort_keys=True)+'\n' for row in predictions))
             ap = average_precision([x['label'] for x in predictions],[x['probability'] for x in predictions])
             if ap is None:
                 raise ValueError('V_tune must contain both classes')
@@ -137,6 +149,9 @@ class Trainer:
             if config.max_optimizer_steps is None and epoch+1 >= config.min_epochs and stale >= config.patience:
                 break
         load_model(self.model,str(checkpoints/'best.safetensors'))
+        if selected_epoch is not None:
+            selected_path=run_dir/'validation_predictions'/f'epoch_{selected_epoch}.jsonl'
+            atomic_write_text(run_dir/'selected_tune_predictions.jsonl',selected_path.read_text(encoding='utf-8'))
         if history:
             import pyarrow as pa
             import pyarrow.parquet as pq

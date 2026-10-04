@@ -52,6 +52,9 @@ class ModelConfig:
     freeze_beta: bool = False
     shuffle_training_graphs: bool = False
     graph_shuffle_scope: str = 'batch'
+    null_graph_samples: int = 4
+    null_position_blocks: int = 4
+    graph_adapter_hidden_size: int = 64
     regvd_hidden_size: int = 128
     regvd_layers: int = 2
     regvd_window_size: int = 5
@@ -137,6 +140,9 @@ class ExperimentConfig:
         if self.preprocessing.annotation_masking not in {'a_priori_v1','none'}:raise ConfigError('unknown annotation masking')
         if not 0<=self.model.structural_dropout<=1:raise ConfigError('invalid structural dropout')
         if self.model.graph_shuffle_scope not in {'batch','length_matched'}:raise ConfigError('unknown graph shuffle scope')
+        if self.model.null_graph_samples <= 0:raise ConfigError('null graph samples must be positive')
+        if self.model.null_position_blocks <= 0:raise ConfigError('null position blocks must be positive')
+        if self.model.graph_adapter_hidden_size <= 0:raise ConfigError('graph adapter hidden size must be positive')
         if not allow_unresolved:
             blob = json.dumps(dataclasses.asdict(self))
             if "UNRESOLVED" in blob or "resolved_" in blob:

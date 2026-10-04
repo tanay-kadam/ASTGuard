@@ -40,7 +40,26 @@ def source_identity(root: str | Path = ".") -> dict:
         dirty = subprocess.check_output(
             ["git", "diff", "--binary"], cwd=root, stderr=subprocess.DEVNULL
         )
-        return {"kind": "git", "commit": commit, "dirty_diff_hash": object_hash(dirty.hex())}
+        untracked_raw = subprocess.check_output(
+            ["git", "ls-files", "--others", "--exclude-standard", "-z"],
+            cwd=root, stderr=subprocess.DEVNULL
+        )
+        ignored_roots = {"runs", "data", "artifacts", "results", "third_party"}
+        untracked = []
+        for raw_name in untracked_raw.split(b"\0"):
+            if not raw_name:
+                continue
+            relative = Path(raw_name.decode("utf-8", errors="surrogateescape"))
+            if relative.parts and relative.parts[0] in ignored_roots:
+                continue
+            path = root / relative
+            if path.is_file():
+                untracked.append((relative.as_posix(), sha256_file(path)))
+        untracked.sort()
+        return {"kind": "git", "commit": commit,
+                "dirty_diff_hash": object_hash(dirty.hex()),
+                "untracked_files_hash": object_hash(untracked),
+                "untracked_file_count": len(untracked)}
     except (FileNotFoundError, subprocess.CalledProcessError):
         entries = []
         for directory,subdirectories,filenames in os.walk(root):

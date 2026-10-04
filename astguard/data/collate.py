@@ -72,7 +72,7 @@ class StructuralCollator:
         stacked_relation_masks = torch.stack(relation_masks)
         if self.shuffle_graphs and len(batch) > 1:
             stacked_relation_masks = self._shuffle_batch_graphs(stacked_relation_masks)
-        return {
+        result = {
             "input_ids": torch.tensor(ids, dtype=torch.long),
             "attention_mask": torch.tensor(masks, dtype=torch.bool),
             "special_tokens_mask": torch.tensor(specials, dtype=torch.bool),
@@ -80,6 +80,35 @@ class StructuralCollator:
             "labels": torch.tensor(labels, dtype=torch.float32),
             "sample_ids": metadata,
         }
+        has_nulls = ["null_graphs" in item for item in batch]
+        if any(has_nulls):
+            if not all(has_nulls):
+                raise ValueError("a batch cannot mix examples with and without matched null graphs")
+            draws = len(batch[0]["null_graphs"])
+            if draws == 0 or any(len(item["null_graphs"]) != draws for item in batch):
+                raise ValueError("every example must have the same positive number of null graphs")
+            null_masks, change_fractions = [], []
+            for item in batch:
+                item_masks, item_changes = [], []
+                length = len(item["input_ids"])
+                for draw, graph in enumerate(item["null_graphs"]):
+                    dense = torch.zeros((2, max_length, max_length), dtype=torch.bool)
+                    for relation_index, relation in enumerate(("ast", "dfg")):
+                        for left, right in graph.get(f"{relation}_token_edges", []):
+                            if left < length and right < length and left != right:
+                                if item["special_tokens_mask"][left] or item["special_tokens_mask"][right]:
+                                    raise ValueError("null structural edge touches a special token")
+                                dense[relation_index, left, right] = True
+                    item_masks.append(dense)
+                    details = item.get("null_graph_diagnostics", [[]] * draws)[draw]
+                    by_relation = {entry["relation"]: entry for entry in details}
+                    item_changes.append([float(by_relation.get(name, {}).get("changed_fraction", 0.0))
+                                         for name in ("ast", "dfg")])
+                null_masks.append(torch.stack(item_masks))
+                change_fractions.append(item_changes)
+            result["null_relation_masks"] = torch.stack(null_masks)
+            result["null_graph_change_fractions"] = torch.tensor(change_fractions, dtype=torch.float32)
+        return result
 
     def _shuffle_batch_graphs(self, relation_masks):
         """Pair each example's tokens with another example's graph (no fixed points).

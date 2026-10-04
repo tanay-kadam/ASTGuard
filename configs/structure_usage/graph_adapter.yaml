@@ -1,0 +1,1 @@
+{"extends":"base.yaml","experiment_id":"NC0","model":{"variant":"graph_adapter","relations":["ast","dfg"],"beta_init":1.0,"graph_adapter_hidden_size":64},"training":{"new_module_lr_multiplier":10}}

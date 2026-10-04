@@ -10,7 +10,9 @@ def build_adamw(model, *, pretrained_lr: float, new_multiplier: float, weight_de
     for name, parameter in model.named_parameters():
         if not parameter.requires_grad:
             continue
-        is_new = name.startswith("classifier") or any(part in name for part in ('.gate.', '.linear.', '.adapter.')) or name.endswith('.beta')
+        is_new = (name.startswith("classifier") or name.startswith("graph_adapter") or
+                  any(part in name for part in ('.gate.', '.linear.', '.adapter.')) or
+                  name.endswith('.beta'))
         lr = pretrained_lr * (new_multiplier if is_new else 1.0)
         no_decay = name.endswith("bias") or "LayerNorm" in name or "layer_norm" in name or name.endswith("beta")
         key = (lr, 0.0 if no_decay else weight_decay)

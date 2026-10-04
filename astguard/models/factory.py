@@ -2,6 +2,15 @@ from astguard.models.codebert import ASTGuardClassifier
 
 
 def create_model(config):
+    if config.model.variant in {'graph_adapter','null_centered_graph_adapter'}:
+        from astguard.models.null_centered import NullCenteredGraphClassifier
+        return NullCenteredGraphClassifier.from_pretrained(
+            config.model.checkpoint, revision=config.model.revision,
+            relations=config.model.relations,
+            adapter_size=config.model.graph_adapter_hidden_size,
+            head_dropout=config.model.head_dropout,
+            beta_init=config.model.beta_init,
+            centered=config.model.variant == 'null_centered_graph_adapter')
     if config.model.variant=='linevul_function':
         from astguard.baselines.linevul import LineVulFunction
         return LineVulFunction.from_pretrained(config.model.checkpoint,config.model.revision)

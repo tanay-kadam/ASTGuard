@@ -18,6 +18,7 @@ FEATDIR = ROOT / "data/processed/cohorts_stage0/P_clean/ccfd383df4ffc636ecebb995
 QDIR = ROOT / "artifacts/release_gates/seedq"
 STATUS = QDIR / "status.jsonl"
 EXCLUDED_GPUS = {2, 3}
+ALLOWED_GPUS = None
 FREE_MEM_MIB = 3000
 FREE_UTIL_PCT = 20
 POLL_SECONDS = 60
@@ -90,7 +91,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--jobs", help="JSON jobs file; default is the legacy Stage 0 list")
     parser.add_argument("--qname", default="seedq", help="subdirectory of artifacts/release_gates for logs/status")
+    parser.add_argument("--allowed-gpus", help="comma-separated GPU indices the queue may use; overrides the exclusion list")
     args = parser.parse_args()
+    global ALLOWED_GPUS
+    ALLOWED_GPUS = {int(x) for x in args.allowed_gpus.split(",")} if args.allowed_gpus else None
     if args.jobs:
         JOBS = load_jobs(args.jobs)
     QDIR = ROOT / "artifacts/release_gates" / args.qname
@@ -116,7 +120,7 @@ def main():
             held = {gpu for _, gpu in running.values()}
             state = gpu_state()
             free = [g for g, (mem, util) in sorted(state.items())
-                    if g not in EXCLUDED_GPUS and g not in held and mem < FREE_MEM_MIB and util < FREE_UTIL_PCT]
+                    if (g in ALLOWED_GPUS if ALLOWED_GPUS is not None else g not in EXCLUDED_GPUS) and g not in held and mem < FREE_MEM_MIB and util < FREE_UTIL_PCT]
             if free:
                 tag, condition, seed = pending.pop(0)
                 attempts[tag] += 1

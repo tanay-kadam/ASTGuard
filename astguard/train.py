@@ -124,17 +124,32 @@ def main(argv=None) -> int:
     collator=create_collator(config,training=True)
     tune_collator=create_collator(config,training=False)
     train_view=train_dataset
+    tune_view=tune_dataset
     if config.model.shuffle_training_graphs and config.model.graph_shuffle_scope=='length_matched':
         from astguard.data.graph_donors import GraphDonorDataset
         train_view=GraphDonorDataset(train_dataset,train_dataset.lengths,config.training.seed)
         atomic_write_json(run_dir/'graph_donors.json',train_view.stats)
+    if config.model.variant == 'null_centered_graph_adapter':
+        from astguard.data.null_graphs import MatchedNullGraphDataset
+        train_view=MatchedNullGraphDataset(
+            train_dataset, seed=config.training.seed,
+            samples=config.model.null_graph_samples,
+            position_blocks=config.model.null_position_blocks,
+            namespace='train')
+        tune_view=MatchedNullGraphDataset(
+            tune_dataset, seed=config.training.seed,
+            samples=config.model.null_graph_samples,
+            position_blocks=config.model.null_position_blocks,
+            namespace='tune')
+        atomic_write_json(run_dir/'matched_null_graphs.json',{
+            'train':train_view.stats,'tune':tune_view.stats})
     loader = DataLoader(train_view, batch_size=config.training.microbatch_size,
                         shuffle=True, collate_fn=collator,
                         generator=torch.Generator().manual_seed(config.training.seed))
     class_weights = {0: len(train_dataset)/(2*negatives), 1: len(train_dataset)/(2*positives)}
     if config.training.loss == 'unweighted_bce':
         class_weights = {0:1.,1:1.}
-    tune_loader = DataLoader(tune_dataset,batch_size=config.training.microbatch_size,shuffle=False,collate_fn=tune_collator)
+    tune_loader = DataLoader(tune_view,batch_size=config.training.microbatch_size,shuffle=False,collate_fn=tune_collator)
     import math
     from transformers import get_linear_schedule_with_warmup
     total_steps = config.training.max_optimizer_steps or math.ceil(len(loader)/config.training.gradient_accumulation)*config.training.epochs
