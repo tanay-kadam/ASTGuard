@@ -1,0 +1,20 @@
+{"utc": "2026-10-04T18:35:47.437187+00:00", "event": "queue_start", "jobs": ["nc_seq_s42", "nc_uncentered_s42", "nc_centered_s42", "nc_seq_s123", "nc_uncentered_s123", "nc_centered_s123", "nc_seq_s456", "nc_uncentered_s456", "nc_centered_s456"], "excluded": [2, 3]}
+{"utc": "2026-10-04T18:35:47.528723+00:00", "event": "job_start", "tag": "nc_seq_s42", "gpu": 0, "seed": 42, "condition": "custom_nc_seq_s42", "attempt": 1}
+{"utc": "2026-10-04T18:37:47.619606+00:00", "event": "job_start", "tag": "nc_uncentered_s42", "gpu": 1, "seed": 42, "condition": "custom_nc_uncentered_s42", "attempt": 1}
+{"utc": "2026-10-04T18:39:47.705868+00:00", "event": "job_start", "tag": "nc_centered_s42", "gpu": 4, "seed": 42, "condition": "custom_nc_centered_s42", "attempt": 1}
+{"utc": "2026-10-04T18:41:47.794449+00:00", "event": "job_start", "tag": "nc_seq_s123", "gpu": 7, "seed": 123, "condition": "custom_nc_seq_s123", "attempt": 1}
+{"utc": "2026-10-04T20:42:58.590874+00:00", "event": "job_done", "tag": "nc_seq_s42", "gpu": 0}
+{"utc": "2026-10-04T20:42:58.675347+00:00", "event": "job_start", "tag": "nc_uncentered_s123", "gpu": 0, "seed": 123, "condition": "custom_nc_uncentered_s123", "attempt": 1}
+{"utc": "2026-10-04T20:48:59.052071+00:00", "event": "job_done", "tag": "nc_seq_s123", "gpu": 7}
+{"utc": "2026-10-04T20:48:59.147420+00:00", "event": "job_start", "tag": "nc_centered_s123", "gpu": 7, "seed": 123, "condition": "custom_nc_centered_s123", "attempt": 1}
+{"utc": "2026-10-04T21:54:05.064752+00:00", "event": "job_done", "tag": "nc_uncentered_s42", "gpu": 1}
+{"utc": "2026-10-04T21:55:05.237485+00:00", "event": "job_start", "tag": "nc_seq_s456", "gpu": 1, "seed": 456, "condition": "custom_nc_seq_s456", "attempt": 1}
+{"utc": "2026-10-05T00:03:16.818447+00:00", "event": "job_done", "tag": "nc_uncentered_s123", "gpu": 0}
+{"utc": "2026-10-05T00:03:16.910571+00:00", "event": "job_start", "tag": "nc_uncentered_s456", "gpu": 0, "seed": 456, "condition": "custom_nc_uncentered_s456", "attempt": 1}
+{"utc": "2026-10-05T00:06:17.003058+00:00", "event": "job_done", "tag": "nc_seq_s456", "gpu": 1}
+{"utc": "2026-10-05T00:06:17.103862+00:00", "event": "job_start", "tag": "nc_centered_s456", "gpu": 1, "seed": 456, "condition": "custom_nc_centered_s456", "attempt": 1}
+{"utc": "2026-10-05T03:24:17.209206+00:00", "event": "job_done", "tag": "nc_uncentered_s456", "gpu": 0}
+{"utc": "2026-10-05T03:46:17.216649+00:00", "event": "job_done", "tag": "nc_centered_s42", "gpu": 4}
+{"utc": "2026-10-05T05:55:17.243232+00:00", "event": "job_done", "tag": "nc_centered_s123", "gpu": 7}
+{"utc": "2026-10-05T08:29:17.258527+00:00", "event": "job_done", "tag": "nc_centered_s456", "gpu": 1}
+{"utc": "2026-10-05T08:30:17.258806+00:00", "event": "queue_complete"}

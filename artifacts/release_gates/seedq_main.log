@@ -1,0 +1,18 @@
+{"utc": "2026-10-02T21:05:34.104914+00:00", "event": "queue_start", "jobs": ["astguard_s123", "shuffled_s123", "fixed_s123", "astguard_s456", "shuffled_s456", "fixed_s456", "astguard_5ep_s42", "shuffled_5ep_s42"], "excluded": [2, 3]}
+{"utc": "2026-10-02T21:05:34.216031+00:00", "event": "job_start", "tag": "astguard_s123", "gpu": 7, "seed": 123, "condition": "astguard", "attempt": 1}
+{"utc": "2026-10-02T22:11:40.964558+00:00", "event": "job_start", "tag": "shuffled_s123", "gpu": 0, "seed": 123, "condition": "shuffled", "attempt": 1}
+{"utc": "2026-10-02T23:11:47.147081+00:00", "event": "job_start", "tag": "fixed_s123", "gpu": 5, "seed": 123, "condition": "fixed", "attempt": 1}
+{"utc": "2026-10-02T23:36:49.868719+00:00", "event": "job_start", "tag": "astguard_s456", "gpu": 1, "seed": 456, "condition": "astguard", "attempt": 1}
+{"utc": "2026-10-03T00:25:55.369081+00:00", "event": "job_done", "tag": "astguard_s123", "gpu": 7}
+{"utc": "2026-10-03T00:58:59.043143+00:00", "event": "job_start", "tag": "shuffled_s456", "gpu": 6, "seed": 456, "condition": "shuffled", "attempt": 1}
+{"utc": "2026-10-03T01:00:59.160152+00:00", "event": "job_start", "tag": "fixed_s456", "gpu": 4, "seed": 456, "condition": "fixed", "attempt": 1}
+{"utc": "2026-10-03T02:37:08.867798+00:00", "event": "job_done", "tag": "shuffled_s123", "gpu": 0}
+{"utc": "2026-10-03T02:46:09.805227+00:00", "event": "job_done", "tag": "fixed_s123", "gpu": 5}
+{"utc": "2026-10-03T02:46:09.908305+00:00", "event": "job_start", "tag": "astguard_5ep_s42", "gpu": 5, "seed": 42, "condition": "astguard_5ep", "attempt": 1}
+{"utc": "2026-10-03T03:05:11.712473+00:00", "event": "job_done", "tag": "astguard_s456", "gpu": 1}
+{"utc": "2026-10-03T03:16:13.001684+00:00", "event": "job_start", "tag": "shuffled_5ep_s42", "gpu": 7, "seed": 42, "condition": "shuffled_5ep", "attempt": 1}
+{"utc": "2026-10-03T04:25:13.018958+00:00", "event": "job_done", "tag": "fixed_s456", "gpu": 4}
+{"utc": "2026-10-03T05:21:13.025466+00:00", "event": "job_done", "tag": "shuffled_s456", "gpu": 6}
+{"utc": "2026-10-03T13:31:13.083631+00:00", "event": "job_done", "tag": "astguard_5ep_s42", "gpu": 5}
+{"utc": "2026-10-03T18:01:13.128480+00:00", "event": "job_done", "tag": "shuffled_5ep_s42", "gpu": 7}
+{"utc": "2026-10-03T18:02:13.128756+00:00", "event": "queue_complete"}

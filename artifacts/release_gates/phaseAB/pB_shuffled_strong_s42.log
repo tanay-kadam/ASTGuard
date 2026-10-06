@@ -1,0 +1,37 @@
+Some weights of the model checkpoint at microsoft/codebert-base were not used when initializing RobertaModel: ['pooler.dense.bias', 'pooler.dense.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+RUN=runs/20261003T161600Z-b0949dd9bc-42-3ec918
+Some weights of the model checkpoint at microsoft/codebert-base were not used when initializing RobertaModel: ['pooler.dense.bias', 'pooler.dense.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+{
+  "variant": "astguard",
+  "mean_abs_logit_delta_vs_empty": 0.011464503011666238,
+  "gate_value_summary": {
+    "2": {
+      "mean": 0.4667590856552124,
+      "std": 0.2497592270374298,
+      "min": 0.003436008468270302,
+      "max": 0.9975067973136902
+    },
+    "5": {
+      "mean": 0.4699365794658661,
+      "std": 0.28496551513671875,
+      "min": 0.002885187743231654,
+      "max": 0.9913752675056458
+    },
+    "8": {
+      "mean": 0.37576740980148315,
+      "std": 0.3356049656867981,
+      "min": 0.0019132301677018404,
+      "max": 0.9995611310005188
+    },
+    "10": {
+      "mean": 0.5981596112251282,
+      "std": 0.2997418940067291,
+      "min": 0.05106658488512039,
+      "max": 0.9912970066070557
+    }
+  }
+}

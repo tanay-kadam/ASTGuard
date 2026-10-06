@@ -1,0 +1,33 @@
+Some weights of the model checkpoint at microsoft/codebert-base were not used when initializing RobertaModel: ['pooler.dense.bias', 'pooler.dense.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+{
+  "variant": "astguard",
+  "mean_abs_logit_delta_vs_empty": 0.0017379758937750012,
+  "gate_value_summary": {
+    "2": {
+      "mean": 0.502198338508606,
+      "std": 0.010634785518050194,
+      "min": 0.4488394260406494,
+      "max": 0.5881114602088928
+    },
+    "5": {
+      "mean": 0.5017073154449463,
+      "std": 0.011728371493518353,
+      "min": 0.4493879973888397,
+      "max": 0.578934371471405
+    },
+    "8": {
+      "mean": 0.5077401995658875,
+      "std": 0.011629550717771053,
+      "min": 0.45138290524482727,
+      "max": 0.5966264009475708
+    },
+    "10": {
+      "mean": 0.5173099637031555,
+      "std": 0.016763051971793175,
+      "min": 0.4551279544830322,
+      "max": 0.6669861078262329
+    }
+  }
+}

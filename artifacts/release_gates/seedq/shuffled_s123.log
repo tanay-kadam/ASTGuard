@@ -1,0 +1,84 @@
+Some weights of the model checkpoint at microsoft/codebert-base were not used when initializing RobertaModel: ['pooler.dense.bias', 'pooler.dense.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+RUN=runs/20261002T224028Z-18c9d5041b-123-1e2759
+Some weights of the model checkpoint at microsoft/codebert-base were not used when initializing RobertaModel: ['pooler.dense.bias', 'pooler.dense.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+[W1002 22:36:55.951636469 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 25165824 bytes (free: 14680064, total: 47693955072).
+[W1002 22:36:55.951838843 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 25165824 bytes (free: 14680064, total: 47693955072).
+Traceback (most recent call last):
+  File "/home/tkadam/ASTGuard/scripts/diagnose_structure_sensitivity.py", line 208, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/tkadam/ASTGuard/scripts/diagnose_structure_sensitivity.py", line 177, in main
+    gradient_reports = [gradient_reach_report(model, batch, class_weights, device) for batch in batches]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/scripts/diagnose_structure_sensitivity.py", line 177, in <listcomp>
+    gradient_reports = [gradient_reach_report(model, batch, class_weights, device) for batch in batches]
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/scripts/diagnose_structure_sensitivity.py", line 58, in gradient_reach_report
+    output = model(batch["input_ids"], batch["attention_mask"], batch.get("relation_masks"),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/astguard/models/codebert.py", line 114, in forward
+    hidden, attention = layer(hidden, extended, attention_mask, relation_masks, output_attentions, special_tokens_mask)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/astguard/models/codebert.py", line 26, in forward
+    output = self.layer(hidden_states, attention_mask=extended_attention_mask, output_attentions=output_attentions)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/models/roberta/modeling_roberta.py", line 513, in forward
+    self_attention_outputs = self.attention(
+                             ^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/models/roberta/modeling_roberta.py", line 440, in forward
+    self_outputs = self.self(
+                   ^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/transformers/models/roberta/modeling_roberta.py", line 264, in forward
+    context_layer = torch.matmul(attention_probs, value_layer)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tkadam/ASTGuard/.venv/lib/python3.11/site-packages/torch/_native/registry.py", line 958, in eager_router
+    return _fallback.call_boxed(keyset, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 24.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 14.00 MiB is free. Process 2103793 has 476.00 MiB memory in use. Process 2255893 has 39.32 GiB memory in use. Including non-PyTorch memory, this process has 4.59 GiB memory in use. Of the allocated memory 3.99 GiB is allocated by PyTorch, and 112.37 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+DIAG_FAILED

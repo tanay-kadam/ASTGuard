@@ -1,0 +1,147 @@
+{
+  "elapsed_seconds": 234.5,
+  "failures": [],
+  "plan": "artifacts/release_gates/registry_plan_stage0.json",
+  "slowest_tasks": [
+    {
+      "sample_id": "primevul:original:474677",
+      "seconds": 141.1,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:64625",
+      "seconds": 107.82,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:68155",
+      "seconds": 105.33,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:224853",
+      "seconds": 98.77,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:79403",
+      "seconds": 23.63,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:326117",
+      "seconds": 10.3,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:217569",
+      "seconds": 9.4,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:194963",
+      "seconds": 8.04,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:425124",
+      "seconds": 7.02,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:431783",
+      "seconds": 6.53,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:196693",
+      "seconds": 6.12,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:242663",
+      "seconds": 5.76,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:227031",
+      "seconds": 5.68,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:230602",
+      "seconds": 5.55,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:431782",
+      "seconds": 5.12,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:129674",
+      "seconds": 4.48,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:202676",
+      "seconds": 4.0,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:461767",
+      "seconds": 3.99,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:252549",
+      "seconds": 3.97,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:93746",
+      "seconds": 3.71,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:242513",
+      "seconds": 3.26,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:336295",
+      "seconds": 3.02,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:336478",
+      "seconds": 2.93,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:46382",
+      "seconds": 2.83,
+      "variant": 0
+    },
+    {
+      "sample_id": "primevul:original:160946",
+      "seconds": 2.8,
+      "variant": 0
+    }
+  ],
+  "status": "complete",
+  "tasks": 186893,
+  "variants": [
+    {
+      "annotation_masking": "a_priori_v1",
+      "ast_relation": "leaf_path_radius4",
+      "dfg_symmetry": false,
+      "max_length": 512,
+      "structural_context": "full_function",
+      "topology": "clean"
+    }
+  ],
+  "views": [
+    "P_clean"
+  ]
+}

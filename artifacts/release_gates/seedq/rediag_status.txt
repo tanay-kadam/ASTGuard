@@ -1,0 +1,3 @@
+REDIAG_EXIT 0 astguard_s456
+REDIAG_EXIT 0 shuffled_s123
+REDIAG_EXIT 0 astguard_s123

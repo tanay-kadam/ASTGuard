@@ -1,0 +1,32 @@
+{"utc": "2026-10-03T15:43:32.083605+00:00", "event": "queue_start", "jobs": ["pB_astguard_strong_s42", "pB_shuffled_strong_s42", "pB_fixed_strong_s42", "pA_seqonly_s42", "pB_seqonly_strong_s42", "pB_astguard_strong_s123", "pB_shuffled_strong_s123", "pB_fixed_strong_s123", "pA_seqonly_s123", "pB_seqonly_strong_s123", "pB_astguard_strong_s456", "pB_shuffled_strong_s456", "pB_fixed_strong_s456", "pA_seqonly_s456", "pB_seqonly_strong_s456"], "excluded": [2, 3]}
+{"utc": "2026-10-03T15:43:32.166888+00:00", "event": "job_start", "tag": "pB_astguard_strong_s42", "gpu": 0, "seed": 42, "condition": "custom_pB_astguard_strong_s42", "attempt": 1}
+{"utc": "2026-10-03T15:45:32.252694+00:00", "event": "job_start", "tag": "pB_shuffled_strong_s42", "gpu": 1, "seed": 42, "condition": "custom_pB_shuffled_strong_s42", "attempt": 1}
+{"utc": "2026-10-03T15:47:32.339772+00:00", "event": "job_start", "tag": "pB_fixed_strong_s42", "gpu": 4, "seed": 42, "condition": "custom_pB_fixed_strong_s42", "attempt": 1}
+{"utc": "2026-10-03T17:57:44.197571+00:00", "event": "job_start", "tag": "pA_seqonly_s42", "gpu": 7, "seed": 42, "condition": "custom_pA_seqonly_s42", "attempt": 1}
+{"utc": "2026-10-03T19:03:50.017230+00:00", "event": "job_done", "tag": "pB_astguard_strong_s42", "gpu": 0}
+{"utc": "2026-10-03T19:03:50.104263+00:00", "event": "job_start", "tag": "pB_seqonly_strong_s42", "gpu": 0, "seed": 42, "condition": "custom_pB_seqonly_strong_s42", "attempt": 1}
+{"utc": "2026-10-03T19:06:50.191071+00:00", "event": "job_done", "tag": "pB_fixed_strong_s42", "gpu": 4}
+{"utc": "2026-10-03T19:06:50.282217+00:00", "event": "job_start", "tag": "pB_astguard_strong_s123", "gpu": 4, "seed": 123, "condition": "custom_pB_astguard_strong_s123", "attempt": 1}
+{"utc": "2026-10-03T20:06:55.682493+00:00", "event": "job_done", "tag": "pA_seqonly_s42", "gpu": 7}
+{"utc": "2026-10-03T20:06:55.772413+00:00", "event": "job_start", "tag": "pB_shuffled_strong_s123", "gpu": 7, "seed": 123, "condition": "custom_pB_shuffled_strong_s123", "attempt": 1}
+{"utc": "2026-10-03T20:08:55.772673+00:00", "event": "job_done", "tag": "pB_shuffled_strong_s42", "gpu": 1}
+{"utc": "2026-10-03T20:08:55.868681+00:00", "event": "job_start", "tag": "pB_fixed_strong_s123", "gpu": 1, "seed": 123, "condition": "custom_pB_fixed_strong_s123", "attempt": 1}
+{"utc": "2026-10-03T21:11:01.192630+00:00", "event": "job_done", "tag": "pB_seqonly_strong_s42", "gpu": 0}
+{"utc": "2026-10-03T21:11:01.279464+00:00", "event": "job_start", "tag": "pA_seqonly_s123", "gpu": 0, "seed": 123, "condition": "custom_pA_seqonly_s123", "attempt": 1}
+{"utc": "2026-10-03T22:21:07.338495+00:00", "event": "job_done", "tag": "pB_astguard_strong_s123", "gpu": 4}
+{"utc": "2026-10-03T22:21:07.430956+00:00", "event": "job_start", "tag": "pB_seqonly_strong_s123", "gpu": 4, "seed": 123, "condition": "custom_pB_seqonly_strong_s123", "attempt": 1}
+{"utc": "2026-10-03T23:14:11.958972+00:00", "event": "job_done", "tag": "pA_seqonly_s123", "gpu": 0}
+{"utc": "2026-10-03T23:14:12.047657+00:00", "event": "job_start", "tag": "pB_astguard_strong_s456", "gpu": 0, "seed": 456, "condition": "custom_pB_astguard_strong_s456", "attempt": 1}
+{"utc": "2026-10-03T23:17:12.140368+00:00", "event": "job_done", "tag": "pB_fixed_strong_s123", "gpu": 1}
+{"utc": "2026-10-03T23:17:12.230509+00:00", "event": "job_start", "tag": "pB_shuffled_strong_s456", "gpu": 1, "seed": 456, "condition": "custom_pB_shuffled_strong_s456", "attempt": 1}
+{"utc": "2026-10-04T00:11:17.105591+00:00", "event": "job_done", "tag": "pB_shuffled_strong_s123", "gpu": 7}
+{"utc": "2026-10-04T00:11:17.223256+00:00", "event": "job_start", "tag": "pB_fixed_strong_s456", "gpu": 7, "seed": 456, "condition": "custom_pB_fixed_strong_s456", "attempt": 1}
+{"utc": "2026-10-04T00:22:18.144641+00:00", "event": "job_done", "tag": "pB_seqonly_strong_s123", "gpu": 4}
+{"utc": "2026-10-04T00:22:18.252494+00:00", "event": "job_start", "tag": "pA_seqonly_s456", "gpu": 4, "seed": 456, "condition": "custom_pA_seqonly_s456", "attempt": 1}
+{"utc": "2026-10-04T02:27:29.422937+00:00", "event": "job_done", "tag": "pA_seqonly_s456", "gpu": 4}
+{"utc": "2026-10-04T02:27:29.512709+00:00", "event": "job_start", "tag": "pB_seqonly_strong_s456", "gpu": 4, "seed": 456, "condition": "custom_pB_seqonly_strong_s456", "attempt": 1}
+{"utc": "2026-10-04T02:29:29.512958+00:00", "event": "job_done", "tag": "pB_astguard_strong_s456", "gpu": 0}
+{"utc": "2026-10-04T03:25:29.521668+00:00", "event": "job_done", "tag": "pB_fixed_strong_s456", "gpu": 7}
+{"utc": "2026-10-04T03:32:29.523005+00:00", "event": "job_done", "tag": "pB_shuffled_strong_s456", "gpu": 1}
+{"utc": "2026-10-04T04:34:29.530460+00:00", "event": "job_done", "tag": "pB_seqonly_strong_s456", "gpu": 4}
+{"utc": "2026-10-04T04:35:29.530762+00:00", "event": "queue_complete"}
