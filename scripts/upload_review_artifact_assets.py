@@ -27,7 +27,13 @@ def main():
     a=p.parse_args();manifest=json.loads(Path('artifact/manifest.json').read_text());repo=manifest['repository'];tag=manifest['release_tag']
     records=manifest['assets'];asset_dir=Path('output/artifact_release');asset_dir.mkdir(parents=True,exist_ok=True)
     snapshot=Path('artifacts/ssh_import_20261009/snapshot')
-    def api():return json.loads(subprocess.check_output([a.gh,'api',f'repos/{repo}/releases/tags/{tag}']))
+    # GitHub's /releases/tags endpoint excludes unpublished drafts. Resolve the
+    # owner-visible draft once, then use its stable numeric release identifier.
+    candidates=json.loads(subprocess.check_output([a.gh,'api',f'repos/{repo}/releases?per_page=100']))
+    matching=[r for r in candidates if r['tag_name']==tag]
+    if len(matching)!=1:raise ValueError('Expected one existing draft release for '+tag)
+    release_id=matching[0]['id']
+    def api():return json.loads(subprocess.check_output([a.gh,'api',f'repos/{repo}/releases/{release_id}']))
     release=api()
     if not release['draft']:raise ValueError('Only a draft release may be populated')
     remote={r['name']:r for r in release['assets']};done=set()

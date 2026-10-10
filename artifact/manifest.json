@@ -6,7 +6,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_centered_s123/runs/20261008T061807Z-173b47a2b3-123-c148a6/checkpoints/best.safetensors",
       "sha256": "828341fb7d2c828556fe4aff1763b6fe0caea320113f436ca168033d1b837e40",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_centered_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_centered_s123.safetensors"
     },
     "checkpoint-real_adapter_centered_s42.safetensors": {
       "bytes": 498841996,
@@ -14,7 +14,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_centered_s42/runs/20261008T053634Z-92ceef8549-42-1f7ab3/checkpoints/best.safetensors",
       "sha256": "edf73a762ba40f619a73755434f20345a25050cb454dd3a4155a8934f6a410ff",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_centered_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_centered_s42.safetensors"
     },
     "checkpoint-real_adapter_centered_s456.safetensors": {
       "bytes": 498841996,
@@ -22,7 +22,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_centered_s456/runs/20261008T042905Z-009b16f080-456-2bf4c9/checkpoints/best.safetensors",
       "sha256": "32996ff66396df503be8928b5ec0d0ff208f91c936c4ced5a1a6af3d0e1708f2",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_centered_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_centered_s456.safetensors"
     },
     "checkpoint-real_adapter_sequence_s123.safetensors": {
       "bytes": 498607940,
@@ -30,7 +30,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_sequence_s123/runs/20261007T220354Z-926c30bcfc-123-8759d4/checkpoints/best.safetensors",
       "sha256": "6a51a35076a08b607d6ee9d88e3736fad1fa42a64694eca4684636a52080ebdf",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_sequence_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_sequence_s123.safetensors"
     },
     "checkpoint-real_adapter_sequence_s42.safetensors": {
       "bytes": 498607940,
@@ -38,7 +38,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_sequence_s42/runs/20261007T220408Z-32eb512ddf-42-d1ee66/checkpoints/best.safetensors",
       "sha256": "0456facceaddfdb64f1b404ac2751b8ea4fdf1ff3e6292c3ee38da2230eb610b",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_sequence_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_sequence_s42.safetensors"
     },
     "checkpoint-real_adapter_sequence_s456.safetensors": {
       "bytes": 498607940,
@@ -46,7 +46,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_sequence_s456/runs/20261007T222618Z-e78d32a512-456-0d447d/checkpoints/best.safetensors",
       "sha256": "cc8646d6acf5e37761a705d9b81fd0e10361e9a08e49f9958d3a14754dd6f4d4",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_sequence_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_sequence_s456.safetensors"
     },
     "checkpoint-real_adapter_uncentered_s123.safetensors": {
       "bytes": 498841996,
@@ -54,7 +54,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s123/runs/20261007T222623Z-6c7cc58673-123-70daee/checkpoints/best.safetensors",
       "sha256": "75cffe2365dc3ed3e71013242d6f879da698bd5a7dc41a38dc9c8dbc03d1dc5c",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_uncentered_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_uncentered_s123.safetensors"
     },
     "checkpoint-real_adapter_uncentered_s42.safetensors": {
       "bytes": 498841996,
@@ -62,7 +62,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s42/runs/20261007T222714Z-884f62e972-42-f21bf9/checkpoints/best.safetensors",
       "sha256": "c77885a103787f63c209e5ebf925f03a7017fab220206e26d8b2c38c162ccc7f",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_uncentered_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_uncentered_s42.safetensors"
     },
     "checkpoint-real_adapter_uncentered_s456.safetensors": {
       "bytes": 498841996,
@@ -70,7 +70,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s456/runs/20261007T222603Z-5a22e3b243-456-da7b66/checkpoints/best.safetensors",
       "sha256": "7541af8839f65633de487dc04b81999030c903bb487e51aeffff33db25ae71e0",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_adapter_uncentered_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_adapter_uncentered_s456.safetensors"
     },
     "checkpoint-real_attention_authentic_s123.safetensors": {
       "bytes": 498907132,
@@ -78,7 +78,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s123/runs/20261008T043655Z-fa65ab7772-123-f586e0/checkpoints/best.safetensors",
       "sha256": "e83c4537de0884a54ca608820850b3c1f197d06462b4adaa9cdde939784dd295",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_authentic_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_authentic_s123.safetensors"
     },
     "checkpoint-real_attention_authentic_s42.safetensors": {
       "bytes": 498907132,
@@ -86,7 +86,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s42/runs/20261007T220354Z-af05b503af-42-edef50/checkpoints/best.safetensors",
       "sha256": "c65361506cf00f376358edaf960a70a4f5e3bb0dab632f2cd7dd91dd2ad2802d",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_authentic_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_authentic_s42.safetensors"
     },
     "checkpoint-real_attention_authentic_s456.safetensors": {
       "bytes": 498907132,
@@ -94,7 +94,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s456/runs/20261008T095954Z-fd500ce69f-456-3c3205/checkpoints/best.safetensors",
       "sha256": "511e349a448cdea94dde1cd497b873b320418328de7b61e5e3699fe457d0ec2c",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_authentic_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_authentic_s456.safetensors"
     },
     "checkpoint-real_attention_sequence_s123.safetensors": {
       "bytes": 498607940,
@@ -102,7 +102,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_sequence_s123/runs/20261007T101333Z-30c18f8229-123-aedaf5/checkpoints/best.safetensors",
       "sha256": "2e01b0fbe8643d8a20221d0d1fe0cb8a336e7559572c68c9532a523a1230ab8e",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_sequence_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_sequence_s123.safetensors"
     },
     "checkpoint-real_attention_sequence_s42.safetensors": {
       "bytes": 498607940,
@@ -110,7 +110,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_sequence_s42/runs/20261007T085924Z-0ca6f87072-42-73abda/checkpoints/best.safetensors",
       "sha256": "3a42e1f07df396f1859285a947522b33e574974b2dedf924d99daf708514724a",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_sequence_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_sequence_s42.safetensors"
     },
     "checkpoint-real_attention_sequence_s456.safetensors": {
       "bytes": 498607940,
@@ -118,7 +118,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_sequence_s456/runs/20261007T220324Z-b15c8c524c-456-1dac4a/checkpoints/best.safetensors",
       "sha256": "f195bb84a0f6122c4b9d717056092469284ec9b2cd1123e3c27b3b243f74a01b",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_sequence_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_sequence_s456.safetensors"
     },
     "checkpoint-real_attention_shuffled_s123.safetensors": {
       "bytes": 498907132,
@@ -126,7 +126,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s123/runs/20261008T221650Z-169d6378c9-123-baa96e/checkpoints/best.safetensors",
       "sha256": "cf68925bf2f509a62a2ff8b6603cf7056853f2a4d921593919e8d4c5a1bfff5a",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_shuffled_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_shuffled_s123.safetensors"
     },
     "checkpoint-real_attention_shuffled_s42.safetensors": {
       "bytes": 498907132,
@@ -134,7 +134,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s42/runs/20261008T163940Z-111047471d-42-2846ab/checkpoints/best.safetensors",
       "sha256": "0cd5e1164226b376078a26d2d7504705f05ced32944b090666f0b3a8a33d6226",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_shuffled_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_shuffled_s42.safetensors"
     },
     "checkpoint-real_attention_shuffled_s456.safetensors": {
       "bytes": 498907132,
@@ -142,7 +142,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s456/runs/20261009T053116Z-d40f48208e-456-f009f3/checkpoints/best.safetensors",
       "sha256": "7baee4e713d0e2c71379a2549b687f605de55d622d7856293bb4f12cb5c0142c",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-real_attention_shuffled_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-real_attention_shuffled_s456.safetensors"
     },
     "checkpoint-regvd_native_s123.safetensors": {
       "bytes": 155073976,
@@ -150,7 +150,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_native_s123/run/best.safetensors",
       "sha256": "1b1ad3f75a1e881380045e28ba663a28617deeceb79f30b086440c75d309f15a",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_native_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_native_s123.safetensors"
     },
     "checkpoint-regvd_native_s42.safetensors": {
       "bytes": 155073976,
@@ -158,7 +158,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_native_s42/run/best.safetensors",
       "sha256": "50f66747a44d0afda6d3e029be24250ec9e40975c47563da151799227426ec75",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_native_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_native_s42.safetensors"
     },
     "checkpoint-regvd_native_s456.safetensors": {
       "bytes": 155073976,
@@ -166,7 +166,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_native_s456/run/best.safetensors",
       "sha256": "4d3b1960ee051ffaba2c8cd3acb3e770d13fece86f09e089c20678d78c4a99a5",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_native_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_native_s456.safetensors"
     },
     "checkpoint-regvd_permuted_s123.safetensors": {
       "bytes": 155073976,
@@ -174,7 +174,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s123/run/best.safetensors",
       "sha256": "b1730f6c45c5f6bb700f68fc4556124809aad17a65fbce3f0cefba1471aeb5bc",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_permuted_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_permuted_s123.safetensors"
     },
     "checkpoint-regvd_permuted_s42.safetensors": {
       "bytes": 155073976,
@@ -182,7 +182,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s42/run/best.safetensors",
       "sha256": "3601a2b466ce7a861d02be75742fe7c2fae4fb5bec8c5c71891aa543b29213ef",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_permuted_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_permuted_s42.safetensors"
     },
     "checkpoint-regvd_permuted_s456.safetensors": {
       "bytes": 155073976,
@@ -190,7 +190,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s456/run/best.safetensors",
       "sha256": "8ada35ecf42ed57095ae16c3b3f3ea011071ee96d7390506a36f13b99aa8e322",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_permuted_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_permuted_s456.safetensors"
     },
     "checkpoint-regvd_self_s123.safetensors": {
       "bytes": 155073976,
@@ -198,7 +198,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s123/run/best.safetensors",
       "sha256": "6e8fddb38552cbbd50771c4b36d8b45c8d164f176d76dfd9d1ca12562c4fb851",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_self_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_self_s123.safetensors"
     },
     "checkpoint-regvd_self_s42.safetensors": {
       "bytes": 155073976,
@@ -206,7 +206,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s42/run/best.safetensors",
       "sha256": "0d326cd860c1159804d111a1992f6b5b525aa1c793afaddbddb97e5a3a2233bb",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_self_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_self_s42.safetensors"
     },
     "checkpoint-regvd_self_s456.safetensors": {
       "bytes": 155073976,
@@ -214,7 +214,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s456/run/best.safetensors",
       "sha256": "3f44508b40f65e397a37acb079679917183755d2396660b4942386fc02d29486",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-regvd_self_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-regvd_self_s456.safetensors"
     },
     "checkpoint-synthetic_attention_authentic_s123.safetensors": {
       "bytes": 498907132,
@@ -222,7 +222,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s123/runs/20261006T231234Z-4b9e4990f8-123-07ea8f/checkpoints/best.safetensors",
       "sha256": "a89a5b412f35b6baed581f95a9b129183485ffb09a4dcda2c2dfc7b3992eb853",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_attention_authentic_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_attention_authentic_s123.safetensors"
     },
     "checkpoint-synthetic_attention_authentic_s42.safetensors": {
       "bytes": 498907132,
@@ -230,7 +230,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s42/runs/20261006T225627Z-ff598450b3-42-94ab95/checkpoints/best.safetensors",
       "sha256": "756ce8ee5eaa1fe376a4d17c50fec97f75b0d02dce6d212efb0e80fc9634ad93",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_attention_authentic_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_attention_authentic_s42.safetensors"
     },
     "checkpoint-synthetic_attention_authentic_s456.safetensors": {
       "bytes": 498907132,
@@ -238,7 +238,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s456/runs/20261006T231633Z-581845c7b1-456-a13d48/checkpoints/best.safetensors",
       "sha256": "e5c261d64542c18d824cb717fd3ff62a8e643f158535f200845bedb55bfe290c",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_attention_authentic_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_attention_authentic_s456.safetensors"
     },
     "checkpoint-synthetic_attention_shuffled_s123.safetensors": {
       "bytes": 498907132,
@@ -246,7 +246,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_shuffled_s123/runs/20261006T232442Z-f41769b214-123-3fa216/checkpoints/best.safetensors",
       "sha256": "117afe05ed001d7fb6902dea77e98a75f521f5d78195cd0a2c389baeae219958",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_attention_shuffled_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_attention_shuffled_s123.safetensors"
     },
     "checkpoint-synthetic_attention_shuffled_s42.safetensors": {
       "bytes": 498907132,
@@ -254,7 +254,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_shuffled_s42/runs/20261006T232037Z-fdd1f7a80b-42-79bce4/checkpoints/best.safetensors",
       "sha256": "94cfba01136ef3021965bda056af667f9d7f3e601e08542d8d9cca7ae0f87337",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_attention_shuffled_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_attention_shuffled_s42.safetensors"
     },
     "checkpoint-synthetic_attention_shuffled_s456.safetensors": {
       "bytes": 498907132,
@@ -262,7 +262,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_shuffled_s456/runs/20261006T232849Z-8c1bc24558-456-16e6c7/checkpoints/best.safetensors",
       "sha256": "e6d04c7b961e76562082f75052bcd28ed40e3aeda14afb5420b820007e7dff07",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_attention_shuffled_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_attention_shuffled_s456.safetensors"
     },
     "checkpoint-synthetic_centered_authentic_s123.safetensors": {
       "bytes": 498825092,
@@ -270,7 +270,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_authentic_s123/runs/20261006T214519Z-47c177998e-123-cdc022/checkpoints/best.safetensors",
       "sha256": "b525960be6c46705acad1404ce6ffc5915094ca209b738527f9c1c70cb832f20",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_centered_authentic_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_centered_authentic_s123.safetensors"
     },
     "checkpoint-synthetic_centered_authentic_s42.safetensors": {
       "bytes": 498825092,
@@ -278,7 +278,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_authentic_s42/runs/20261006T214146Z-ba6eaebd41-42-6c911a/checkpoints/best.safetensors",
       "sha256": "da4120ef11b847b6cea25cfed5cdc0764f9aa936a1ab967894969fe3c2770089",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_centered_authentic_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_centered_authentic_s42.safetensors"
     },
     "checkpoint-synthetic_centered_authentic_s456.safetensors": {
       "bytes": 498825092,
@@ -286,7 +286,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_authentic_s456/runs/20261006T214927Z-97d17260e2-456-e7edb0/checkpoints/best.safetensors",
       "sha256": "2a2924bea2f288cb7b84be02b46ac6314a0c9f5321b0c1bb85aa7ea2b5b6221a",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_centered_authentic_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_centered_authentic_s456.safetensors"
     },
     "checkpoint-synthetic_centered_shuffled_s123.safetensors": {
       "bytes": 498825092,
@@ -294,7 +294,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_shuffled_s123/runs/20261006T225700Z-9316136422-123-609bd6/checkpoints/best.safetensors",
       "sha256": "1586987ad797e022eed7b01ae843a26d505bd22315376a9261bad0a3e41bb6d0",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_centered_shuffled_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_centered_shuffled_s123.safetensors"
     },
     "checkpoint-synthetic_centered_shuffled_s42.safetensors": {
       "bytes": 498825092,
@@ -302,7 +302,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_shuffled_s42/runs/20261006T225634Z-4b05149f73-42-dfb893/checkpoints/best.safetensors",
       "sha256": "9453350d32475e621cc8583e93f3d1dc2c0ea47c45cb0897d9d5261f62c33cf3",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_centered_shuffled_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_centered_shuffled_s42.safetensors"
     },
     "checkpoint-synthetic_centered_shuffled_s456.safetensors": {
       "bytes": 498825092,
@@ -310,7 +310,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_shuffled_s456/runs/20261006T230409Z-745fdf3096-456-7895b9/checkpoints/best.safetensors",
       "sha256": "8350ad75c2302501b04a3a4a18b36eb67485b45d460c2571ffe9ff2a0a3625c2",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_centered_shuffled_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_centered_shuffled_s456.safetensors"
     },
     "checkpoint-synthetic_sequence_s123.safetensors": {
       "bytes": 498607940,
@@ -318,7 +318,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s123/runs/20261006T212533Z-559bbfd4d4-123-c8ed65/checkpoints/best.safetensors",
       "sha256": "1c4120b43e5c8f9eebf8dde61807b2e2c4ea9f17ce941e675d5cdcaa844c6b94",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_sequence_s123.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_sequence_s123.safetensors"
     },
     "checkpoint-synthetic_sequence_s42.safetensors": {
       "bytes": 498607940,
@@ -326,7 +326,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s42/runs/20261006T212533Z-7604a52dc4-42-13825d/checkpoints/best.safetensors",
       "sha256": "985b50a4af8e328918c8a9a9951221f2f7073329e70a9992572e8b7bb6d2b8e2",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_sequence_s42.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_sequence_s42.safetensors"
     },
     "checkpoint-synthetic_sequence_s456.safetensors": {
       "bytes": 498607940,
@@ -334,7 +334,7 @@
       "kind": "checkpoint",
       "original_path": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s456/runs/20261006T212920Z-17f4a09314-456-03fcf2/checkpoints/best.safetensors",
       "sha256": "cf327c8c1d1c2d61fcb2b8a2865d3e5cbd5fd04e7d6c7c00b8124210555d3803",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/checkpoint-synthetic_sequence_s456.safetensors"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/checkpoint-synthetic_sequence_s456.safetensors"
     },
     "inputs-development-records.jsonl.gz": {
       "bytes": 84562082,
@@ -343,7 +343,7 @@
       "original_sha256": "e29c262c4eb4bbc093d5e449f605e5280c4f53ea735569654ba02389f0ef1a92",
       "sha256": "e29c262c4eb4bbc093d5e449f605e5280c4f53ea735569654ba02389f0ef1a92",
       "uncompressed_sha256": "7472d7e3e6875a21435614f2cd392a0d83c4fb677ee0cd56bfe6afd9c4547bfa",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/inputs-development-records.jsonl.gz"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/inputs-development-records.jsonl.gz"
     },
     "inputs-real-regvd_train.jsonl.gz": {
       "bytes": 304937532,
@@ -352,7 +352,7 @@
       "original_sha256": "8b09a79c8662cafcd25b946db076f2a717f85eeebed8f36c77cae91c2f6f144e",
       "sha256": "01e540ba8ace6e9a13a795f2e9916927739ac217680fb88ae5b1ad88c28751f5",
       "uncompressed_sha256": "8b09a79c8662cafcd25b946db076f2a717f85eeebed8f36c77cae91c2f6f144e",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/inputs-real-regvd_train.jsonl.gz"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/inputs-real-regvd_train.jsonl.gz"
     },
     "inputs-real-regvd_tune.jsonl.gz": {
       "bytes": 23784682,
@@ -361,7 +361,7 @@
       "original_sha256": "4368a796670cd55d9626f3b4de74055a6f3c1e9acbe573c8d60f0308a7ed147d",
       "sha256": "6c7ff60149766313536edd8051c17deed9be3803fec15bf5277df1923db522a7",
       "uncompressed_sha256": "4368a796670cd55d9626f3b4de74055a6f3c1e9acbe573c8d60f0308a7ed147d",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/inputs-real-regvd_tune.jsonl.gz"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/inputs-real-regvd_tune.jsonl.gz"
     },
     "inputs-real-train.jsonl.gz": {
       "bytes": 926950265,
@@ -370,7 +370,7 @@
       "original_sha256": "b18f154205a836ae6d783cf27965ba29e88a10a4645c936bba1d4d8c083eb24c",
       "sha256": "0959bafc33e77e4f680312d6a0bb1ba55d6b67f5ec2c3d8f128f820772328a3b",
       "uncompressed_sha256": "b18f154205a836ae6d783cf27965ba29e88a10a4645c936bba1d4d8c083eb24c",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/inputs-real-train.jsonl.gz"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/inputs-real-train.jsonl.gz"
     },
     "inputs-real-tune.jsonl.gz": {
       "bytes": 75233408,
@@ -379,7 +379,7 @@
       "original_sha256": "005279d2c39770bd83ba0c63e7c730c1cf5e69252e70646eab0e4ce8e64fb253",
       "sha256": "d930f73e314799ba1d452358dce7ca7893e3793a47d15df9c535bf3f0fb4315e",
       "uncompressed_sha256": "005279d2c39770bd83ba0c63e7c730c1cf5e69252e70646eab0e4ce8e64fb253",
-      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009/inputs-real-tune.jsonl.gz"
+      "url": "https://github.com/tanay-kadam/ASTGuard/releases/download/graph-reliance-artifact-20261009-v1/inputs-real-tune.jsonl.gz"
     }
   },
   "evidence": {
@@ -5800,8 +5800,8 @@
   },
   "package_files": {
     "README.md": {
-      "bytes": 8568,
-      "sha256": "6bcef89b67eebf58188876df53092db920599050babc486059decabe60cc25c2"
+      "bytes": 8574,
+      "sha256": "556d68396a1cd9abad53be93897439d18e11c17c3c23b2d5c901711f5897c703"
     },
     "backbone_configs.json": {
       "bytes": 1221,
@@ -9308,7 +9308,7 @@
       "sha256": "9cc2fb4321862fdc2b37a1cb9a04c8648ccbbc7f50530bed8f180f4e263ab1d4"
     }
   },
-  "release_tag": "graph-reliance-artifact-20261009",
+  "release_tag": "graph-reliance-artifact-20261009-v1",
   "repository": "tanay-kadam/ASTGuard",
   "schema_version": 1,
   "scope": "Corrected development-cohort results; synthetic audit is held out. No independent real-data test claim.",

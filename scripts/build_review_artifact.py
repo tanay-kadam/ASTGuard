@@ -8,7 +8,7 @@ import tarfile
 from pathlib import Path
 
 CAMPAIGN=Path('artifacts/release_gates/strengthening_20261006')
-TAG='graph-reliance-artifact-20261009'
+TAG='graph-reliance-artifact-20261009-v1'
 REPOSITORY='tanay-kadam/ASTGuard'
 
 def sha(path):

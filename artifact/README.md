@@ -5,7 +5,7 @@ Evidence from Attention Biases, Adapters, and ReGVD* ([manuscript](../main.pdf))
 The supplied manuscript is a PDF; its LaTeX source was not available in this
 workspace and is not claimed to be part of this package.
 The canonical release is
-[graph-reliance-artifact-20261009](https://github.com/tanay-kadam/ASTGuard/releases/tag/graph-reliance-artifact-20261009).
+[graph-reliance-artifact-20261009-v1](https://github.com/tanay-kadam/ASTGuard/releases/tag/graph-reliance-artifact-20261009-v1).
 The Git repository contains compact evidence and executable verification code;
 large checkpoint and processed-input files are separate release assets.
 
