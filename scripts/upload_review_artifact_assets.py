@@ -29,11 +29,22 @@ def main():
     snapshot=Path('artifacts/ssh_import_20261009/snapshot')
     # GitHub's /releases/tags endpoint excludes unpublished drafts. Resolve the
     # owner-visible draft once, then use its stable numeric release identifier.
-    candidates=json.loads(subprocess.check_output([a.gh,'api',f'repos/{repo}/releases?per_page=100']))
+    def gh_json(endpoint):
+        error=''
+        for attempt in range(5):
+            try:
+                result=subprocess.run([a.gh,'api',endpoint],capture_output=True,text=True,timeout=120)
+                if result.returncode==0:return json.loads(result.stdout)
+                error=result.stderr.strip()
+            except subprocess.TimeoutExpired:
+                error='GitHub metadata request timed out'
+            if attempt<4:time.sleep(min(20,2**attempt))
+        raise RuntimeError(error)
+    candidates=gh_json(f'repos/{repo}/releases?per_page=100')
     matching=[r for r in candidates if r['tag_name']==tag]
     if len(matching)!=1:raise ValueError('Expected one existing draft release for '+tag)
     release_id=matching[0]['id']
-    def api():return json.loads(subprocess.check_output([a.gh,'api',f'repos/{repo}/releases/{release_id}']))
+    def api():return gh_json(f'repos/{repo}/releases/{release_id}')
     release=api()
     if not release['draft']:raise ValueError('Only a draft release may be populated')
     remote={r['name']:r for r in release['assets']};done=set()
@@ -47,6 +58,7 @@ def main():
         for attempt in range(3):
             result=subprocess.run([a.gh,'release','upload',tag,str(asset),'--repo',repo],capture_output=True,text=True)
             if result.returncode==0:return name
+            print(json.dumps({'upload_retry':name,'attempt':attempt+1,'reason':result.stderr.strip()[:400]}),flush=True)
             # A network failure can occur after GitHub has accepted the complete asset.
             match=next((x for x in api()['assets'] if x['name']==name),None)
             if match and match.get('digest')=='sha256:'+r['sha256'] and match['size']==r['bytes']:return name
