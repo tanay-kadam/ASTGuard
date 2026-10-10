@@ -1,0 +1,21 @@
+{
+  "compact_graph_fields": true,
+  "counts": {
+    "train": 141560,
+    "tune": 10566
+  },
+  "elapsed_seconds": 2431.9865345954895,
+  "hashes": {
+    "regvd_train": "8b09a79c8662cafcd25b946db076f2a717f85eeebed8f36c77cae91c2f6f144e",
+    "regvd_tune": "4368a796670cd55d9626f3b4de74055a6f3c1e9acbe573c8d60f0308a7ed147d",
+    "train": "b18f154205a836ae6d783cf27965ba29e88a10a4645c936bba1d4d8c083eb24c",
+    "tune": "005279d2c39770bd83ba0c63e7c730c1cf5e69252e70646eab0e4ce8e64fb253"
+  },
+  "manifest_hash": "793ac1b2bcacb06aa19aef62ac575482dbb76a5307d026997ac239ce5157f5c2",
+  "official_test_used": false,
+  "positives": {
+    "train": 4302,
+    "tune": 330
+  },
+  "preprocessing_hash": "2139746c8175a5560bba112a71e624476b79585af91c1f7af91dde3d04b33fc0"
+}

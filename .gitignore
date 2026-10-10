@@ -30,3 +30,15 @@ results/*
 !results/.gitkeep
 *.safetensors
 *.pt
+tmp/
+data/strengthening_20261006/
+artifacts/release_gates/strengthening_20261006/development_records.jsonl.gz
+archive/invalid_results_20261007/runs/
+archive/ssh_recovery_20261007/snapshot/
+archive/ssh_recovery_20261007/*.tar.gz
+
+# Private verified SSH mirror and large GitHub Release assets.
+artifacts/ssh_import_20261009/
+output/artifact_release/
+artifact/downloads/
+archive/ssh_recovery_20261007/

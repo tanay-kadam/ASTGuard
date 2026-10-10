@@ -1,0 +1,17 @@
+{
+  "audit_used_for_selection": false,
+  "counts": {
+    "audit": 1024,
+    "train": 4096,
+    "tune": 1024
+  },
+  "generation_seed": 20261007,
+  "hashes": {
+    "audit": "d5da852554ed2f360eaec80adbd927077896530919112de8525ff7157f430f16",
+    "train": "4234e1f83bdd322142ae5d10ba4120863c7bf0188d3c5cb7c347a3c666baa66e",
+    "tune": "5ea452c620688c04c6c50f3902e89cad1b9d3942efc38a5dc1cab578cd8fa405"
+  },
+  "manifest_hash": "5edbb6045fcef226d51de93bea1c3145a3fd60d47e422905ebdbbbe7cd007e94",
+  "official_test_used": false,
+  "preprocessing_hash": "9846b0032e74b70b976ab1d361064ce8c1888b5b952b4f5adc693d5789803adc"
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "summary": {
+    "authentic": {
+      "mean_ap": 1.0,
+      "sample_sd_ap": 0.0
+    },
+    "shuffled": {
+      "mean_ap": 0.5035434502081245,
+      "sample_sd_ap": 0.0008212168484140304
+    },
+    "sequence": {
+      "mean_ap": 0.5,
+      "sample_sd_ap": 0.0
+    }
+  },
+  "per_seed_rules": {
+    "42": {
+      "authentic_ap_at_least_0_90": true,
+      "authentic_minus_sequence_at_least_0_30": true,
+      "authentic_minus_shuffled_at_least_0_30": true,
+      "normal_minus_empty_at_least_0_30": true,
+      "normal_minus_null_at_least_0_20": true
+    },
+    "123": {
+      "authentic_ap_at_least_0_90": true,
+      "authentic_minus_sequence_at_least_0_30": true,
+      "authentic_minus_shuffled_at_least_0_30": true,
+      "normal_minus_empty_at_least_0_30": true,
+      "normal_minus_null_at_least_0_20": true
+    },
+    "456": {
+      "authentic_ap_at_least_0_90": true,
+      "authentic_minus_sequence_at_least_0_30": true,
+      "authentic_minus_shuffled_at_least_0_30": true,
+      "normal_minus_empty_at_least_0_30": true,
+      "normal_minus_null_at_least_0_20": true
+    }
+  }
+}

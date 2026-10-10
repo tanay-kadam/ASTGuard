@@ -55,10 +55,21 @@ def main(argv=None) -> int:
     positives, negatives = sum(labels), len(labels) - sum(labels)
     if not positives or not negatives:
         raise ValueError("benchmark features require both classes")
-    batches = list(DataLoader(rows, batch_size=config.training.microbatch_size, shuffle=False,
+    view = rows
+    if config.model.variant == 'null_centered_graph_adapter':
+        from astguard.data.null_graphs import MatchedNullGraphDataset
+        view = MatchedNullGraphDataset(rows, seed=config.training.seed,
+            samples=config.model.null_graph_samples, position_blocks=config.model.null_position_blocks,
+            namespace='throughput-benchmark')
+    batches = list(DataLoader(view, batch_size=config.training.microbatch_size, shuffle=False,
                               collate_fn=create_collator(config, training=True)))
     iterator = cycle(batches)
     model = create_model(config).to(device).train()
+    if config.training.activation_checkpointing:
+        if hasattr(model, 'gradient_checkpointing'):
+            model.gradient_checkpointing = True
+        elif hasattr(model, 'backbone') and hasattr(model.backbone, 'gradient_checkpointing_enable'):
+            model.backbone.gradient_checkpointing_enable()
     optimizer = build_adamw(model, pretrained_lr=config.training.pretrained_lr,
                             new_multiplier=config.training.new_module_lr_multiplier,
                             weight_decay=config.training.weight_decay,
@@ -84,9 +95,11 @@ def main(argv=None) -> int:
                 elif "relation_masks" not in batch:
                     outputs = model(batch["input_ids"].to(device),batch["attention_mask"].to(device))
                 else:
+                    kwargs = {'special_tokens_mask':batch['special_tokens_mask'].to(device)}
+                    if 'null_relation_masks' in batch:
+                        kwargs['null_relation_masks'] = batch['null_relation_masks'].to(device)
                     outputs = model(batch["input_ids"].to(device), batch["attention_mask"].to(device),
-                                    batch["relation_masks"].to(device),
-                                    special_tokens_mask=batch["special_tokens_mask"].to(device))
+                                    batch["relation_masks"].to(device), **kwargs)
                 loss = weighted_bce_logits(outputs["logits"].float(), batch["labels"].to(device), weights)
             scaler.scale(loss / config.training.gradient_accumulation).backward()
         scaler.unscale_(optimizer)

@@ -1,0 +1,295 @@
+{
+  "gpus": [
+    5,
+    6
+  ],
+  "jobs": [
+    {
+      "condition": "sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_sequence_s42.yaml",
+      "family": "synthetic",
+      "seed": 42,
+      "tag": "synthetic_sequence_s42"
+    },
+    {
+      "condition": "sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_sequence_s123.yaml",
+      "family": "synthetic",
+      "seed": 123,
+      "tag": "synthetic_sequence_s123"
+    },
+    {
+      "condition": "sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_sequence_s456.yaml",
+      "family": "synthetic",
+      "seed": 456,
+      "tag": "synthetic_sequence_s456"
+    },
+    {
+      "condition": "attention_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_attention_authentic_s42.yaml",
+      "family": "synthetic",
+      "seed": 42,
+      "tag": "synthetic_attention_authentic_s42"
+    },
+    {
+      "condition": "attention_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_attention_authentic_s123.yaml",
+      "family": "synthetic",
+      "seed": 123,
+      "tag": "synthetic_attention_authentic_s123"
+    },
+    {
+      "condition": "attention_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_attention_authentic_s456.yaml",
+      "family": "synthetic",
+      "seed": 456,
+      "tag": "synthetic_attention_authentic_s456"
+    },
+    {
+      "condition": "attention_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_attention_shuffled_s42.yaml",
+      "family": "synthetic",
+      "seed": 42,
+      "tag": "synthetic_attention_shuffled_s42"
+    },
+    {
+      "condition": "attention_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_attention_shuffled_s123.yaml",
+      "family": "synthetic",
+      "seed": 123,
+      "tag": "synthetic_attention_shuffled_s123"
+    },
+    {
+      "condition": "attention_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_attention_shuffled_s456.yaml",
+      "family": "synthetic",
+      "seed": 456,
+      "tag": "synthetic_attention_shuffled_s456"
+    },
+    {
+      "condition": "centered_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_centered_authentic_s42.yaml",
+      "family": "synthetic",
+      "seed": 42,
+      "tag": "synthetic_centered_authentic_s42"
+    },
+    {
+      "condition": "centered_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_centered_authentic_s123.yaml",
+      "family": "synthetic",
+      "seed": 123,
+      "tag": "synthetic_centered_authentic_s123"
+    },
+    {
+      "condition": "centered_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_centered_authentic_s456.yaml",
+      "family": "synthetic",
+      "seed": 456,
+      "tag": "synthetic_centered_authentic_s456"
+    },
+    {
+      "condition": "centered_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_centered_shuffled_s42.yaml",
+      "family": "synthetic",
+      "seed": 42,
+      "tag": "synthetic_centered_shuffled_s42"
+    },
+    {
+      "condition": "centered_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_centered_shuffled_s123.yaml",
+      "family": "synthetic",
+      "seed": 123,
+      "tag": "synthetic_centered_shuffled_s123"
+    },
+    {
+      "condition": "centered_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/synthetic_centered_shuffled_s456.yaml",
+      "family": "synthetic",
+      "seed": 456,
+      "tag": "synthetic_centered_shuffled_s456"
+    },
+    {
+      "condition": "native",
+      "family": "regvd",
+      "seed": 42,
+      "tag": "regvd_native_s42"
+    },
+    {
+      "condition": "native",
+      "family": "regvd",
+      "seed": 123,
+      "tag": "regvd_native_s123"
+    },
+    {
+      "condition": "native",
+      "family": "regvd",
+      "seed": 456,
+      "tag": "regvd_native_s456"
+    },
+    {
+      "condition": "permuted",
+      "family": "regvd",
+      "seed": 42,
+      "tag": "regvd_permuted_s42"
+    },
+    {
+      "condition": "permuted",
+      "family": "regvd",
+      "seed": 123,
+      "tag": "regvd_permuted_s123"
+    },
+    {
+      "condition": "permuted",
+      "family": "regvd",
+      "seed": 456,
+      "tag": "regvd_permuted_s456"
+    },
+    {
+      "condition": "self",
+      "family": "regvd",
+      "seed": 42,
+      "tag": "regvd_self_s42"
+    },
+    {
+      "condition": "self",
+      "family": "regvd",
+      "seed": 123,
+      "tag": "regvd_self_s123"
+    },
+    {
+      "condition": "self",
+      "family": "regvd",
+      "seed": 456,
+      "tag": "regvd_self_s456"
+    },
+    {
+      "condition": "attention_sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_sequence_s42.yaml",
+      "family": "real",
+      "seed": 42,
+      "tag": "real_attention_sequence_s42"
+    },
+    {
+      "condition": "attention_sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_sequence_s123.yaml",
+      "family": "real",
+      "seed": 123,
+      "tag": "real_attention_sequence_s123"
+    },
+    {
+      "condition": "attention_sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_sequence_s456.yaml",
+      "family": "real",
+      "seed": 456,
+      "tag": "real_attention_sequence_s456"
+    },
+    {
+      "condition": "attention_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_authentic_s42.yaml",
+      "family": "real",
+      "seed": 42,
+      "tag": "real_attention_authentic_s42"
+    },
+    {
+      "condition": "attention_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_authentic_s123.yaml",
+      "family": "real",
+      "seed": 123,
+      "tag": "real_attention_authentic_s123"
+    },
+    {
+      "condition": "attention_authentic",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_authentic_s456.yaml",
+      "family": "real",
+      "seed": 456,
+      "tag": "real_attention_authentic_s456"
+    },
+    {
+      "condition": "attention_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_shuffled_s42.yaml",
+      "family": "real",
+      "seed": 42,
+      "tag": "real_attention_shuffled_s42"
+    },
+    {
+      "condition": "attention_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_shuffled_s123.yaml",
+      "family": "real",
+      "seed": 123,
+      "tag": "real_attention_shuffled_s123"
+    },
+    {
+      "condition": "attention_shuffled",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_attention_shuffled_s456.yaml",
+      "family": "real",
+      "seed": 456,
+      "tag": "real_attention_shuffled_s456"
+    },
+    {
+      "condition": "adapter_sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_sequence_s42.yaml",
+      "family": "real",
+      "seed": 42,
+      "tag": "real_adapter_sequence_s42"
+    },
+    {
+      "condition": "adapter_sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_sequence_s123.yaml",
+      "family": "real",
+      "seed": 123,
+      "tag": "real_adapter_sequence_s123"
+    },
+    {
+      "condition": "adapter_sequence",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_sequence_s456.yaml",
+      "family": "real",
+      "seed": 456,
+      "tag": "real_adapter_sequence_s456"
+    },
+    {
+      "condition": "adapter_uncentered",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_uncentered_s42.yaml",
+      "family": "real",
+      "seed": 42,
+      "tag": "real_adapter_uncentered_s42"
+    },
+    {
+      "condition": "adapter_uncentered",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_uncentered_s123.yaml",
+      "family": "real",
+      "seed": 123,
+      "tag": "real_adapter_uncentered_s123"
+    },
+    {
+      "condition": "adapter_uncentered",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_uncentered_s456.yaml",
+      "family": "real",
+      "seed": 456,
+      "tag": "real_adapter_uncentered_s456"
+    },
+    {
+      "condition": "adapter_centered",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_centered_s42.yaml",
+      "family": "real",
+      "seed": 42,
+      "tag": "real_adapter_centered_s42"
+    },
+    {
+      "condition": "adapter_centered",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_centered_s123.yaml",
+      "family": "real",
+      "seed": 123,
+      "tag": "real_adapter_centered_s123"
+    },
+    {
+      "condition": "adapter_centered",
+      "config": "artifacts/release_gates/strengthening_20261006/configs/real_adapter_centered_s456.yaml",
+      "family": "real",
+      "seed": 456,
+      "tag": "real_adapter_centered_s456"
+    }
+  ],
+  "official_test_used": false,
+  "protocol_sha256": "75d7c92f8c46fbc7318402490f6e4823ed5d89f2343ecd25fedc380307a3f5c8"
+}

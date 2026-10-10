@@ -1,0 +1,454 @@
+{
+  "execution_complete": true,
+  "failed_or_missing_jobs": [],
+  "historical_results_submission_safe": false,
+  "hypothesis_outcomes_require_review": true,
+  "jobs": {
+    "real_adapter_centered_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_centered_s123/runs/20261008T061807Z-173b47a2b3-123-c148a6",
+      "selected_tune_ap": 0.18044711871676938,
+      "status": "complete"
+    },
+    "real_adapter_centered_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_centered_s42/runs/20261008T053634Z-92ceef8549-42-1f7ab3",
+      "selected_tune_ap": 0.17217951913222004,
+      "status": "complete"
+    },
+    "real_adapter_centered_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_centered_s456/runs/20261008T042905Z-009b16f080-456-2bf4c9",
+      "selected_tune_ap": 0.1689218086387951,
+      "status": "complete"
+    },
+    "real_adapter_sequence_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_sequence_s123/runs/20261007T220354Z-926c30bcfc-123-8759d4",
+      "selected_tune_ap": 0.17181093697747982,
+      "status": "complete"
+    },
+    "real_adapter_sequence_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_sequence_s42/runs/20261007T220408Z-32eb512ddf-42-d1ee66",
+      "selected_tune_ap": 0.16557083889173632,
+      "status": "complete"
+    },
+    "real_adapter_sequence_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_sequence_s456/runs/20261007T222618Z-e78d32a512-456-0d447d",
+      "selected_tune_ap": 0.16022398028069,
+      "status": "complete"
+    },
+    "real_adapter_uncentered_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s123/runs/20261007T222623Z-6c7cc58673-123-70daee",
+      "selected_tune_ap": 0.1720497081927072,
+      "status": "complete"
+    },
+    "real_adapter_uncentered_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s42/runs/20261007T222714Z-884f62e972-42-f21bf9",
+      "selected_tune_ap": 0.16952331228989262,
+      "status": "complete"
+    },
+    "real_adapter_uncentered_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s456/runs/20261007T222603Z-5a22e3b243-456-da7b66",
+      "selected_tune_ap": 0.16737718254921255,
+      "status": "complete"
+    },
+    "real_attention_authentic_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s123/runs/20261008T043655Z-fa65ab7772-123-f586e0",
+      "selected_tune_ap": 0.11936106692381951,
+      "status": "complete"
+    },
+    "real_attention_authentic_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s42/runs/20261007T220354Z-af05b503af-42-edef50",
+      "selected_tune_ap": 0.13056047989446945,
+      "status": "complete"
+    },
+    "real_attention_authentic_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s456/runs/20261008T095954Z-fd500ce69f-456-3c3205",
+      "selected_tune_ap": 0.1526273678352383,
+      "status": "complete"
+    },
+    "real_attention_sequence_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_sequence_s123/runs/20261007T101333Z-30c18f8229-123-aedaf5",
+      "selected_tune_ap": 0.12211861845537929,
+      "status": "complete"
+    },
+    "real_attention_sequence_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_sequence_s42/runs/20261007T085924Z-0ca6f87072-42-73abda",
+      "selected_tune_ap": 0.13254558296556862,
+      "status": "complete"
+    },
+    "real_attention_sequence_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_sequence_s456/runs/20261007T220324Z-b15c8c524c-456-1dac4a",
+      "selected_tune_ap": 0.10362007473227014,
+      "status": "complete"
+    },
+    "real_attention_shuffled_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s123/runs/20261008T221650Z-169d6378c9-123-baa96e",
+      "selected_tune_ap": 0.16809335310933984,
+      "status": "complete"
+    },
+    "real_attention_shuffled_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s42/runs/20261008T163940Z-111047471d-42-2846ab",
+      "selected_tune_ap": 0.15216881962091516,
+      "status": "complete"
+    },
+    "real_attention_shuffled_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s456/runs/20261009T053116Z-d40f48208e-456-f009f3",
+      "selected_tune_ap": 0.11614603732601693,
+      "status": "complete"
+    },
+    "regvd_native_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_native_s123/run",
+      "selected_tune_ap": 0.15196005540861104,
+      "status": "complete"
+    },
+    "regvd_native_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_native_s42/run",
+      "selected_tune_ap": 0.15337427103733184,
+      "status": "complete"
+    },
+    "regvd_native_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_native_s456/run",
+      "selected_tune_ap": 0.1526563310665219,
+      "status": "complete"
+    },
+    "regvd_permuted_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s123/run",
+      "selected_tune_ap": 0.13412649750326647,
+      "status": "complete"
+    },
+    "regvd_permuted_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s42/run",
+      "selected_tune_ap": 0.13897730731710356,
+      "status": "complete"
+    },
+    "regvd_permuted_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s456/run",
+      "selected_tune_ap": 0.13860489675175383,
+      "status": "complete"
+    },
+    "regvd_self_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s123/run",
+      "selected_tune_ap": 0.1418970087699563,
+      "status": "complete"
+    },
+    "regvd_self_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s42/run",
+      "selected_tune_ap": 0.13939433811179225,
+      "status": "complete"
+    },
+    "regvd_self_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s456/run",
+      "selected_tune_ap": 0.1432580272407376,
+      "status": "complete"
+    },
+    "synthetic_attention_authentic_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s123/runs/20261006T231234Z-4b9e4990f8-123-07ea8f",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_attention_authentic_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s42/runs/20261006T225627Z-ff598450b3-42-94ab95",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_attention_authentic_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s456/runs/20261006T231633Z-581845c7b1-456-a13d48",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_attention_shuffled_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_shuffled_s123/runs/20261006T232442Z-f41769b214-123-3fa216",
+      "selected_tune_ap": 0.5471906344521167,
+      "status": "complete"
+    },
+    "synthetic_attention_shuffled_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_shuffled_s42/runs/20261006T232037Z-fdd1f7a80b-42-79bce4",
+      "selected_tune_ap": 0.5267032345409068,
+      "status": "complete"
+    },
+    "synthetic_attention_shuffled_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_shuffled_s456/runs/20261006T232849Z-8c1bc24558-456-16e6c7",
+      "selected_tune_ap": 0.5702258723213175,
+      "status": "complete"
+    },
+    "synthetic_centered_authentic_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_authentic_s123/runs/20261006T214519Z-47c177998e-123-cdc022",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_centered_authentic_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_authentic_s42/runs/20261006T214146Z-ba6eaebd41-42-6c911a",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_centered_authentic_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_authentic_s456/runs/20261006T214927Z-97d17260e2-456-e7edb0",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_centered_shuffled_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_shuffled_s123/runs/20261006T225700Z-9316136422-123-609bd6",
+      "selected_tune_ap": 0.9998619453360904,
+      "status": "complete"
+    },
+    "synthetic_centered_shuffled_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_shuffled_s42/runs/20261006T225634Z-4b05149f73-42-dfb893",
+      "selected_tune_ap": 0.541656479636777,
+      "status": "complete"
+    },
+    "synthetic_centered_shuffled_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_centered_shuffled_s456/runs/20261006T230409Z-745fdf3096-456-7895b9",
+      "selected_tune_ap": 1.0,
+      "status": "complete"
+    },
+    "synthetic_sequence_s123": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s123/runs/20261006T212533Z-559bbfd4d4-123-c8ed65",
+      "selected_tune_ap": 0.5,
+      "status": "complete"
+    },
+    "synthetic_sequence_s42": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s42/runs/20261006T212533Z-7604a52dc4-42-13825d",
+      "selected_tune_ap": 0.5,
+      "status": "complete"
+    },
+    "synthetic_sequence_s456": {
+      "interventions_verified": true,
+      "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s456/runs/20261006T212920Z-17f4a09314-456-03fcf2",
+      "selected_tune_ap": 0.5,
+      "status": "complete"
+    }
+  },
+  "official_test_used": false,
+  "paired_comparisons": {
+    "attention_authentic_minus_sequence": {
+      "all_positive_and_mean_ge_0_02": false,
+      "deltas": [
+        -0.00198510307109917,
+        -0.0027575515315597793,
+        0.04900729310296817
+      ],
+      "mean": 0.014754879500103074,
+      "sample_sd": 0.029665974573108506,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "attention_authentic_minus_shuffled": {
+      "all_positive_and_mean_ge_0_02": false,
+      "deltas": [
+        -0.021608339726445713,
+        -0.048732286185520335,
+        0.03648133050922138
+      ],
+      "mean": -0.01128643180091489,
+      "sample_sd": 0.043534428386817516,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "centered_minus_sequence": {
+      "all_positive_and_mean_ge_0_02": false,
+      "deltas": [
+        0.006608680240483722,
+        0.008636181739289567,
+        0.00869782835810512
+      ],
+      "mean": 0.007980896779292803,
+      "sample_sd": 0.0011887740527277368,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "regvd_native_minus_permuted": {
+      "all_positive_and_mean_ge_0_02": false,
+      "deltas": [
+        0.014396963720228279,
+        0.017833557905344577,
+        0.014051434314768074
+      ],
+      "mean": 0.01542731864678031,
+      "sample_sd": 0.002091013670352577,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "regvd_native_minus_self": {
+      "all_positive_and_mean_ge_0_02": false,
+      "deltas": [
+        0.01397993292553959,
+        0.010063046638654732,
+        0.009398303825784299
+      ],
+      "mean": 0.011147094463326207,
+      "sample_sd": 0.002475722332282507,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    }
+  },
+  "synthetic_audit_success_rules": {
+    "synthetic_attention_s123": {
+      "authentic_audit_ap_ge_0_90": true,
+      "authentic_minus_sequence_ge_0_30": true,
+      "authentic_minus_shuffled_ge_0_30": true,
+      "normal_minus_empty_ge_0_30": true,
+      "normal_minus_null_ge_0_20": true
+    },
+    "synthetic_attention_s42": {
+      "authentic_audit_ap_ge_0_90": true,
+      "authentic_minus_sequence_ge_0_30": true,
+      "authentic_minus_shuffled_ge_0_30": true,
+      "normal_minus_empty_ge_0_30": true,
+      "normal_minus_null_ge_0_20": true
+    },
+    "synthetic_attention_s456": {
+      "authentic_audit_ap_ge_0_90": true,
+      "authentic_minus_sequence_ge_0_30": true,
+      "authentic_minus_shuffled_ge_0_30": true,
+      "normal_minus_empty_ge_0_30": true,
+      "normal_minus_null_ge_0_20": true
+    },
+    "synthetic_centered_s123": {
+      "authentic_audit_ap_ge_0_90": true,
+      "authentic_minus_sequence_ge_0_30": true,
+      "authentic_minus_shuffled_ge_0_30": false,
+      "normal_minus_empty_ge_0_30": true,
+      "normal_minus_null_ge_0_20": true
+    },
+    "synthetic_centered_s42": {
+      "authentic_audit_ap_ge_0_90": true,
+      "authentic_minus_sequence_ge_0_30": true,
+      "authentic_minus_shuffled_ge_0_30": true,
+      "normal_minus_empty_ge_0_30": true,
+      "normal_minus_null_ge_0_20": true
+    },
+    "synthetic_centered_s456": {
+      "authentic_audit_ap_ge_0_90": true,
+      "authentic_minus_sequence_ge_0_30": true,
+      "authentic_minus_shuffled_ge_0_30": false,
+      "normal_minus_empty_ge_0_30": true,
+      "normal_minus_null_ge_0_20": true
+    }
+  },
+  "tune_summaries": {
+    "real_adapter_centered": {
+      "mean_ap": 0.17384948216259485,
+      "n": 3,
+      "sample_sd_ap": 0.005941361417257647
+    },
+    "real_adapter_sequence": {
+      "mean_ap": 0.16586858538330204,
+      "n": 3,
+      "sample_sd_ap": 0.005799213834930597
+    },
+    "real_adapter_uncentered": {
+      "mean_ap": 0.16965006767727078,
+      "n": 3,
+      "sample_sd_ap": 0.0023388403469349578
+    },
+    "real_attention_authentic": {
+      "mean_ap": 0.13418297155117576,
+      "n": 3,
+      "sample_sd_ap": 0.016926415108771437
+    },
+    "real_attention_sequence": {
+      "mean_ap": 0.11942809205107269,
+      "n": 3,
+      "sample_sd_ap": 0.014649247621903925
+    },
+    "real_attention_shuffled": {
+      "mean_ap": 0.14546940335209063,
+      "n": 3,
+      "sample_sd_ap": 0.026613765949792045
+    },
+    "regvd_native": {
+      "mean_ap": 0.15266355250415492,
+      "n": 3,
+      "sample_sd_ap": 0.0007071354700484579
+    },
+    "regvd_permuted": {
+      "mean_ap": 0.13723623385737463,
+      "n": 3,
+      "sample_sd_ap": 0.0026995402481427132
+    },
+    "regvd_self": {
+      "mean_ap": 0.1415164580408287,
+      "n": 3,
+      "sample_sd_ap": 0.0019597544653252585
+    },
+    "synthetic_attention_authentic": {
+      "mean_ap": 1.0,
+      "n": 3,
+      "sample_sd_ap": 0.0
+    },
+    "synthetic_attention_shuffled": {
+      "mean_ap": 0.548039913771447,
+      "n": 3,
+      "sample_sd_ap": 0.021773744656417942
+    },
+    "synthetic_centered_authentic": {
+      "mean_ap": 1.0,
+      "n": 3,
+      "sample_sd_ap": 0.0
+    },
+    "synthetic_centered_shuffled": {
+      "mean_ap": 0.8471728083242891,
+      "n": 3,
+      "sample_sd_ap": 0.26458491091858305
+    },
+    "synthetic_sequence": {
+      "mean_ap": 0.5,
+      "n": 3,
+      "sample_sd_ap": 0.0
+    }
+  }
+}

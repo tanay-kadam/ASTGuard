@@ -54,7 +54,9 @@ if nn is not None:
                 structural = None
                 if index in structural_layers and mode != 'sequence':
                     with torch.random.fork_rng(devices=[]):
-                        torch.manual_seed(100000 + index)
+                        # Seed only CPU parameter initialization. torch.manual_seed
+                        # also reseeds CUDA, which devices=[] does not restore.
+                        torch.default_generator.manual_seed(100000 + index)
                         attention_class = StructuralSelfAttention
                         if mode == 'edge':
                             from .edge_attention import EdgeStructuralSelfAttention

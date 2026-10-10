@@ -1,0 +1,56 @@
+{
+  "actual_precision": "bf16",
+  "backend": "eager",
+  "checkpoint_revision": "3b0952feddeffad0063f274080e3c23d75e7eb39",
+  "class_counts": {
+    "0": 2048,
+    "1": 2048
+  },
+  "class_weights": {
+    "0": 1.0,
+    "1": 1.0
+  },
+  "config_hash": "fdd1f7a80b8ec79e83fa5b1456cce8527b33ac6ec7bbdfb385a186dc2181977d",
+  "cuda_seed_after_model_construction": 42,
+  "elapsed_training_seconds": 212.70074992068112,
+  "environment_hash": "d47c81f1b200327d5d4e001729ae701d3e14dd582547833b8d772f1d0a2190e3",
+  "hardware": {
+    "device": "cuda",
+    "device_name": "NVIDIA L40S",
+    "peak_allocated_bytes": 2585964032,
+    "peak_reserved_bytes": 2799697920
+  },
+  "input_length_max": 26,
+  "model_actual_relations": [
+    "ast",
+    "dfg"
+  ],
+  "optimizer_steps": 1536,
+  "preprocessing_hash": "9846b0032e74b70b976ab1d361064ce8c1888b5b952b4f5adc693d5789803adc",
+  "rng_algorithms": {
+    "numpy": "MT19937",
+    "python": "MT19937",
+    "torch": "default"
+  },
+  "seed": 42,
+  "selection": {
+    "best_tune_ap": 0.5267032345409068,
+    "selected_epoch": 5
+  },
+  "source": {
+    "file_count": 168,
+    "hash": "d46434842ac93ea23a32acad0cea7810f7dc0f0c25569e258bc89afa4a0753fd",
+    "kind": "source_tree"
+  },
+  "source_at_fit_start": {
+    "file_count": 168,
+    "hash": "d46434842ac93ea23a32acad0cea7810f7dc0f0c25569e258bc89afa4a0753fd",
+    "kind": "source_tree"
+  },
+  "source_changed_during_fit": false,
+  "split_hash": "5edbb6045fcef226d51de93bea1c3145a3fd60d47e422905ebdbbbe7cd007e94",
+  "train_count": 4096,
+  "train_features_sha256": "4234e1f83bdd322142ae5d10ba4120863c7bf0188d3c5cb7c347a3c666baa66e",
+  "tune_count": 1024,
+  "tune_features_sha256": "5ea452c620688c04c6c50f3902e89cad1b9d3942efc38a5dc1cab578cd8fa405"
+}

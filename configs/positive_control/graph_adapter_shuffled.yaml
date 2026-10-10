@@ -1,0 +1,5 @@
+{
+  "extends": "graph_adapter.yaml",
+  "model": {"shuffle_training_graphs": true}
+}
+

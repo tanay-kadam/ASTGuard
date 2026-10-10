@@ -1,0 +1,1 @@
+/home/tkadam/ASTGuard/astguard/train.py --config artifacts/release_gates/strengthening_20261006/configs/real_attention_shuffled_s123.yaml --features data/strengthening_20261006/real/train.jsonl --tune-features data/strengthening_20261006/real/tune.jsonl --seed 123 --runs-root artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s123/runs --require-cuda

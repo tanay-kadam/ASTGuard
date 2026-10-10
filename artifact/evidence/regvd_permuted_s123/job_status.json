@@ -1,0 +1,7 @@
+{
+  "gpu": 6,
+  "optimizer_steps": 22120,
+  "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_permuted_s123/run",
+  "status": "complete",
+  "utc": "2026-10-07T06:30:29.966217+00:00"
+}

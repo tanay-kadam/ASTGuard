@@ -1,0 +1,1 @@
+scripts/run_regvd_strengthening.py --train data/strengthening_20261006/real/regvd_train.jsonl --tune data/strengthening_20261006/real/regvd_tune.jsonl --condition self --seed 456 --output artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s456/run

@@ -1,0 +1,9 @@
+{
+  "extends": "base.yaml",
+  "model": {
+    "variant": "graph_adapter",
+    "shuffle_training_graphs": false,
+    "graph_shuffle_scope": "length_matched"
+  }
+}
+

@@ -1,0 +1,80 @@
+{
+  "tolerance": 0.0001,
+  "results": [
+    {
+      "job": "real_attention_authentic_s42",
+      "n": 4,
+      "device": "cpu",
+      "full_cohort": false,
+      "modes": {
+        "empty": {
+          "max_abs_logit_error": 4.76837158203125e-07,
+          "mean_abs_logit_error": 2.384185791015625e-07
+        },
+        "normal": {
+          "max_abs_logit_error": 1.430511474609375e-06,
+          "mean_abs_logit_error": 4.172325134277344e-07
+        },
+        "null": {
+          "max_abs_logit_error": 1.9073486328125e-06,
+          "mean_abs_logit_error": 5.960464477539062e-07
+        }
+      },
+      "max_abs_logit_error": 1.9073486328125e-06,
+      "passed": true
+    },
+    {
+      "job": "synthetic_centered_authentic_s123",
+      "n": 4,
+      "device": "cpu",
+      "full_cohort": false,
+      "modes": {
+        "base": {
+          "max_abs_logit_error": 9.5367431640625e-07,
+          "mean_abs_logit_error": 7.152557373046875e-07
+        },
+        "empty": {
+          "max_abs_logit_error": 1.430511474609375e-06,
+          "mean_abs_logit_error": 1.1920928955078125e-06
+        },
+        "normal": {
+          "max_abs_logit_error": 1.430511474609375e-06,
+          "mean_abs_logit_error": 9.5367431640625e-07
+        },
+        "null": {
+          "max_abs_logit_error": 1.430511474609375e-06,
+          "mean_abs_logit_error": 5.960464477539062e-07
+        }
+      },
+      "max_abs_logit_error": 1.430511474609375e-06,
+      "passed": true
+    },
+    {
+      "job": "regvd_native_s42",
+      "n": 4,
+      "device": "cpu",
+      "full_cohort": false,
+      "modes": {
+        "native": {
+          "max_abs_logit_error": 1.430511474609375e-06,
+          "mean_abs_logit_error": 5.364418029785156e-07
+        },
+        "permuted": {
+          "max_abs_logit_error": 1.430511474609375e-06,
+          "mean_abs_logit_error": 4.470348358154297e-07
+        },
+        "empty": {
+          "max_abs_logit_error": 1.1920928955078125e-07,
+          "mean_abs_logit_error": 5.960464477539063e-08
+        },
+        "self": {
+          "max_abs_logit_error": 4.76837158203125e-07,
+          "mean_abs_logit_error": 2.384185791015625e-07
+        }
+      },
+      "max_abs_logit_error": 1.430511474609375e-06,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

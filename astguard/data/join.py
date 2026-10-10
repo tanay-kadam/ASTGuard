@@ -7,6 +7,9 @@ from astguard.data.schema import read_jsonl
 
 def join_features(records_path,features_path,manifest_path,output_path):
     manifest=json.loads(Path(manifest_path).read_text())
+    columns = ('ordered_sample_ids', 'roles', 'component_ids', 'original_splits')
+    if len({len(manifest[name]) for name in columns}) != 1:
+        raise ValueError('split manifest columns have inconsistent lengths; refusing a shifted join')
     assignments=dict(zip(manifest['ordered_sample_ids'],zip(manifest['roles'],manifest['component_ids'])))
     paths=[records_path] if isinstance(records_path,(str,Path)) else records_path
     labels={row['sample_id']:(row['label'],row['raw_sha256']) for path in paths for row in read_jsonl(path) if row['sample_id'] in assignments}

@@ -1,0 +1,11 @@
+{
+  "extends": "graph_adapter.yaml",
+  "experiment_id": "PC_TOPOLOGY_V1_SMOKE",
+  "training": {
+    "epochs": 1,
+    "min_epochs": 1,
+    "patience": 1,
+    "max_optimizer_steps": 2
+  }
+}
+

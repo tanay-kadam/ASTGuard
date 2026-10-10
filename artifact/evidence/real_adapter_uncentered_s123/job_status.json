@@ -1,0 +1,7 @@
+{
+  "gpu": 7,
+  "optimizer_steps": 13272,
+  "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_adapter_uncentered_s123/runs/20261007T222623Z-6c7cc58673-123-70daee",
+  "status": "complete",
+  "utc": "2026-10-08T05:37:05.636416+00:00"
+}

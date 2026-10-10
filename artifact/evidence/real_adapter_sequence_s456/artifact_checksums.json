@@ -1,0 +1,22 @@
+{
+  "checkpoint_selection.json": "5cd07188d7c0ef97e5c2153eaf02bb262c721b19b57a225503c1a9e79f7d79cc",
+  "checkpoints/best.safetensors": "cc8646d6acf5e37761a705d9b81fd0e10361e9a08e49f9958d3a14754dd6f4d4",
+  "checkpoints/last_resume.pt": "acfce1c4645b68f9ec83dcc9178eeb41c5c3bb273598099cff2301fe4e9dca83",
+  "command.txt": "253d236a335943188f3d8cab3869557ef7506fb05db8f6f4a1d257e606f6bc84",
+  "config.resolved.yaml": "e48b1aac717d3628ae46911c38d1f68091ca855c793bece0ddc148bc2ade6f50",
+  "dataset_views.json": "5b52988630d3a7d9ae9d6b1f476fb90485a84bc4284661af815a9553d69658cc",
+  "environment.json": "2eab3b868079a8e286e94f2783a3b97231971dbcacf452b0a25a064774696920",
+  "events.jsonl": "2faef2599436e7579ae5b5a4a4a5e76b713e378f83ff5f94ba22c2c2a6d0bdc5",
+  "preprocessing_manifest.ref": "66abb3fe721832d28d3189692b3fb9b87b3ce59f0aebe797b892732c9574c280",
+  "provenance.json": "0c3ef61fcd385e14140592c4f8421cd59222d13c99e97eaefbb8698e057ceada",
+  "selected_tune_predictions.jsonl": "801d86355001f6e57279b74561feb881b3b106d34f57d23024cb535961b1db95",
+  "source.start.json": "ef3eebf14efca181b78d6416b304db374ae125587f72303a5698606ba97fed08",
+  "sources.lock.snapshot.json": "de09b7410efe2b3240236f0babed7597fe4ebbc0c3c147d7bbb00bc29febc31a",
+  "split_manifest.ref": "609517d4197d398baa67568f5216915dbaa34bbb82ffe58906b09ab1b9edc7ed",
+  "status.json": "4d2f84357075a99b49666988d2e93329615adb4ece51d9e8e5f261bc5494a6a2",
+  "train_log.jsonl": "aa4a8201e96721a537bcc2d8a608f895e872fb2612547d7bd1ffc4fe577eb204",
+  "validation_history.parquet": "5937bb1307d05cc4868ee1a453cc591f179926187a8dfbb6362f44a1117540fd",
+  "validation_predictions/epoch_1.jsonl": "b99d29c41dfe4f39e4212e2e29fbb5a8817d8e0802e5f8f0ceb2d31644130516",
+  "validation_predictions/epoch_2.jsonl": "801d86355001f6e57279b74561feb881b3b106d34f57d23024cb535961b1db95",
+  "validation_predictions/epoch_3.jsonl": "6fe6a8471cef352a22233417cd1237e7013964383a0ff5f5af40624750ef7a40"
+}

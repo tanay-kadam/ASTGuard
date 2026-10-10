@@ -1,0 +1,140 @@
+{
+  "audit_scope": "saved_predictions_configs_provenance_and_dataset",
+  "checkpoint_binary_audit_skipped": true,
+  "dataset_checks_passed": true,
+  "runs": {
+    "authentic_42": {
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "run_dir": "runs/20261006T170147Z-3f0f2aef6e-42-2ea86c",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 60.20409606769681,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "authentic_123": {
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "run_dir": "runs/20261006T170147Z-b7be7512ab-123-d7973b",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 60.45809938386083,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "authentic_456": {
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "run_dir": "runs/20261006T170147Z-5118506e37-456-b6947e",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 59.28512853756547,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "sequence_42": {
+      "ap": 0.5,
+      "roc_auc": 0.5,
+      "run_dir": "runs/20261006T182614Z-6521dba912-42-ad57e5",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 48.067345255985856,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "sequence_123": {
+      "ap": 0.5,
+      "roc_auc": 0.5,
+      "run_dir": "runs/20261006T170256Z-290aaf815c-123-c831fe",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 46.106744594872,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "sequence_456": {
+      "ap": 0.5,
+      "roc_auc": 0.5,
+      "run_dir": "runs/20261006T182718Z-3df2ea9aa8-456-a0f799",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 44.124179093167186,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "shuffled_42": {
+      "ap": 0.5040312701040265,
+      "roc_auc": 0.5010910034179688,
+      "run_dir": "runs/20261006T170147Z-3dfe8c9ac7-42-e422de",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 60.73545669578016,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "shuffled_123": {
+      "ap": 0.504003756792209,
+      "roc_auc": 0.501068115234375,
+      "run_dir": "runs/20261006T182614Z-ba94a366ee-123-61fc68",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 56.36221778951585,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    },
+    "shuffled_456": {
+      "ap": 0.5025953237281391,
+      "roc_auc": 0.5004768371582031,
+      "run_dir": "runs/20261006T182614Z-ac2077913e-456-ea62ca",
+      "optimizer_steps": 512,
+      "elapsed_training_seconds": 56.50794384814799,
+      "unchecked_artifacts": [
+        "checkpoints/best.safetensors",
+        "checkpoints/last_resume.pt"
+      ]
+    }
+  },
+  "interventions": {
+    "42": {
+      "normal_ap": 1.0,
+      "sequence_ap": 0.5,
+      "uncentered_ap": 1.0,
+      "null_as_real_ap": 0.49790734212591603,
+      "empty_real_ap": 0.5,
+      "mean_abs_structural_correction": 7.8188138185068965
+    },
+    "123": {
+      "normal_ap": 1.0,
+      "sequence_ap": 0.5,
+      "uncentered_ap": 1.0,
+      "null_as_real_ap": 0.5105776390842535,
+      "empty_real_ap": 0.5,
+      "mean_abs_structural_correction": 7.812410932499915
+    },
+    "456": {
+      "normal_ap": 1.0,
+      "sequence_ap": 0.5,
+      "uncentered_ap": 1.0,
+      "null_as_real_ap": 0.5310157609603827,
+      "empty_real_ap": 0.5,
+      "mean_abs_structural_correction": 7.782182178925723
+    }
+  },
+  "warnings": [
+    "Tune split used for checkpoint selection and reporting; no independent synthetic test split.",
+    "Three seeds; sample SD is descriptive, not a confidence interval.",
+    "CuBLAS deterministic-workspace warnings recorded in training logs.",
+    "Synthetic AST-channel edges are not parsed program ASTs; DFG is empty."
+  ],
+  "audit_passed": true,
+  "remote_checkpoint_hashes_verified": true
+}

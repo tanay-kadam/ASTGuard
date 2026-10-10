@@ -1,0 +1,7 @@
+{
+  "gpu": 6,
+  "optimizer_steps": 22120,
+  "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_authentic_s42/runs/20261007T220354Z-af05b503af-42-edef50",
+  "status": "complete",
+  "utc": "2026-10-08T09:56:28.659488+00:00"
+}

@@ -2,3 +2,5 @@
 *.pdf binary
 *.png binary
 *.parquet binary
+# Frozen package hashes cover exact bytes, including captured environment files.
+artifact/** -text whitespace=cr-at-eol

@@ -1,0 +1,6 @@
+# CPU smoke environment, Python 3.11. Install after requirements-metrics.txt.
+torch==2.5.1
+transformers==4.49.0
+tokenizers==0.21.4
+safetensors==0.8.0
+PyYAML==6.0.3

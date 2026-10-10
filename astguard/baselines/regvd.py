@@ -61,7 +61,7 @@ class GraphConvolution(nn.Module):
         bound=math.sqrt(6/(input_size+output_size));nn.init.uniform_(self.weight,-bound,bound)
 
     def forward(self, values, adjacency):
-        return torch.relu(adjacency @ (self.dropout(values) @ self.weight))
+        return torch.relu(adjacency @ (self.dropout(values) @ self.weight.to(values.dtype)))
 
 
 class ReGCN(nn.Module):

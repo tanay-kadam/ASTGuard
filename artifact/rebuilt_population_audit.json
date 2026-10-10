@@ -1,0 +1,39 @@
+{
+  "audit_checks_passed": true,
+  "elapsed_seconds": 749.1666438579559,
+  "failures": [],
+  "input_overlap": {
+    "full_model_input_hashes_cross_train_tune": 8,
+    "interpretation": "Truncation can merge different source functions; these counts are representation overlap, not necessarily source/component leakage.",
+    "sequence_hashes_cross_train_tune": 9
+  },
+  "original_test_used": false,
+  "source_component_role_preserved": true,
+  "split_hash": "793ac1b2bcacb06aa19aef62ac575482dbb76a5307d026997ac239ce5157f5c2",
+  "streams": {
+    "train": {
+      "extraction_status_counts": {
+        "ok/lexical_failed": 281,
+        "ok/ok": 91660,
+        "ok/unsupported": 30723,
+        "parse_failed/lexical_failed": 537,
+        "parse_failed/parse_failed": 18359
+      },
+      "n": 141560,
+      "positive": 4302,
+      "source_membership_labels_and_bounds_valid": true
+    },
+    "tune": {
+      "extraction_status_counts": {
+        "ok/lexical_failed": 38,
+        "ok/ok": 6933,
+        "ok/unsupported": 2231,
+        "parse_failed/lexical_failed": 80,
+        "parse_failed/parse_failed": 1284
+      },
+      "n": 10566,
+      "positive": 330,
+      "source_membership_labels_and_bounds_valid": true
+    }
+  }
+}

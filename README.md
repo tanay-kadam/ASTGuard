@@ -1,5 +1,12 @@
 # ASTGuard
 
+The corrected graph-reliance paper and its reproducibility package are indexed
+in [artifact/README.md](artifact/README.md). Start there to verify the 42 selected
+runs and 156 intervention conditions or download the checkpoint/data release.
+The current manuscript is [main.pdf](main.pdf); real-data findings concern the
+checkpoint-selection development cohort, with no independent real-test claim.
+The older implementation status below describes the original development plan.
+
 The additive edge-gating extension and its research direction are documented in
 [the novelty audit](docs/EDGE_GATING_NOVELTY_AUDIT_AND_DIRECTION.md) and
 [development revision R2](protocol/revisions/R2_edge_gating_development.md).

@@ -31,6 +31,8 @@ def audit_run(run: Path) -> dict | None:
     if not predictions.exists() or not selection.exists():
         return None
     rows = _jsonl(predictions)
+    if not rows or len({row['sample_id'] for row in rows}) != len(rows):
+        raise ValueError(f'empty or duplicate-ID predictions in {predictions}')
     labels = [int(row["label"]) for row in rows]
     scores = [float(row.get("probability", row["logit"])) for row in rows]
     computed_ap = average_precision(labels, scores)
@@ -83,10 +85,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--runs-root", type=Path, default=Path("runs"))
     parser.add_argument(
-        "--interventions-root", type=Path, default=Path("artifacts/audits/interventions")
+        "--interventions-root", type=Path, default=Path("artifacts/release_gates/positive_control_v1_20261006/interventions")
     )
     parser.add_argument(
-        "--output", type=Path, default=Path("artifacts/audits/paper_number_audit_20261005.json")
+        "--output", type=Path, default=Path("artifacts/audits/current_numeric_audit.json")
     )
     args = parser.parse_args(argv)
 
@@ -99,7 +101,9 @@ def main(argv: list[str] | None = None) -> int:
         ]
     report = {
         "kind": "paper_number_recomputation_audit",
-        "official_test_used": False,
+        "official_test_used": None,
+        "audit_scope": "metric_recomputation_only_not_split_or_test_certification",
+        "evidence_present": bool(runs) and bool(interventions),
         "run_count": len(runs),
         "all_run_ap_match_within_1e-12": all(row["ap_exact_match_within_1e-12"] for row in runs),
         "all_run_scores_finite": all(row["all_scores_finite"] for row in runs),
@@ -114,7 +118,8 @@ def main(argv: list[str] | None = None) -> int:
     atomic_write_json(args.output, report)
     print(json.dumps({key: report[key] for key in report if key not in {"runs", "interventions"}}, indent=2))
     return 0 if (
-        report["all_run_ap_match_within_1e-12"]
+        report["evidence_present"]
+        and report["all_run_ap_match_within_1e-12"]
         and report["all_run_scores_finite"]
         and report["all_intervention_ap_match_within_1e-12"]
     ) else 1

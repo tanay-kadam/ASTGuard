@@ -1,0 +1,1 @@
+/home/tkadam/ASTGuard/astguard/train.py --config artifacts/release_gates/strengthening_20261006/configs/synthetic_sequence_s123.yaml --features data/strengthening_20261006/synthetic/train.jsonl --tune-features data/strengthening_20261006/synthetic/tune.jsonl --seed 123 --runs-root artifacts/release_gates/strengthening_20261006/jobs/synthetic_sequence_s123/runs --require-cuda

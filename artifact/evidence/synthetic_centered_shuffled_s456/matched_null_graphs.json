@@ -1,0 +1,16 @@
+{
+  "train": {
+    "examples": 4096,
+    "kind": "degree_position_matched_token_nulls",
+    "namespace": "train",
+    "position_blocks": 1,
+    "samples_per_example": 8
+  },
+  "tune": {
+    "examples": 1024,
+    "kind": "degree_position_matched_token_nulls",
+    "namespace": "tune",
+    "position_blocks": 1,
+    "samples_per_example": 8
+  }
+}

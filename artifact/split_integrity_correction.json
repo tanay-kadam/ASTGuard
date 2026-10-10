@@ -1,0 +1,35 @@
+{
+  "corrected_counts": {
+    "train": 141560,
+    "tune": 10566
+  },
+  "corrected_manifest_hash": "793ac1b2bcacb06aa19aef62ac575482dbb76a5307d026997ac239ce5157f5c2",
+  "corrected_positives": {
+    "train": 4302,
+    "tune": 330
+  },
+  "historical_manifest_columns": {
+    "component_ids": 186898,
+    "ordered_sample_ids": 186893,
+    "original_splits": 186898,
+    "roles": 186898
+  },
+  "historical_results_submission_safe": false,
+  "historical_role_mismatches": 10619,
+  "historical_transition_counts": {
+    "cal->test": 195,
+    "cal->train": 1044,
+    "cal->tune": 75,
+    "test->cal": 176,
+    "test->train": 2612,
+    "test->tune": 174,
+    "train->cal": 1064,
+    "train->test": 2580,
+    "train->tune": 1225,
+    "tune->cal": 74,
+    "tune->test": 187,
+    "tune->train": 1213
+  },
+  "original_test_transferred": false,
+  "records_gzip_sha256": "e29c262c4eb4bbc093d5e449f605e5280c4f53ea735569654ba02389f0ef1a92"
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "base.yaml",
+  "model": {
+    "variant": "sequence_only",
+    "relations": [],
+    "beta_init": 0.0,
+    "shuffle_training_graphs": false
+  }
+}
+

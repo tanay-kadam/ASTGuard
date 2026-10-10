@@ -1,0 +1,7 @@
+{
+  "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider",
+  "passed": 114,
+  "failed": 0,
+  "seconds": 25.96,
+  "scope": "Existing repository suite; CUDA-specific construction behavior also audited on the experiment host. No new full training."
+}

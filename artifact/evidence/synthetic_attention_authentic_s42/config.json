@@ -1,0 +1,100 @@
+{
+  "dataset": {
+    "calibration_role": "cal",
+    "manifest_hash": "5edbb6045fcef226d51de93bea1c3145a3fd60d47e422905ebdbbbe7cd007e94",
+    "name": "topology_positive_control",
+    "train_fraction": 1.0,
+    "tune_role": "tune",
+    "view": "P_clean"
+  },
+  "evaluation": {
+    "analysis_seed": 20260921,
+    "bootstrap_replicates": 10000,
+    "threshold_fit_role": "cal",
+    "thresholds": [
+      "max_f1",
+      "fpr_0.005",
+      "recall_0.80"
+    ]
+  },
+  "experiment_id": "STRENGTHEN_synthetic_attention_authentic",
+  "model": {
+    "beta_init": 1.0,
+    "checkpoint": "microsoft/codebert-base",
+    "freeze_beta": false,
+    "gate_init": "zero",
+    "gate_mode": "token",
+    "gate_sharing": "none",
+    "graph_adapter_hidden_size": 64,
+    "graph_shuffle_scope": "batch",
+    "head_dropout": 0.1,
+    "null_graph_samples": 4,
+    "null_position_blocks": 4,
+    "regvd_hidden_size": 128,
+    "regvd_layers": 2,
+    "regvd_window_size": 5,
+    "relations": [
+      "ast"
+    ],
+    "revision": "3b0952feddeffad0063f274080e3c23d75e7eb39",
+    "shuffle_training_graphs": false,
+    "structural_dropout": 0.0,
+    "structural_layers": [
+      2,
+      5,
+      8,
+      10
+    ],
+    "variant": "astguard"
+  },
+  "preprocessing": {
+    "annotation_masking": "a_priori_v1",
+    "ast_radius": 4,
+    "ast_relation": "leaf_path_radius4",
+    "cache_hash": "9846b0032e74b70b976ab1d361064ce8c1888b5b952b4f5adc693d5789803adc",
+    "canonicalization": "crlf_to_lf",
+    "degree_normalization": false,
+    "dfg_symmetry": false,
+    "dfg_version": "limited-rd-v1",
+    "max_length": 26,
+    "structural_context": "full_function",
+    "topology": "clean"
+  },
+  "protocol_version": "1.0",
+  "provenance": {
+    "hpo_parent": null,
+    "protocol_hash": "75d7c92f8c46fbc7318402490f6e4823ed5d89f2343ecd25fedc380307a3f5c8"
+  },
+  "resources": {
+    "host_profile": "ssh_lab_8xL40S",
+    "max_vram_gb": "measured_device_limit_minus_4"
+  },
+  "training": {
+    "activation_checkpointing": false,
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_epsilon": 1e-08,
+    "effective_batch_size": 32,
+    "epochs": 12,
+    "grad_clip_norm": 1.0,
+    "gradient_accumulation": 1,
+    "loss": "unweighted_bce",
+    "max_optimizer_steps": 1536,
+    "microbatch_size": 32,
+    "min_delta": 0.0001,
+    "min_epochs": 12,
+    "new_module_lr_multiplier": 50,
+    "optimizer": "adamw",
+    "patience": 12,
+    "precision": "bf16_if_supported",
+    "pretrained_lr": 2e-05,
+    "scheduler": "linear",
+    "seed": 42,
+    "selection_metric": "average_precision",
+    "validation_frequency": "epoch",
+    "warmup_fraction": 0.1,
+    "weight_decay": 0.01
+  }
+}

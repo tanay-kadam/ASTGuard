@@ -1,0 +1,57 @@
+﻿{
+  "errors": [],
+  "partitions": {
+    "train": {
+      "n": 4096,
+      "positive": 2048,
+      "opposite_label_identical_sequence_pairs": true,
+      "target_alignment": true
+    },
+    "tune": {
+      "n": 1024,
+      "positive": 512,
+      "opposite_label_identical_sequence_pairs": true,
+      "target_alignment": true
+    },
+    "audit": {
+      "n": 1024,
+      "positive": 512,
+      "opposite_label_identical_sequence_pairs": true,
+      "target_alignment": true
+    }
+  },
+  "selected_tune_population_checks": {
+    "synthetic_attention_authentic_s123": true,
+    "synthetic_attention_authentic_s42": true,
+    "synthetic_attention_authentic_s456": true,
+    "synthetic_attention_shuffled_s123": true,
+    "synthetic_attention_shuffled_s42": true,
+    "synthetic_attention_shuffled_s456": true,
+    "synthetic_centered_authentic_s123": true,
+    "synthetic_centered_authentic_s42": true,
+    "synthetic_centered_authentic_s456": true,
+    "synthetic_centered_shuffled_s123": true,
+    "synthetic_centered_shuffled_s42": true,
+    "synthetic_centered_shuffled_s456": true,
+    "synthetic_sequence_s123": true,
+    "synthetic_sequence_s42": true,
+    "synthetic_sequence_s456": true
+  },
+  "donor_label_alignment": {
+    "42": {
+      "0": 0.2188313802083331,
+      "1": 0.21893310546874992
+    },
+    "123": {
+      "0": 0.2162679036458333,
+      "1": 0.2165323893229169
+    },
+    "456": {
+      "0": 0.2152099609375002,
+      "1": 0.21683756510416674
+    }
+  },
+  "train_tune_sequence_overlap": 0,
+  "train_audit_sequence_overlap": 0,
+  "tune_audit_sequence_overlap": 0
+}

@@ -1,0 +1,44 @@
+{
+  "extends": "../base.yaml",
+  "experiment_id": "PC_TOPOLOGY_V1",
+  "dataset": {
+    "name": "topology_positive_control",
+    "view": "paired_alignment_v1",
+    "manifest_hash": "725e6dc910b29f6771435f28865c8692f9bf35dfa421318741ccf2820f5c02c8",
+    "train_fraction": 1.0
+  },
+  "preprocessing": {
+    "max_length": 26,
+    "cache_hash": "9846b0032e74b70b976ab1d361064ce8c1888b5b952b4f5adc693d5789803adc"
+  },
+  "model": {
+    "checkpoint": "microsoft/codebert-base",
+    "revision": "3b0952feddeffad0063f274080e3c23d75e7eb39",
+    "relations": ["ast"],
+    "beta_init": 1.0,
+    "head_dropout": 0.1,
+    "null_graph_samples": 8,
+    "null_position_blocks": 1,
+    "graph_adapter_hidden_size": 64
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 4,
+    "effective_batch_size": 32,
+    "microbatch_size": 32,
+    "gradient_accumulation": 1,
+    "pretrained_lr": 0.00002,
+    "new_module_lr_multiplier": 50,
+    "loss": "unweighted_bce",
+    "activation_checkpointing": false,
+    "min_epochs": 4,
+    "patience": 4,
+    "max_optimizer_steps": 512
+  },
+  "resources": {"host_profile": "ssh_lab_8xL40S"},
+  "provenance": {
+    "hpo_parent": null,
+    "protocol_hash": "topology_positive_control_v1_frozen_20261006"
+  }
+}
+

@@ -1,0 +1,7 @@
+{
+  "buckets": 1,
+  "donors_sha256": "7c8744c43c462e0b64a82db8d54cf8a2e965de0c66ed351e6422be85e567b700",
+  "exact_length_fraction": 1.0,
+  "exact_length_matches": 4096,
+  "examples": 4096
+}

@@ -1,0 +1,7 @@
+{
+  "gpu": 3,
+  "optimizer_steps": 1536,
+  "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/synthetic_attention_authentic_s123/runs/20261006T231234Z-4b9e4990f8-123-07ea8f",
+  "status": "complete",
+  "utc": "2026-10-06T23:16:31.873577+00:00"
+}

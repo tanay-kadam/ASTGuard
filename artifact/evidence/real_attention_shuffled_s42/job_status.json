@@ -1,0 +1,7 @@
+{
+  "gpu": 5,
+  "optimizer_steps": 22120,
+  "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/real_attention_shuffled_s42/runs/20261008T163940Z-111047471d-42-2846ab",
+  "status": "complete",
+  "utc": "2026-10-09T05:27:49.786392+00:00"
+}

@@ -1,0 +1,36 @@
+{
+  "tolerance": 0.0001,
+  "results": [
+    {
+      "job": "synthetic_centered_authentic_s123",
+      "n": 1024,
+      "device": "cpu",
+      "full_cohort": true,
+      "modes": {
+        "base": {
+          "max_abs_logit_error": 1.9073486328125e-06,
+          "mean_abs_logit_error": 6.09084963798523e-07,
+          "ap": 0.5
+        },
+        "empty": {
+          "max_abs_logit_error": 2.86102294921875e-06,
+          "mean_abs_logit_error": 7.085036486387253e-07,
+          "ap": 0.5233884858995947
+        },
+        "normal": {
+          "max_abs_logit_error": 4.291534423828125e-06,
+          "mean_abs_logit_error": 8.57282429933548e-07,
+          "ap": 1.0
+        },
+        "null": {
+          "max_abs_logit_error": 3.814697265625e-06,
+          "mean_abs_logit_error": 7.986091077327728e-07,
+          "ap": 0.5051190840858029
+        }
+      },
+      "max_abs_logit_error": 4.291534423828125e-06,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

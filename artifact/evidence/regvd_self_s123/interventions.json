@@ -1,0 +1,30 @@
+{
+  "empty": {
+    "ap": 0.01892345584632424,
+    "mean_abs_logit_change": 0.12692862304857278,
+    "mean_edge_change_fraction": 0.0,
+    "n": 10566,
+    "roc_auc": 0.24487888853363649
+  },
+  "native": {
+    "ap": 0.0243548774475517,
+    "mean_abs_logit_change": 0.0,
+    "mean_edge_change_fraction": 0.0,
+    "n": 10566,
+    "roc_auc": 0.4234121697632835
+  },
+  "permuted": {
+    "ap": 0.026281039354405986,
+    "mean_abs_logit_change": 0.1053597904669839,
+    "mean_edge_change_fraction": 0.579208719577901,
+    "n": 10566,
+    "roc_auc": 0.46334624083744835
+  },
+  "self": {
+    "ap": 0.1418970087699563,
+    "mean_abs_logit_change": 3.3409623691733534,
+    "mean_edge_change_fraction": 0.0,
+    "n": 10566,
+    "roc_auc": 0.8126998294788447
+  }
+}

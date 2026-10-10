@@ -1,0 +1,6 @@
+{
+  "best_value": 0.17217951913222004,
+  "epoch": 3,
+  "metric": "average_precision",
+  "role": "tune"
+}

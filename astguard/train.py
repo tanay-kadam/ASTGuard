@@ -50,6 +50,15 @@ class _FeatureDataset:
         if self._handle is not None:self._handle.close()
 
 
+def _view_chain(dataset):
+    result = []
+    while True:
+        result.append(type(dataset).__name__)
+        if not hasattr(dataset, 'base'):
+            return result
+        dataset = dataset.base
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
@@ -59,6 +68,7 @@ def main(argv=None) -> int:
     parser.add_argument("--runs-root", default="runs")
     parser.add_argument("--resume")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument('--require-cuda', action='store_true')
     args = parser.parse_args(argv)
     config = load_config(args.config, allow_unresolved=args.dry_run)
     if args.seed is not None:
@@ -116,7 +126,12 @@ def main(argv=None) -> int:
         elif hasattr(model,'backbone') and hasattr(model.backbone,'gradient_checkpointing_enable'):
             model.backbone.gradient_checkpointing_enable()
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    if args.require_cuda and device != 'cuda':
+        raise RuntimeError('CUDA required; refusing CPU fallback')
     model.to(device)
+    cuda_seed_after_construction = int(torch.cuda.initial_seed()) if device.startswith('cuda') else None
+    if cuda_seed_after_construction is not None and cuda_seed_after_construction != config.training.seed % (1 << 64):
+        raise RuntimeError('model construction changed the configured CUDA seed')
     optimizer = build_adamw(model, pretrained_lr=config.training.pretrained_lr,
                             new_multiplier=config.training.new_module_lr_multiplier,
                             weight_decay=config.training.weight_decay,
@@ -132,7 +147,7 @@ def main(argv=None) -> int:
     if config.model.variant == 'null_centered_graph_adapter':
         from astguard.data.null_graphs import MatchedNullGraphDataset
         train_view=MatchedNullGraphDataset(
-            train_dataset, seed=config.training.seed,
+            train_view, seed=config.training.seed,
             samples=config.model.null_graph_samples,
             position_blocks=config.model.null_position_blocks,
             namespace='train')
@@ -143,6 +158,11 @@ def main(argv=None) -> int:
             namespace='tune')
         atomic_write_json(run_dir/'matched_null_graphs.json',{
             'train':train_view.stats,'tune':tune_view.stats})
+    chains = {'train': _view_chain(train_view), 'tune': _view_chain(tune_view)}
+    if config.model.shuffle_training_graphs and config.model.graph_shuffle_scope == 'length_matched':
+        if 'GraphDonorDataset' not in chains['train']:
+            raise RuntimeError('declared shuffled control lost its donor dataset')
+    atomic_write_json(run_dir / 'dataset_views.json', chains)
     loader = DataLoader(train_view, batch_size=config.training.microbatch_size,
                         shuffle=True, collate_fn=collator,
                         generator=torch.Generator().manual_seed(config.training.seed))
@@ -169,6 +189,8 @@ def main(argv=None) -> int:
     atomic_write_json(run_dir/'status.json',{'status':'running','run_id':run_id})
     if device.startswith('cuda'):torch.cuda.reset_peak_memory_stats()
     fit_started=time.perf_counter()
+    startup_source = source_identity()
+    atomic_write_json(run_dir / ('source.resume_start.json' if args.resume else 'source.start.json'), startup_source)
     try:
         fit_result=engine.fit(loader,tune_loader,class_weights,config.training,run_dir,config_hash,resume=args.resume)
     except Exception as exc:
@@ -183,7 +205,11 @@ def main(argv=None) -> int:
     hardware={"device":device,"peak_allocated_bytes":torch.cuda.max_memory_allocated() if device.startswith('cuda') else None,
               "peak_reserved_bytes":torch.cuda.max_memory_reserved() if device.startswith('cuda') else None,
               "device_name":torch.cuda.get_device_name(0) if device.startswith('cuda') else None}
-    atomic_write_json(run_dir / "provenance.json", {"source": source_identity(), "config_hash": config_hash,
+    ending_source = source_identity()
+    atomic_write_json(run_dir / "provenance.json", {"source": ending_source, "source_at_fit_start": startup_source,
+        "source_changed_during_fit": startup_source != ending_source,
+        "cuda_seed_after_model_construction": cuda_seed_after_construction,
+        "model_actual_relations": list(getattr(model, 'relations', ())), "config_hash": config_hash,
         "class_counts": {"0": negatives, "1": positives},"train_count":len(train_dataset),"tune_count":len(tune_dataset),
         "train_features_sha256":sha256_file(args.features),"tune_features_sha256":sha256_file(args.tune_features),
         "split_hash":config.dataset.manifest_hash,"preprocessing_hash":config.preprocessing.cache_hash,

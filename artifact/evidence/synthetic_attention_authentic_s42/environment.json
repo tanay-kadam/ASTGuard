@@ -1,0 +1,13 @@
+{
+  "captured_utc": "2026-10-06T23:00:04.895946+00:00",
+  "hostname": "seeklab-01",
+  "machine": "x86_64",
+  "packages": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.49.0",
+    "tree-sitter": "0.26.0"
+  },
+  "platform": "Linux-6.8.0-51-generic-x86_64-with-glibc2.35",
+  "processor": "x86_64",
+  "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]"
+}

@@ -1,0 +1,117 @@
+"""Published ReGVD architecture, native graph audit, and explicit common-cohort adaptations."""
+import argparse
+import json
+import math
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT))
+import torch
+from torch.utils.data import DataLoader
+from safetensors.torch import save_model, load_model
+from astguard.baselines.regvd import ReGVDClassifier
+from astguard.baselines.regvd_audit import NativeGraphCollator,native_forward
+from astguard.evaluation.metrics import average_precision,roc_auc
+from astguard.training.seeds import set_seed
+from astguard.utils.atomic_io import atomic_write_json,atomic_write_text,append_jsonl
+from astguard.utils.hashing import sha256_file
+
+
+class Dataset:
+    def __init__(self,path,role):
+        self.path=Path(path); self.offsets=[]; self.ids=set(); self.components=set(); self.positives=0; self.handle=None
+        with self.path.open('rb') as stream:
+            while True:
+                offset=stream.tell(); line=stream.readline()
+                if not line: break
+                row=json.loads(line)
+                assert row['role']==role and row['sample_id'] not in self.ids
+                self.offsets.append(offset); self.ids.add(row['sample_id']); self.components.add(row['component_id']); self.positives+=row['label']
+    def __len__(self): return len(self.offsets)
+    def __getitem__(self,index):
+        if self.handle is None:self.handle=self.path.open('rb')
+        self.handle.seek(self.offsets[index]);return json.loads(self.handle.readline())
+
+
+def predict(model,loader):
+    model.eval(); result=[]; changes=[]
+    with torch.no_grad():
+        for batch in loader:
+            logits=native_forward(model,batch,'cuda').float().cpu()
+            assert torch.isfinite(logits).all()
+            result.extend({'sample_id':sid,'label':int(label),'logit':float(logit)} for sid,label,logit in zip(batch['sample_ids'],batch['labels'],logits))
+            changes.extend(batch['edge_change'])
+    return result,changes
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--train',required=True);p.add_argument('--tune',required=True)
+    p.add_argument('--condition',choices=['native','permuted','self'],required=True);p.add_argument('--seed',type=int,required=True)
+    p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true');args=p.parse_args()
+    assert torch.cuda.is_available(), 'CUDA required'
+    if args.output.exists():raise FileExistsError(args.output)
+    args.output.mkdir(parents=True);set_seed(args.seed);start=time.time()
+    atomic_write_json(args.output/'status.json',{'status':'running'})
+    train=Dataset(args.train,'train');tune=Dataset(args.tune,'tune')
+    assert not train.ids&tune.ids and not train.components&tune.components
+    model=ReGVDClassifier.from_pretrained('microsoft/graphcodebert-base',revision='2b0488a7bb0eefc7041f1bb2cad1ab26b0da269d')
+    model.gnn.double()
+    # Pinned upstream keeps convolution parameters FP32 and casts them in forward;
+    # attention/readout linear parameters and GNN arithmetic are FP64.
+    for layer in model.gnn.layers:layer.weight.data=layer.weight.data.float()
+    model.to('cuda')
+    groups=[{'params':[p for n,p in model.named_parameters() if p.requires_grad and not n.endswith('bias')],'weight_decay':0.0},
+            {'params':[p for n,p in model.named_parameters() if p.requires_grad and n.endswith('bias')],'weight_decay':0.0}]
+    optimizer=torch.optim.AdamW(groups,lr=0.0005,eps=1e-8)
+    train_loader=DataLoader(train,batch_size=128,shuffle=True,collate_fn=NativeGraphCollator(args.condition,args.seed),generator=torch.Generator().manual_seed(args.seed))
+    tune_mode='self' if args.condition=='self' else 'native'
+    tune_loader=DataLoader(tune,batch_size=128,shuffle=False,collate_fn=NativeGraphCollator(tune_mode,args.seed))
+    epochs=1 if args.smoke else 100
+    from transformers import get_linear_schedule_with_warmup
+    total=len(train_loader)*epochs;scheduler=get_linear_schedule_with_warmup(optimizer,int(total*.1),total)
+    config={'upstream_revision':'b5e6657b003ada704b7c75e4bd237c1eee1d8138','checkpoint':'microsoft/graphcodebert-base',
+        'revision':'2b0488a7bb0eefc7041f1bb2cad1ab26b0da269d','condition':args.condition,'seed':args.seed,
+        'learning_rate':0.0005,'batch_size':128,'epochs_ceiling':epochs,'min_epochs':20,'patience':10,
+        'loss':'unweighted_bce_column0','upstream_padding_retained':True,'precision':'gnn_fp64_head_fp32',
+        'selection':'tune_ap','selection_graph':tune_mode,'train_sha256':sha256_file(args.train),'tune_sha256':sha256_file(args.tune),
+        'device':'cuda','device_name':torch.cuda.get_device_name(0)}
+    atomic_write_json(args.output/'config.json',config);atomic_write_text(args.output/'command.txt',' '.join(sys.argv)+'\n')
+    best=-1;stale=0;selected=None;steps=0
+    for epoch in range(epochs):
+        model.train();loss_sum=0;n=0;epoch_start=time.time()
+        for i,batch in enumerate(train_loader):
+            optimizer.zero_grad(set_to_none=True);logits=native_forward(model,batch,'cuda')
+            loss=torch.nn.functional.binary_cross_entropy_with_logits(logits,batch['labels'].to('cuda'))
+            if not torch.isfinite(loss):raise FloatingPointError('ReGVD nonfinite loss')
+            loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1.0,error_if_nonfinite=True);optimizer.step();scheduler.step();steps+=1
+            loss_sum+=float(loss)*len(logits);n+=len(logits)
+            if args.smoke and i>=1:break
+        pred,_=predict(model,tune_loader);ap=average_precision([r['label'] for r in pred],[r['logit'] for r in pred])
+        if ap is None:raise ValueError('tune missing a class')
+        if ap>best+.0001:stale=0
+        else:stale+=1
+        if ap>best:
+            best=ap;selected=epoch+1;save_model(model,str(args.output/'best.safetensors'))
+            atomic_write_text(args.output/'selected_predictions.jsonl',''.join(json.dumps(r)+'\n' for r in pred))
+        record={'epoch':epoch+1,'tune_ap':ap,'train_loss':loss_sum/n,'optimizer_steps':steps,'seconds':time.time()-epoch_start}
+        append_jsonl(args.output/'history.jsonl',record); print(json.dumps(record),flush=True)
+        if epoch+1>=20 and stale>=10:break
+    load_model(model,str(args.output/'best.safetensors'))
+    interventions={};normal=None
+    for mode in ['native','permuted','empty','self']:
+        values,change=predict(model,DataLoader(tune,batch_size=128,shuffle=False,collate_fn=NativeGraphCollator(mode,args.seed)))
+        atomic_write_text(args.output/f'intervention_{mode}.jsonl',''.join(json.dumps(r)+'\n' for r in values))
+        if mode=='native':normal=values
+        interventions[mode]={'ap':average_precision([r['label'] for r in values],[r['logit'] for r in values]),
+             'roc_auc':roc_auc([r['label'] for r in values],[r['logit'] for r in values]),
+             'mean_abs_logit_change':sum(abs(a['logit']-b['logit']) for a,b in zip(normal,values))/len(values),
+             'mean_edge_change_fraction':sum(change)/len(change),'n':len(values)}
+    atomic_write_json(args.output/'interventions.json',interventions)
+    atomic_write_json(args.output/'selection.json',{'epoch':selected,'tune_ap':best,'epochs_completed':epoch+1,'ceiling_hit':epoch+1==epochs})
+    atomic_write_json(args.output/'status.json',{'status':'complete','optimizer_steps':steps,'elapsed_seconds':time.time()-start})
+    atomic_write_json(args.output/'checksums.json',{p.name:sha256_file(p) for p in args.output.iterdir() if p.is_file()})
+    print(args.output)
+
+
+if __name__=='__main__':main()

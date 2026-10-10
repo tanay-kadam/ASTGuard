@@ -1,0 +1,7 @@
+{
+  "gpu": 6,
+  "optimizer_steps": 23226,
+  "run_dir": "artifacts/release_gates/strengthening_20261006/jobs/regvd_self_s456/run",
+  "status": "complete",
+  "utc": "2026-10-07T10:09:39.039285+00:00"
+}
