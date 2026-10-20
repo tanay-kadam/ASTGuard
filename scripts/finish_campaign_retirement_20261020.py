@@ -13,6 +13,8 @@ def git(*args):
     return subprocess.check_output(['git',*args],cwd=REPO,text=True,stderr=subprocess.STDOUT).strip()
 
 def main():
+    policy=REPO/'artifacts/audits/ssh_storage_policy_20261020.json'
+    if policy.exists():assert json.loads(policy.read_text()).get('local_large_backup_allowed',False),'Local-backup cleanup workflow is disabled; use cloud verification.'
     status=DEST/'completion.json'
     def record(state,**extra):
         status.write_text(json.dumps({'status':state,'updated_unix':time.time(),**extra},indent=2)+'\n')

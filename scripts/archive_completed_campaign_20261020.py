@@ -84,6 +84,8 @@ def save():
     p=DEST/'transfer_state.json';p.write_text(json.dumps(STATE,indent=2)+'\n')
 
 def main():
+    policy=REPO/'artifacts/audits/ssh_storage_policy_20261020.json'
+    if policy.exists():assert json.loads(policy.read_text()).get('local_large_backup_allowed',False),'Local large backup is disabled by the user storage preference.'
     DEST.mkdir(parents=True,exist_ok=True)
     manifest=DEST/'inventory.json'
     c=connect()
