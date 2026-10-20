@@ -1,0 +1,1 @@
+Benchmark bodies and pretrained weights are not distributed. The saved measurements and review scripts are supplied for evaluation of this submission. Upstream ReGVD, PrimeVul, DiverseVul, CodeBERT and GraphCodeBERT retain their own licenses and notices. No upstream code is relicensed by this package.

@@ -1,0 +1,136 @@
+"""FP32 fixed-checkpoint evaluation on the sealed external cohort only."""
+import argparse
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO))
+from graphstudy.utils.atomic_io import atomic_write_json
+from graphstudy.utils.hashing import sha256_file, object_hash
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--run', type=Path, required=True)
+    p.add_argument('--family', choices=['real', 'regvd'], required=True)
+    p.add_argument('--seed', type=int, required=True)
+    p.add_argument('--condition', required=True)
+    p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--max-examples', type=int)
+    args = p.parse_args()
+    if args.output.exists(): raise FileExistsError(args.output)
+    import torch
+    import numpy as np
+    from sklearn.metrics import average_precision_score, roc_auc_score
+    from safetensors.torch import load_model
+    from torch.utils.data import DataLoader, Subset
+    from graphstudy.evaluation.metrics import average_precision, roc_auc
+    manifest_path = REPO/'artifacts/seven_day_20261012/holdout/manifest.json'
+    manifest = json.loads(manifest_path.read_text())
+    assert manifest['feasibility_passed'] and not manifest['selection_allowed']
+    holdout_root = manifest_path.parent
+    membership = json.loads((holdout_root/'membership.json').read_text())
+    protocol_hash = sha256_file(REPO/'docs/SEVEN_DAY_HOLDOUT_PROTOCOL_20261012.md')
+    assert object_hash({'protocol': protocol_hash, 'membership': membership['rows']}) == manifest['manifest_hash']
+    population = {r[0]: r[1] for r in membership['rows']}
+    assert len(population) == manifest['n']
+    provenance = json.loads((REPO/'artifacts/seven_day_20261012/dataset_provenance.json').read_text())
+    component_report = json.loads((holdout_root/'component_report.json').read_text())
+    assert provenance['status'] == 'passed'
+    for name in ['primevul', 'diversevul']:
+        assert provenance['datasets'][name]['normalized_sha256'] == component_report['source_sha256'][str(REPO/f'data/interim/{name}/records.jsonl')]
+    assert torch.cuda.is_available(), 'CUDA required; no fallback'
+    data = Path(manifest['features_directory'])
+    features = data/('regvd_audit.jsonl' if args.family == 'regvd' else 'audit.jsonl')
+    key = 'regvd_audit' if args.family == 'regvd' else 'audit'
+    assert sha256_file(features) == manifest['hashes'][key]
+    if args.family == 'regvd':
+        from scripts.run_regvd_strengthening import Dataset, predict
+        from graphstudy.baselines.regvd import ReGVDClassifier
+        from graphstudy.baselines.regvd_audit import NativeGraphCollator
+        config = json.loads((args.run/'config.json').read_text())
+        assert config['seed'] == args.seed and config['condition'] == args.condition
+        base = Dataset(features, 'audit')
+        if args.max_examples: base = Subset(base, range(min(args.max_examples, len(base))))
+        model = ReGVDClassifier.from_pretrained('microsoft/graphcodebert-base', revision=config['revision'])
+        model.gnn.double()
+        for layer in model.gnn.layers: layer.weight.data = layer.weight.data.float()
+        model.to('cuda').eval()
+        checkpoint = args.run/'best.safetensors'
+        load_model(model, str(checkpoint))
+        paths = {}
+        changes = {}
+        for mode in ['native', 'permuted', 'empty', 'self']:
+            values, edge = predict(model, DataLoader(base, batch_size=128, shuffle=False,
+                collate_fn=NativeGraphCollator(mode, args.seed)))
+            paths[mode] = values; changes[mode] = sum(edge)/len(edge)
+        normal_mode = 'self' if args.condition == 'self' else 'native'
+        normal = paths[normal_mode]
+        rows = [{'sample_id': r['sample_id'], 'label': r['label'], 'normal': r['logit'],
+                 **{mode: paths[mode][i]['logit'] for mode in paths}} for i, r in enumerate(normal)]
+        precision = 'gnn_fp64_head_fp32'
+    else:
+        from graphstudy.config import load_config
+        from graphstudy.train import _FeatureDataset
+        from graphstudy.models.factory import create_model, create_collator
+        from graphstudy.data.null_graphs import MatchedNullGraphDataset
+        config = load_config(args.run/'config.resolved.yaml')
+        assert config.training.seed == args.seed
+        assert config.preprocessing.cache_hash == manifest['preprocessing_hash']
+        base = _FeatureDataset(features, role='audit', manifest_hash=manifest['manifest_hash'],
+                               preprocessing_hash=manifest['preprocessing_hash'])
+        if args.max_examples: base = Subset(base, range(min(args.max_examples, len(base))))
+        view = MatchedNullGraphDataset(base, seed=args.seed, samples=config.model.null_graph_samples,
+             position_blocks=config.model.null_position_blocks, namespace='seven-day-external')
+        model = create_model(config).to('cuda').eval()
+        checkpoint = args.run/'checkpoints/best.safetensors'
+        load_model(model, str(checkpoint))
+        rows = []; changes = []
+        with torch.no_grad():
+            for batch in DataLoader(view, batch_size=4, shuffle=False, collate_fn=create_collator(config)):
+                ids, mask = batch['input_ids'].to('cuda'), batch['attention_mask'].to('cuda')
+                if 'relation_masks' not in batch:
+                    normal = model(ids, mask)['logits']
+                    values = {key: normal for key in ['normal', 'empty', 'null', 'base']}
+                else:
+                    real, nulls = batch['relation_masks'].to('cuda'), batch['null_relation_masks'].to('cuda')
+                    kw = {'special_tokens_mask': batch['special_tokens_mask'].to('cuda')}
+                    if config.model.variant == 'null_centered_graph_adapter': kw['null_relation_masks'] = nulls
+                    output = model(ids, mask, real, **kw)
+                    values = {'normal': output['logits'],
+                        'empty': model(ids, mask, torch.zeros_like(real), **kw)['logits'],
+                        'null': model(ids, mask, nulls[:, 0], **kw)['logits']}
+                    if 'base_logits' in output: values['base'] = output['base_logits']
+                    changes.extend(batch['null_graph_change_fractions'].mean(1).tolist())
+                values = {key: v.float().cpu().tolist() for key, v in values.items()}
+                for i, sid in enumerate(batch['sample_ids']):
+                    rows.append({'sample_id': sid, 'label': int(batch['labels'][i]), **{k: v[i] for k, v in values.items()}})
+        precision = 'fp32'
+    if not args.max_examples:
+        assert len(rows) == manifest['n'] and sum(r['label'] for r in rows) == manifest['positive']
+    assert len({r['sample_id'] for r in rows}) == len(rows)
+    assert all(population[r['sample_id']] == r['label'] for r in rows)
+    labels = [r['label'] for r in rows]
+    metrics = {}
+    for mode in [k for k in rows[0] if k not in {'sample_id', 'label'}]:
+        values = [r[mode] for r in rows]
+        assert np.isfinite(values).all()
+        ap = average_precision(labels, values); auc = roc_auc(labels, values)
+        if len(set(labels)) == 2:
+            assert abs(ap-average_precision_score(labels, values)) < 1e-12
+            assert abs(auc-roc_auc_score(labels, values)) < 1e-12
+        metrics[mode] = {'ap': ap, 'roc_auc': auc,
+            'mean_abs_logit_change': float(np.mean([abs(r[mode]-r['normal']) for r in rows])),
+            'max_abs_logit_change': max(abs(r[mode]-r['normal']) for r in rows)}
+    atomic_write_json(args.output, {'status': 'smoke' if args.max_examples else 'complete',
+        'role': 'external_audit', 'family': args.family, 'condition': args.condition, 'seed': args.seed,
+        'n': len(rows), 'metrics': metrics, 'predictions': rows, 'precision': precision,
+        'edge_change': changes, 'checkpoint_sha256': sha256_file(checkpoint),
+        'features_sha256': manifest['hashes'][key], 'manifest_sha256': sha256_file(manifest_path),
+        'selection_on_external_data': False, 'official_primevul_test_evaluated': False,
+        'device': torch.cuda.get_device_name(0)})
+    print(json.dumps({'output': str(args.output), 'n': len(rows), 'metrics': metrics}), flush=True)
+
+
+if __name__ == '__main__': main()

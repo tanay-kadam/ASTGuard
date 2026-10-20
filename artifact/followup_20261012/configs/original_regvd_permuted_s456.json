@@ -1,0 +1,19 @@
+{
+  "batch_size": 128,
+  "checkpoint": "microsoft/graphcodebert-base",
+  "condition": "permuted",
+  "device": "cuda",
+  "device_name": "NVIDIA L40S",
+  "epochs_ceiling": 100,
+  "learning_rate": 0.0005,
+  "loss": "unweighted_bce_column0",
+  "min_epochs": 20,
+  "patience": 10,
+  "precision": "gnn_fp64_head_fp32",
+  "revision": "2b0488a7bb0eefc7041f1bb2cad1ab26b0da269d",
+  "seed": 456,
+  "selection": "tune_ap",
+  "selection_graph": "native",
+  "upstream_padding_retained": true,
+  "upstream_revision": "b5e6657b003ada704b7c75e4bd237c1eee1d8138"
+}

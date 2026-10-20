@@ -1,5 +1,16 @@
 # ASTGuard
 
+The completed five-seed follow-up is in
+[artifact/followup_20261012/README.md](artifact/followup_20261012/README.md).
+It supplies saved-prediction verification for 66 new training runs and 45 external
+evaluations on 56,571 functions. All five hierarchical training-contrast intervals
+include zero; this does not establish equivalence or universal graph irrelevance.
+See [the follow-up evidence guide](docs/FOLLOWUP_EVIDENCE_20261020.md) for scope,
+commands and backup information. This is saved-score reproduction, not a complete
+training/checkpoint distribution. The manuscript and 42-run package linked below
+describe the earlier development study and must not be substituted for the
+five-seed external results.
+
 The corrected graph-reliance paper and its reproducibility package are indexed
 in [artifact/README.md](artifact/README.md). Start there to verify the 42 selected
 runs and 156 intervention conditions or download the checkpoint/data release.

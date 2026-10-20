@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "training_runs": 66,
+  "external_evaluations": 45,
+  "data_source": "study.json",
+  "macros": {
+    "AttnShuffleMean": "-0.00312",
+    "AttnSequenceMean": "-0.00310",
+    "CenteredMean": "+0.00123",
+    "NativePermutedMean": "+0.00239",
+    "NativeSelfMean": "+0.00531",
+    "SelectionDropMean": "0.34150",
+    "CenteredBaseAP": "0.00001",
+    "CenteredEmptyLogitMean": "0.16086",
+    "CenteredUpper": "0.00609",
+    "NativeSelfUpper": "0.01209",
+    "AttnShuffleUpper": "0.01224",
+    "AttnShuffleSeedUpper": "0.02120",
+    "AttentionEndpointCount": "6",
+    "AdapterEndpointCount": "5",
+    "RegvdEpochRange": "20--26"
+  }
+}

@@ -1,0 +1,96 @@
+"""Same-checkpoint graph audit for local variants; synthetic holdout is explicit."""
+import argparse
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+import torch
+from torch.utils.data import DataLoader
+from safetensors.torch import load_model
+from graphstudy.config import load_config
+from graphstudy.train import _FeatureDataset
+from graphstudy.models.factory import create_model,create_collator
+from graphstudy.data.null_graphs import MatchedNullGraphDataset
+from graphstudy.evaluation.metrics import average_precision,roc_auc
+from graphstudy.utils.atomic_io import atomic_write_json
+from graphstudy.utils.hashing import sha256_file
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--run',required=True,type=Path);p.add_argument('--features',required=True)
+    p.add_argument('--role',choices=['tune','audit'],default='tune');p.add_argument('--output',required=True,type=Path)
+    p.add_argument('--max-examples',type=int);args=p.parse_args()
+    if args.output.exists():raise FileExistsError(args.output)
+    assert torch.cuda.is_available(), 'CUDA required'
+    config=load_config(args.run/'config.resolved.yaml')
+    if args.role=='audit' and config.dataset.name!='topology_positive_control':raise ValueError('audit role is synthetic only')
+    base=_FeatureDataset(args.features,role=args.role,manifest_hash=config.dataset.manifest_hash,preprocessing_hash=config.preprocessing.cache_hash)
+    if args.max_examples:
+        from torch.utils.data import Subset
+        base=Subset(base,range(min(len(base),args.max_examples)))
+    dataset=MatchedNullGraphDataset(base,seed=config.training.seed,samples=config.model.null_graph_samples,
+        position_blocks=config.model.null_position_blocks,namespace='strengthening-'+args.role)
+    model=create_model(config).to('cuda').eval();checkpoint=args.run/'checkpoints/best.safetensors';load_model(model,str(checkpoint))
+    loader=DataLoader(dataset,batch_size=4,shuffle=False,collate_fn=create_collator(config))
+    rows=[];edge_changes=[];gate_batches=[];gate_moments={}
+    has_base=config.model.variant in {'sequence_only','graph_adapter','null_centered_graph_adapter'}
+    collect_gates=hasattr(model,'layers') and any(getattr(layer,'structural_attention',None) is not None
+        and layer.structural_attention.mode=='adaptive' for layer in model.layers)
+    with torch.no_grad():
+        for batch in loader:
+            ids=batch['input_ids'].to('cuda');attention=batch['attention_mask'].to('cuda')
+            if 'relation_masks' not in batch:
+                normal=model(ids,attention)['logits'];empty=normal;null=normal;base_logits=normal
+            else:
+                special=batch['special_tokens_mask'].to('cuda');real=batch['relation_masks'].to('cuda');nulls=batch['null_relation_masks'].to('cuda')
+                kw={'special_tokens_mask':special}
+                if config.model.variant=='null_centered_graph_adapter':kw['null_relation_masks']=nulls
+                normal_kw=dict(kw)
+                if collect_gates:normal_kw['output_attentions']=True
+                output=model(ids,attention,real,**normal_kw);normal=output['logits'];base_logits=output.get('base_logits',normal)
+                if collect_gates:
+                    for layer_index,layer in enumerate(model.layers):
+                        structural=getattr(layer,'structural_attention',None)
+                        detail=None if structural is None else structural.last_diagnostics
+                        gates=None if detail is None else detail.get('gates')
+                        if gates is None:continue
+                        gates=gates.detach().double()
+                        gate_batches.append({'layer':layer_index,'n_examples':len(ids),'raw_gate_sd':float(gates.std())})
+                        eligible=(attention.bool() & ~special.bool())[:,None,:,None].expand_as(gates)
+                        values=gates[eligible]
+                        stat=gate_moments.setdefault(str(layer_index),{'count':0,'sum':0.,'sum_squares':0.})
+                        stat['count']+=values.numel();stat['sum']+=float(values.sum());stat['sum_squares']+=float(values.square().sum())
+                empty=model(ids,attention,torch.zeros_like(real),**kw)['logits'];null=model(ids,attention,nulls[:,0],**kw)['logits']
+                edge_changes.extend(batch['null_graph_change_fractions'].mean(1).tolist())
+            paths=[('normal',normal),('empty',empty),('null',null)]
+            if has_base:paths.append(('base',base_logits))
+            values={k:v.detach().float().cpu().tolist() for k,v in paths}
+            for i,(sid,label) in enumerate(zip(batch['sample_ids'],batch['labels'])):
+                row={'sample_id':sid,'label':int(label)};row.update({k:v[i] for k,v in values.items()});rows.append(row)
+    metrics={}
+    for path in (['normal','empty','null','base'] if has_base else ['normal','empty','null']):
+        metrics[path]={'ap':average_precision([r['label'] for r in rows],[r[path] for r in rows]),
+            'roc_auc':roc_auc([r['label'] for r in rows],[r[path] for r in rows]),
+            'mean_abs_logit_change':sum(abs(r[path]-r['normal']) for r in rows)/len(rows),
+            'max_abs_logit_change':max(abs(r[path]-r['normal']) for r in rows)}
+    raw_gate_sd=sum(r['raw_gate_sd'] for r in gate_batches)/len(gate_batches) if gate_batches else None
+    eligible_gate_stats={}
+    for layer,stat in gate_moments.items():
+        n=stat['count'];mean=stat['sum']/n if n else None
+        variance=max(0.,(stat['sum_squares']-stat['sum']**2/n)/(n-1)) if n>1 else None
+        eligible_gate_stats[layer]={'count':n,'mean':mean,'sample_sd':variance**.5 if variance is not None else None}
+    sensitivity={str(cutoff):{'mean_abs_empty_change_at_least_cutoff':metrics['empty']['mean_abs_logit_change']>=cutoff,
+        'joint_with_legacy_gate_sd_above_0_05':raw_gate_sd>.05 and metrics['empty']['mean_abs_logit_change']>=cutoff if raw_gate_sd is not None else None}
+        for cutoff in [.01,.02,.05,.10]}
+    atomic_write_json(args.output,{'role':args.role,'official_test_used':False,'n':len(rows),'metrics':metrics,'predictions':rows,
+        'variant':config.model.variant,'base_path_available':has_base,'seed':config.training.seed,'checkpoint_sha256':sha256_file(checkpoint),
+        'actual_model_relations':list(getattr(model,'relations',())),
+        'legacy_mean_batch_layer_gate_sd':raw_gate_sd,'gate_stats_include_padding_and_special_queries':True if gate_batches else None,
+        'eligible_nonspecial_gate_stats':eligible_gate_stats,'prespecified_threshold_sensitivity':sensitivity,
+        'features_sha256':sha256_file(args.features),'mean_edge_change_fraction': [sum(r[i] for r in edge_changes)/len(edge_changes) for i in range(2)] if edge_changes else None,
+        'null_namespace':'strengthening-'+args.role,'evaluation_precision':'fp32'})
+    print(json.dumps({'output':str(args.output),'metrics':metrics}))
+
+
+if __name__=='__main__':main()

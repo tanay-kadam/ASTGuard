@@ -1,0 +1,55 @@
+"""Fast paired cluster bootstrap with exact tied-score AP and seed uncertainty."""
+import numpy as np
+from scipy.stats import t
+
+
+def sorted_ap_inputs(labels, scores):
+    y = np.asarray(labels, dtype=np.float64)
+    s = np.asarray(scores, dtype=np.float64)
+    order = np.argsort(-s, kind='stable')
+    ends = np.r_[np.flatnonzero(np.diff(s[order]) != 0), len(s)-1]
+    return order, ends, y[order]
+
+
+def weighted_ap(prepared, weights):
+    order, ends, y = prepared
+    w = np.asarray(weights, dtype=np.float64)[order]
+    tp = np.cumsum(w*y)[ends]
+    total = np.cumsum(w)[ends]
+    if tp[-1] <= 0 or total[-1]-tp[-1] <= 0:
+        return None
+    precision = np.divide(tp, total, out=np.zeros_like(tp), where=total > 0)
+    return float(np.sum(np.diff(np.r_[0., tp])*precision)/tp[-1])
+
+
+def paired_analysis(labels, left, right, components, replicates=10000, seed=20261012):
+    seeds = sorted(left)
+    assert seeds == sorted(right) and len(seeds) >= 2
+    _, cluster_index = np.unique(np.asarray(components), return_inverse=True)
+    nclusters = int(cluster_index.max())+1
+    left_pre = [sorted_ap_inputs(labels, left[s]) for s in seeds]
+    right_pre = [sorted_ap_inputs(labels, right[s]) for s in seeds]
+    ones = np.ones(len(labels))
+    effects = np.array([weighted_ap(a, ones)-weighted_ap(b, ones) for a, b in zip(left_pre, right_pre)])
+    rng = np.random.default_rng(seed)
+    conditional = []; hierarchical = []; invalid = 0
+    for _ in range(replicates):
+        counts = np.bincount(rng.integers(0, nclusters, nclusters), minlength=nclusters)
+        weights = counts[cluster_index]
+        a = [weighted_ap(x, weights) for x in left_pre]
+        b = [weighted_ap(x, weights) for x in right_pre]
+        if None in a or None in b:
+            invalid += 1
+            continue
+        differences = np.asarray(a)-np.asarray(b)
+        conditional.append(float(differences.mean()))
+        hierarchical.append(float(differences[rng.integers(0, len(seeds), len(seeds))].mean()))
+    mean, sd = float(effects.mean()), float(effects.std(ddof=1))
+    half = float(t.ppf(.975, len(seeds)-1)*sd/len(seeds)**.5)
+    return {'seeds': seeds, 'paired_seed_differences': effects.tolist(), 'mean_difference': mean,
+        'sample_sd': sd, 'seed_t_interval_95': [mean-half, mean+half],
+        'component_interval_95': np.quantile(conditional, [.025, .975]).tolist() if conditional else None,
+        'hierarchical_interval_95': np.quantile(hierarchical, [.025, .975]).tolist() if hierarchical else None,
+        'bootstrap_replicates': replicates, 'invalid_replicates': invalid, 'components': nclusters,
+        'analysis_seed': seed, 'all_positive_mean_at_least_0_02': bool((effects > 0).all() and mean >= .02),
+        'interpretation': 'Exploratory paired uncertainty; no equivalence or vulnerability-semantic conclusion.'}

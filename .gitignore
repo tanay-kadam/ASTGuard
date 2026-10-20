@@ -42,3 +42,20 @@ artifacts/ssh_import_20261009/
 output/artifact_release/
 artifact/downloads/
 archive/ssh_recovery_20261007/
+
+# Isolated seven-day campaign: generated inputs and large private evidence.
+data/seven_day_20261012/
+artifacts/seven_day_20261012/jobs/
+artifacts/seven_day_20261012/smokes/
+artifacts/seven_day_20261012/holdout/candidate_records.jsonl.gz
+artifacts/seven_day_20261012/holdout/components.json
+artifacts/seven_day_20261012/final_evidence_20261017/
+artifacts/seven_day_20261012/final_evidence_20261017.tar.gz
+output/submission_20261017/author_only/
+
+# Private shutdown mirror: source data and selected checkpoints.
+archive/ssh_campaign_20261020/
+artifacts/seven_day_20261012/synthetic_inputs_20261017/
+artifacts/seven_day_20261012/synthetic_inputs_20261017.tar.gz
+
+artifact/followup_20261012/verification_result.json
