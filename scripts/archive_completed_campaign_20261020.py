@@ -14,6 +14,7 @@ DEST=REPO/'archive/ssh_campaign_20261020'
 REMOTE='/tmp/astguard_seven_day_20261012'
 KEY=REPO/'tmp/ssh_task/astguard_gpu_key'
 LOCK=threading.Lock()
+CONNECT_LOCK=threading.Lock()
 STATE={'verified':{},'errors':{},'started':time.time()}
 
 INVENTORY=r'''
@@ -103,13 +104,14 @@ def main():
         for attempt in range(4):
             try:
                 if not getattr(local,'client',None) or not local.client.get_transport().is_active():
-                    local.client=connect();local.sftp=local.client.open_sftp();local.sftp.get_channel().settimeout(120)
+                    with CONNECT_LOCK:local.client=connect()
+                    local.sftp=local.client.open_sftp();local.sftp.get_channel().settimeout(120)
                 partial=p.with_name(p.name+'.partial')
                 offset=partial.stat().st_size if partial.exists() else 0
                 if offset>r['bytes']:raise RuntimeError('Oversized partial file')
                 with local.sftp.open(r['source'],'rb') as src,partial.open('ab') as dst:
                     src.seek(offset)
-                    if offset==0:src.prefetch(file_size=r['bytes'],max_concurrent_requests=32)
+                    src.prefetch(file_size=r['bytes'],max_concurrent_requests=64)
                     while True:
                         block=src.read(4*1024*1024)
                         if not block:break
@@ -123,7 +125,7 @@ def main():
                 if attempt==3:
                     with LOCK:STATE['errors'][r['relative']]=str(e)
                     raise
-    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=24) as pool:
         pending={pool.submit(transfer,r) for r in sorted(records,key=lambda r:r['bytes'])}
         while pending:
             done,pending=concurrent.futures.wait(pending,timeout=30,return_when=concurrent.futures.FIRST_EXCEPTION)
